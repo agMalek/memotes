@@ -41,9 +41,9 @@ export function Layout ({
                     {fichas.map((ficha, index) => (
                         <div className='ficha' key={index}>
                             {mostrarFichas ? 
-                            <div>
-                                <img className='imgFicha' src={ficha.src} alt={ficha.alt} />
-                            </div>
+                           
+                            <img className='imgFicha' src={ficha.src} alt={ficha.alt} />
+                            
                             : ""
                             }
                         </div>
