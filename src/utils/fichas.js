@@ -71,102 +71,82 @@ const Animales = [
     {
         src: Elefante,
         alt: "Elefante",
-        id: "1"
     },
     {
         src: Jirafa,
         alt: "Jirafa",
-        id: "2"
     },
     {
         src: Leon,
         alt: "León",
-        id: "3"
     },
     {
         src: Caballo,
         alt: "Caballo",
-        id: "4"
     },
     {
         src: Cebra,
         alt: "Cebra",
-        id: "5"
     },
     {
         src: Tucan,
         alt: "Tucan",
-        id: "6"
     },
     {
         src: Mono,
         alt: "Mono",
-        id: "7"
     },
     {
         src: Tibruon,
         alt: "Tibruon",
-        id: "8"
     },
     {
         src: Tigre,
         alt: "Tigre",
-        id: "9"
     },
     {
         src: Perro,
         alt: "Perro",
-        id: "10"
     },
     {
         src: Gato,
         alt: "Gato",
-        id: "11"
     },
     {
         src: Delfin,
         alt: "Delfin",
-        id: "12"
     },
     {
         src: Camello,
         alt: "Camello",
-        id: "13"
     },
     {
         src: Orca,
         alt: "Orca",
-        id: "14"
     },
     {
         src: Ballena,
         alt: "Ballena",
-        id: "15"
     },
     {
         src: Cocodrilo,
         alt: "Cocodrilo",
-        id: "16"
     },
     {
         src: Gallina,
         alt: "Gallina",
-        id: "17"
     },
     {
         src: Loro,
         alt: "Loro",
-        id: "18"
     },
     {
         src: Rinoceronte,
         alt: "Rinoceronte",
-        id: "19"
     },
     {
         src: Oveja,
         alt: "Oveja",
-        id: "20"
     }
 
 ]
@@ -176,102 +156,82 @@ const Banderas = [
     {
         src: Argentina,
         alt: "Argentina",
-        id: "1"
     },
     {
         src: Brasil,
         alt: "Brasil",
-        id: "2"
     },
     {
         src: Espania,
         alt: "España",
-        id: "3"
     },
     {
         src: Eeuu,
         alt: "Eeuu",
-        id: "4"
     },
     {
         src: Israel,
         alt: "Israel",
-        id: "5"
     },
     {
         src: Inglaterra,
         alt: "Inglaterra",
-        id: "6"
     },
     {
         src: Francia,
         alt: "Francia",
-        id: "7"
     },
     {
         src: Alemania,
         alt: "Alemania",
-        id: "8"
     },
     {
         src: Italia,
         alt: "Italia",
-        id: "9"
     },
     {
         src: Japon,
         alt: "Japon",
-        id: "10"
     },
     {
         src: Chile,
         alt: "Chile",
-        id: "11"
     },
     {
         src: Uruguay,
         alt: "Uruguay",
-        id: "12"
     },
     {
         src: Mexico,
         alt: "Mexico",
-        id: "13"
     },
     {
         src: Canada,
         alt: "Canada",
-        id: "14"
     },
     {
         src: China,
         alt: "China",
-        id: "15"
     },
     {
         src: Colombia,
         alt: "Colombia",
-        id: "16"
     },
     {
         src: Ecuador,
         alt: "Ecuador",
-        id: "17"
     },
     {
         src: Bolivia,
         alt: "Bolivia",
-        id: "18"
     },
     {
         src: Peru,
         alt: "Peru",
-        id: "19"
     },
     {
         src: Paraguay,
         alt: "Paraguay",
-        id: "20"
     }
 
 ]
@@ -282,102 +242,82 @@ const Comidas = [
     {
         src: Asado,
         alt: "Asado",
-        id: "1"
     },    
     {
         src: Entrania,
         alt: "Entrania",
-        id: "2"
     },    
     {
         src: Pizza,
         alt: "Pizza",
-        id: "3"
     },    
     {
         src: Empanada,
         alt: "Empanada",
-        id: "4"
     },    
     {
         src: Salmon,
         alt: "Salmon",
-        id: "5"
     },    
     {
         src: Sushi,
         alt: "Sushi",
-        id: "6"
     },    
     {
         src: Taco,
         alt: "Taco",
-        id: "7"
     },    
     {
         src: Milanesa,
         alt: "Milanesa",
-        id: "8"
     },    
     {
         src: Ravioles,
         alt: "Ravioles",
-        id: "9"
     },    
     {
         src: Ensalada,
         alt: "Ensalada",
-        id: "10"
     },    
     {
         src: Pollo,
         alt: "Pollo",
-        id: "11"
     },    
     {
         src: Miga,
         alt: "Miga",
-        id: "12"
     },    
     {
         src: Langostino,
         alt: "Langostino",
-        id: "13"
     },    
     {
         src: Picada,
         alt: "Picada",
-        id: "14"
     },    
     {
         src: Fideos,
         alt: "Fideos",
-        id: "15"
     },    
     {
         src: Falafel,
         alt: "Falafel",
-        id: "16"
     },    
     {
         src: Merluza,
         alt: "Merluza",
-        id: "17"
     },    
     {
         src: Kippe,
         alt: "Kippe",
-        id: "18"
     },    
     {
         src: Papas,
         alt: "Papas",
-        id: "19"
     },    
     {
         src: Facturas,
         alt: "Facturas",
-        id: "20"
     }    
 
 ]    

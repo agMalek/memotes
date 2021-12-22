@@ -12,12 +12,12 @@ export function Layout ({
     tiempo,
     setTema,
     fichas,
-    empezar
+    empezar,
+    mostrarFichas
 }){
     return(
         <div>
             
-            {console.log(fichas)}
             {
                 !juegoEmpezado ? 
                 <button onClick={() => setJuegoEmpezado(true)}>EMPEZAR JUEGO</button>
@@ -37,12 +37,18 @@ export function Layout ({
                 </div>
                 : fichas.length !== 0 ?
                  
-                <div className="" >  
-                    {fichas.map(ficha => (
-                        <div className='ficha' key={ficha.id}>
-                            <img className='imgFicha' src={ficha.src} alt={ficha.alt} />
+                <div className="contenedorFichas" >  
+                    {fichas.map((ficha, index) => (
+                        <div className='ficha' key={index}>
+                            {mostrarFichas ? 
+                            <div>
+                                <img className='imgFicha' src={ficha.src} alt={ficha.alt} />
+                            </div>
+                            : ""
+                            }
                         </div>
-                    ))}    
+                    ))}
+
                 </div>  
                 : <h3>dsdsds</h3>
 
