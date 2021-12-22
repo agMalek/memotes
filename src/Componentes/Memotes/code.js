@@ -19,8 +19,8 @@ const Memotes = () => {
     const [tiempo, setTiempo] = useState()
     const [cantParejas, setCantParejas] = useState()
     const [tema, setTema] = useState("")
-    const [mostrarFichas, setMostrarFichas] = useState(true)
     const [fichas, setFichas] = useState([])
+    const [opacidad, setOpacidad] = useState("opaca")
     
     const setNivel = (nivel) => {
         switch(nivel){
@@ -103,7 +103,7 @@ const Memotes = () => {
     useEffect(() => {
         if(tema !== ""){
             setTimeout( () => {
-                setMostrarFichas(false)
+                setOpacidad("transparente")
             }, tiempo)
         }
     }, [tema])
@@ -128,7 +128,7 @@ const Memotes = () => {
             fichas={fichas}
             empezar={empezar}
             mostrarFichas={mostrarFichas}
-        
+            opacidad={opacidad}
         />
     )
 

@@ -3,17 +3,14 @@ import React from 'react'
 import './style.css'
 
 export function Layout ({
-/*     consologueando, */
     juegoEmpezado,
     setJuegoEmpezado,
     setNivel,
-    /* nivel, */
     tema,
     tiempo,
-    setTema,
     fichas,
     empezar,
-    mostrarFichas
+    opacidad
 }){
     return(
         <div>
@@ -40,12 +37,7 @@ export function Layout ({
                 <div className="contenedorFichas" >  
                     {fichas.map((ficha, index) => (
                         <div className='ficha' key={index}>
-                            {mostrarFichas ? 
-                           
-                            <img className='imgFicha' src={ficha.src} alt={ficha.alt} />
-                            
-                            : ""
-                            }
+                            <img className='imgFicha' id={opacidad} src={ficha.src} alt={ficha.alt} />                            
                         </div>
                     ))}
 
