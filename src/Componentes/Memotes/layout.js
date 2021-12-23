@@ -6,14 +6,14 @@ export function Layout ({
     juegoEmpezado,
     setJuegoEmpezado,
     setNivel,
+    setTema,
     tema,
     tiempo,
     fichas,
-    empezar,
     opacidad,
     darVuelta,
-    setOpacidad
-
+    cantCoincidencias,
+    cantParejas
 }){
     return(
         <div>
@@ -31,20 +31,22 @@ export function Layout ({
                 </div>
                 : tema === "" ?
                 <div>
-                    <button onClick={()=>empezar("Banderas")}>Banderas</button>
-                    <button onClick={()=>empezar("Animales")}>Animales</button>
-                    <button onClick={()=>empezar("Comida")}>Comida</button>
+                    <button onClick={()=>setTema("Banderas")}>Banderas</button>
+                    <button onClick={()=>setTema("Animales")}>Animales</button>
+                    <button onClick={()=>setTema("Comida")}>Comida</button>
                 </div>
-                : fichas.length !== 0 ?
-                 
-                <div className="contenedorFichas" >  
-                    {fichas.map((ficha, index) => (
-                        <div className='ficha' key={index}>
-                            <img className={opacidad} id="imgFicha" src={ficha.src} alt={ficha.alt} onClick={(SyntheticEvent) => darVuelta(SyntheticEvent)} />                            
+                
+                : fichas.length !== 0 
+                ? cantCoincidencias < cantParejas 
+                    ?   <div className="contenedorFichas" >  
+                            {fichas.map((ficha, index) => (
+                                <div className='ficha' key={index}>
+                                    <img className={opacidad} id="imgFicha" src={ficha.src} alt={ficha.alt} onClick={(SyntheticEvent) => darVuelta(SyntheticEvent)} />                            
+                                </div>
+                            ))}
                         </div>
-                    ))}
-
-                </div>  
+                    : <h3>Ganaste</h3>  
+                 
                 : <h3>Hubo un error</h3>
 
                     

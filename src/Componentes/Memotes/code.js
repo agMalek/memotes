@@ -11,10 +11,14 @@ const Memotes = () => {
     const tiempoNivelB = 6000
     const tiempoNivelC = 2000
 
-    const cantParejasNivelA = 10
+    const tiempoEntreTurnos = 500
+
+    const cantParejasNivelA = 2
     const cantParejasNivelB = 15
     const cantParejasNivelC = 20
 
+    const opaca = "opaca"
+    const transparente = "transparente"
     
 
     const [juegoEmpezado, setJuegoEmpezado] = useState(false)
@@ -22,11 +26,12 @@ const Memotes = () => {
     const [cantParejas, setCantParejas] = useState()
     const [tema, setTema] = useState("")
     const [fichas, setFichas] = useState([])
-    const [opacidad, setOpacidad] = useState("opaca")
+    const [opacidad, setOpacidad] = useState(opaca)
     const [cantVolteadas, setCantVolteadas] = useState(0)
     const [primeraVolteada, setPrimeraVolteada] = useState()
     const [segundaVolteada, setSegundaVolteada] = useState()
     const [podesJugar, setPodesJugar] = useState(false)
+    const [cantCoincidencias, setCantCoincidencias] = useState(0)
     
     const setNivel = (nivel) => {
         switch(nivel){
@@ -48,30 +53,30 @@ const Memotes = () => {
 
     }
 
+    const prepararJuego = () => {
+        let arrayDeFichas = dameArrayDeFichas()
+        arrayDeFichas = arrayDeFichas.slice(0, cantParejas)
+        arrayDeFichas = armarParejas(arrayDeFichas)
+        arrayDeFichas = mezclarFichas(arrayDeFichas)
+        setFichas(arrayDeFichas)
+    }
 
-    const empezar = (tematica) => {
-        setTema(tematica)
-        switch(tematica){
+    const dameArrayDeFichas = () => {
+        let retorno = []
+        switch(tema){
             case "Banderas":
-                prepararJuego(Banderas)
+                retorno = Banderas
                 break;
             case "Animales":
-                prepararJuego(Animales)
+                retorno = Animales
                 break;
             case "Comida":
-                prepararJuego(Comidas)
+                retorno = Comidas
                 break;
             default:
                 break;
         }
-    }
-
-    
-    const prepararJuego = (array) => {        
-        array = array.slice(0, cantParejas)
-        array = armarParejas(array)
-        array = mezclarFichas(array)
-        setFichas(array)
+        return retorno
     }
     
     const armarParejas = (array) =>{
@@ -108,8 +113,9 @@ const Memotes = () => {
 
     useEffect(() => {
         if(tema !== ""){
+            prepararJuego()
             setTimeout( () => {
-                setOpacidad("transparente")
+                setOpacidad(transparente)
                 setPodesJugar(true)
             }, tiempo)
         }
@@ -121,28 +127,26 @@ const Memotes = () => {
             if(primeraVolteada === undefined){
                 setPrimeraVolteada(event.target)
                 setCantVolteadas(cantVolteadas+1)
-    
-            }else if(event.target.className !== "opaca"){
+            }else if(event.target.className !== opaca){
                 setSegundaVolteada(event.target)
                 setCantVolteadas(cantVolteadas+1)
                 setPodesJugar(false)
             }
-            event.target.className = "opaca"
+            event.target.className = opaca
         }
     }
 
     useEffect(() => {
-        console.log(cantVolteadas)
-        console.log(primeraVolteada)
-        console.log(segundaVolteada)
         if(cantVolteadas === 2){
             setTimeout( () => {
                 if(primeraVolteada.alt !== segundaVolteada.alt){
-                    primeraVolteada.className="transparente"
-                    segundaVolteada.className="transparente"
+                    primeraVolteada.className = transparente
+                    segundaVolteada.className = transparente                
+                }else{
+                    setCantCoincidencias(cantCoincidencias+1)
                 }
                 setPodesJugar(true)
-            }, 1000)
+            }, tiempoEntreTurnos)
             setPrimeraVolteada(undefined)
             setSegundaVolteada(undefined)
             setCantVolteadas(0)
@@ -166,10 +170,10 @@ const Memotes = () => {
             tema={tema}
             tiempo={tiempo}
             fichas={fichas}
-            empezar={empezar}
             opacidad={opacidad}
-            setOpacidad={setOpacidad}
             darVuelta={darVuelta}
+            cantCoincidencias={cantCoincidencias}
+            cantParejas={cantParejas}
         />
     )
 
