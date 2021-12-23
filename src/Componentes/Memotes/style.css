@@ -8,8 +8,8 @@
 }
 
 .ficha{
-    height: 120px;
-    width: 120px;
+    height: 100px;
+    width: 100px;
     border-radius: 8px;
     border: 4px solid #fff;
     text-align: center;
@@ -17,15 +17,15 @@
     background-color: #ccc;
 }
 
-.imgFicha {
+#imgFicha {
     width: 100%;
     height: 100%;    
 }
 
-#transparente{
+.transparente{
     opacity: 0;
 }
 
-#opaca{
+.opaca{
     opacity: 1;
 }

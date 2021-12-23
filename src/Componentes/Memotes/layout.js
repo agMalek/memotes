@@ -10,7 +10,10 @@ export function Layout ({
     tiempo,
     fichas,
     empezar,
-    opacidad
+    opacidad,
+    darVuelta,
+    setOpacidad
+
 }){
     return(
         <div>
@@ -37,12 +40,12 @@ export function Layout ({
                 <div className="contenedorFichas" >  
                     {fichas.map((ficha, index) => (
                         <div className='ficha' key={index}>
-                            <img className='imgFicha' id={opacidad} src={ficha.src} alt={ficha.alt} />                            
+                            <img className={opacidad} id="imgFicha" src={ficha.src} alt={ficha.alt} onClick={(SyntheticEvent) => darVuelta(SyntheticEvent)} />                            
                         </div>
                     ))}
 
                 </div>  
-                : <h3>dsdsds</h3>
+                : <h3>Hubo un error</h3>
 
                     
 
