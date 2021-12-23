@@ -7,18 +7,19 @@ import {Layout} from "./layout"
 
 const Memotes = () => {
 
-    const tiempoNivelA = 8000
+    const tiempoNivelA = 1000
     const tiempoNivelB = 6000
     const tiempoNivelC = 2000
 
     const tiempoEntreTurnos = 500
 
-    const cantParejasNivelA = 2
+    const cantParejasNivelA = 5
     const cantParejasNivelB = 15
     const cantParejasNivelC = 20
 
     const opaca = "opaca"
     const transparente = "transparente"
+    const descubierta =  " descubierta"
     
 
     const [juegoEmpezado, setJuegoEmpezado] = useState(false)
@@ -144,6 +145,8 @@ const Memotes = () => {
                     segundaVolteada.className = transparente                
                 }else{
                     setCantCoincidencias(cantCoincidencias+1)
+                    primeraVolteada.className += descubierta
+                    segundaVolteada.className += descubierta 
                 }
                 setPodesJugar(true)
             }, tiempoEntreTurnos)
