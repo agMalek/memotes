@@ -26,7 +26,7 @@ const Memotes = () => {
     const [cantVolteadas, setCantVolteadas] = useState(0)
     const [primeraVolteada, setPrimeraVolteada] = useState()
     const [segundaVolteada, setSegundaVolteada] = useState()
-    const [podesEmpezar, setPodesEmpezar] = useState(false)
+    const [podesJugar, setPodesJugar] = useState(false)
     
     const setNivel = (nivel) => {
         switch(nivel){
@@ -110,14 +110,14 @@ const Memotes = () => {
         if(tema !== ""){
             setTimeout( () => {
                 setOpacidad("transparente")
-                setPodesEmpezar(true)
+                setPodesJugar(true)
             }, tiempo)
         }
     }, [tema])
 
     
     const darVuelta = (event) =>{
-        if(podesEmpezar){
+        if(podesJugar){
             if(primeraVolteada === undefined){
                 setPrimeraVolteada(event.target)
                 setCantVolteadas(cantVolteadas+1)
@@ -125,21 +125,23 @@ const Memotes = () => {
             }else if(event.target.className !== "opaca"){
                 setSegundaVolteada(event.target)
                 setCantVolteadas(cantVolteadas+1)
+                setPodesJugar(false)
             }
             event.target.className = "opaca"
         }
     }
 
     useEffect(() => {
-
         console.log(cantVolteadas)
         console.log(primeraVolteada)
         console.log(segundaVolteada)
         if(cantVolteadas === 2){
-            
             setTimeout( () => {
-                primeraVolteada.className="transparente"
-                segundaVolteada.className="transparente"
+                if(primeraVolteada.alt !== segundaVolteada.alt){
+                    primeraVolteada.className="transparente"
+                    segundaVolteada.className="transparente"
+                }
+                setPodesJugar(true)
             }, 1000)
             setPrimeraVolteada(undefined)
             setSegundaVolteada(undefined)
