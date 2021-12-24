@@ -17,6 +17,11 @@
     background-color: #ccc;
 }
 
+/* 
+.animacionGiro{
+    animation: giro-de-ficha 1s linear
+} */
+
 #imgFicha {
     width: 100%;
     height: 100%;    
@@ -32,4 +37,46 @@
 
 .descubierta{
     opacity: .5;
+}
+
+
+
+
+
+/* @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+    }  
+} */
+  
+/* @keyframes giro-de-ficha{
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(180deg);
+    }
+} */
+
+
+
+.contenedorGanaste{
+    width: 400px;
+    height: 250px;
+    padding: 40px;
+    background-color: #006;
+    margin: auto;
+}
+
+.tituloGanaste{
+    text-align: center;
+    color: rgb(158, 242, 138);
+}
+
+.botonGanaste{
+    padding: 10px;
+    margin: 20px;
+}
+
+.contenedorBotonesGanaste{
+    text-align: center;
 }

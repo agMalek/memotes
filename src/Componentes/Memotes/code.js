@@ -13,13 +13,13 @@ const Memotes = () => {
 
     const tiempoEntreTurnos = 500
 
-    const cantParejasNivelA = 5
+    const cantParejasNivelA = 2
     const cantParejasNivelB = 15
     const cantParejasNivelC = 20
 
     const opaca = "opaca"
     const transparente = "transparente"
-    const descubierta =  " descubierta"
+    const descubierta =  "descubierta"
     
 
     const [juegoEmpezado, setJuegoEmpezado] = useState(false)
@@ -113,6 +113,7 @@ const Memotes = () => {
     
 
     useEffect(() => {
+        console.log(tema)
         if(tema !== ""){
             prepararJuego()
             setTimeout( () => {
@@ -125,15 +126,18 @@ const Memotes = () => {
     
     const darVuelta = (event) =>{
         if(podesJugar){
-            if(primeraVolteada === undefined){
-                setPrimeraVolteada(event.target)
-                setCantVolteadas(cantVolteadas+1)
-            }else if(event.target.className !== opaca){
-                setSegundaVolteada(event.target)
-                setCantVolteadas(cantVolteadas+1)
-                setPodesJugar(false)
+            if(event.target.className !== descubierta){
+                if(primeraVolteada === undefined){
+                    setPrimeraVolteada(event.target)
+                    setCantVolteadas(cantVolteadas+1)
+                }else if(event.target.className !== opaca){
+                    setSegundaVolteada(event.target)
+                    setCantVolteadas(cantVolteadas+1)
+                    setPodesJugar(false)
+                }
+                /* event.target.parentElement.className += " animacionGiro" */
+                event.target.className = opaca
             }
-            event.target.className = opaca
         }
     }
 
@@ -145,8 +149,8 @@ const Memotes = () => {
                     segundaVolteada.className = transparente                
                 }else{
                     setCantCoincidencias(cantCoincidencias+1)
-                    primeraVolteada.className += descubierta
-                    segundaVolteada.className += descubierta 
+                    primeraVolteada.className = descubierta
+                    segundaVolteada.className = descubierta 
                 }
                 setPodesJugar(true)
             }, tiempoEntreTurnos)
@@ -156,13 +160,13 @@ const Memotes = () => {
         }
     }, [cantVolteadas])
     
-    
+    const reiniciar = () => {
+        //prepararJuego()
+    }
 
-
-    
-        
-    
-
+    const nuevoJuego = () => {
+       /*  setTema("") */
+    }
 
     return(
         <Layout 
@@ -177,6 +181,8 @@ const Memotes = () => {
             darVuelta={darVuelta}
             cantCoincidencias={cantCoincidencias}
             cantParejas={cantParejas}
+            reiniciar={reiniciar}
+            nuevoJuego={nuevoJuego}
         />
     )
 

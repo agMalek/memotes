@@ -1,6 +1,7 @@
 import React from 'react'
 
 import './style.css'
+/* import Ganaste from './Ganaste/code' */
 
 export function Layout ({
     juegoEmpezado,
@@ -13,7 +14,9 @@ export function Layout ({
     opacidad,
     darVuelta,
     cantCoincidencias,
-    cantParejas
+    cantParejas,
+    reiniciar,
+    nuevoJuego
 }){
     return(
         <div>
@@ -35,7 +38,7 @@ export function Layout ({
                     <button onClick={()=>setTema("Animales")}>Animales</button>
                     <button onClick={()=>setTema("Comida")}>Comida</button>
                 </div>
-                
+
                 : fichas.length !== 0 
                 ? cantCoincidencias < cantParejas 
                     ?   <div className="contenedorFichas" >  
@@ -45,7 +48,13 @@ export function Layout ({
                                 </div>
                             ))}
                         </div>
-                    : <h3>Ganaste</h3>  
+                    :   <div className="contenedorGanaste">
+                            <h3 className='tituloGanaste'>Ganaste!!!</h3>
+                            <div className='contenedorBotonesGanaste'>
+                                <button className='btn btn-success botonGanaste' >Reiniciar</button>
+                                <button className='btn btn-success botonGanaste' onClick={nuevoJuego()} >Nuevo Juego</button>
+                            </div>
+                        </div>
                  
                 : <h3>Hubo un error</h3>
 
