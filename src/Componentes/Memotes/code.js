@@ -8,8 +8,8 @@ import {Layout} from "./layout"
 const Memotes = () => {
 
     const tiempoNivelA = 1000
-    const tiempoNivelB = 6000
-    const tiempoNivelC = 122000
+    const tiempoNivelB = 2000
+    const tiempoNivelC = 3000
 
     const tiempoEntreTurnos = 500
 
@@ -60,6 +60,10 @@ const Memotes = () => {
         arrayDeFichas = armarParejas(arrayDeFichas)
         arrayDeFichas = mezclarFichas(arrayDeFichas)
         setFichas(arrayDeFichas)
+        setTimeout( () => {
+            setOpacidad(transparente)
+            setPodesJugar(true)
+        }, tiempo)
     }
 
     const dameArrayDeFichas = () => {
@@ -116,10 +120,6 @@ const Memotes = () => {
         console.log(tema)
         if(tema !== ""){
             prepararJuego()
-            setTimeout( () => {
-                setOpacidad(transparente)
-                setPodesJugar(true)
-            }, tiempo)
         }
     }, [tema])
 
@@ -131,18 +131,19 @@ const Memotes = () => {
                 if(primeraVolteada === undefined){
                     setPrimeraVolteada(img)
                     setCantVolteadas(cantVolteadas+1)
-                }else if(img.className !== opaca){
+                }else{
                     setSegundaVolteada(img)
                     setCantVolteadas(cantVolteadas+1)
                     setPodesJugar(false)
                 }
-                /* event.target.parentElement.className += " animacionGiro" */
+                /* event.target.className += " animacionGiro" */
                 img.className = opaca
             }
         }
     }
 
     useEffect(() => {
+        console.log(Banderas)
         if(cantVolteadas === 2){
             setTimeout( () => {
                 if(primeraVolteada.alt !== segundaVolteada.alt){
@@ -162,11 +163,17 @@ const Memotes = () => {
     }, [cantVolteadas])
     
     const reiniciar = () => {
-        //prepararJuego()
+        console.log("holaaaaa")
+        setCantCoincidencias(0)
+        prepararJuego()
+        setOpacidad(opaca)
     }
 
     const nuevoJuego = () => {
-       /*  setTema("") */
+        setCantCoincidencias(0)
+        setTiempo(undefined)
+        setTema("")
+        setOpacidad(opaca)
     }
 
     return(

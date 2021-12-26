@@ -43,20 +43,16 @@ export function Layout ({
                 ? cantCoincidencias < cantParejas 
                     ?   <div className="contenedorFichas" >
                             {fichas.map((ficha, index) => (
-
                                 <div className='ficha' key={index} onClick={(SyntheticEvent) => darVuelta(SyntheticEvent)} >
-                                   
                                     <img className={opacidad} id="imgFicha" src={ficha.src} alt={ficha.alt} />                            
-
-                                    
                                 </div>
                             ))}
                         </div>
                     :   <div className="contenedorGanaste">
                             <h3 className='tituloGanaste'>Ganaste!!!</h3>
                             <div className='contenedorBotonesGanaste'>
-                                <button className='btn btn-success botonGanaste' >Reiniciar</button>
-                                <button className='btn btn-success botonGanaste' onClick={nuevoJuego()} >Nuevo Juego</button>
+                                <button className='btn btn-success botonGanaste' onClick={() => reiniciar()}>Reiniciar</button>
+                                <button className='btn btn-success botonGanaste' onClick={() => nuevoJuego()} >Nuevo Juego</button>
                             </div>
                         </div>
                  

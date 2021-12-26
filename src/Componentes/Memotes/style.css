@@ -17,8 +17,8 @@
     background-color: #ccc;
 }
 
-/* 
-.animacionGiro{
+
+/* .animacionGiro{
     animation: giro-de-ficha 1s linear
 } */
 
@@ -28,13 +28,15 @@
 }
 
 .transparente{
-   /*  opacity: 0; */
     display: none;
+ /*    animation: transparentar 1s linear;
+    animation-delay: 3s; */
 }
 
 .opaca{
-   /*  opacity: 1; */
     display: block;
+   /*  animation: opacar 1s linear;
+    animation-delay: 3s; */
 }
 
 .descubierta{
@@ -51,14 +53,33 @@
     }  
 } */
   
-/* @keyframes giro-de-ficha{
+@keyframes giro-de-ficha{
     from {
       transform: rotateY(0deg);
     }
     to {
       transform: rotateY(180deg);
     }
-} */
+}
+
+@keyframes opacar{
+    from {
+        display: none;
+    }
+    to {
+        display: block;
+    }
+}
+
+@keyframes transparentar{
+    from {
+      display: block;
+    }
+    to {
+      display: none;
+    }
+}
+
 
 
 
