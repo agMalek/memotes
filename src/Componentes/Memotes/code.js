@@ -9,7 +9,7 @@ const Memotes = () => {
 
     const tiempoNivelA = 1000
     const tiempoNivelB = 6000
-    const tiempoNivelC = 2000
+    const tiempoNivelC = 122000
 
     const tiempoEntreTurnos = 500
 
@@ -126,17 +126,18 @@ const Memotes = () => {
     
     const darVuelta = (event) =>{
         if(podesJugar){
-            if(event.target.className !== descubierta){
+            let img = event.target.querySelector('img')
+            if(img !== null){
                 if(primeraVolteada === undefined){
-                    setPrimeraVolteada(event.target)
+                    setPrimeraVolteada(img)
                     setCantVolteadas(cantVolteadas+1)
-                }else if(event.target.className !== opaca){
-                    setSegundaVolteada(event.target)
+                }else if(img.className !== opaca){
+                    setSegundaVolteada(img)
                     setCantVolteadas(cantVolteadas+1)
                     setPodesJugar(false)
                 }
                 /* event.target.parentElement.className += " animacionGiro" */
-                event.target.className = opaca
+                img.className = opaca
             }
         }
     }

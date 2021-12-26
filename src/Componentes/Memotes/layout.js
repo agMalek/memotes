@@ -41,10 +41,14 @@ export function Layout ({
 
                 : fichas.length !== 0 
                 ? cantCoincidencias < cantParejas 
-                    ?   <div className="contenedorFichas" >  
+                    ?   <div className="contenedorFichas" >
                             {fichas.map((ficha, index) => (
-                                <div className='ficha' key={index}>
-                                    <img className={opacidad} id="imgFicha" src={ficha.src} alt={ficha.alt} onClick={(SyntheticEvent) => darVuelta(SyntheticEvent)} />                            
+
+                                <div className='ficha' key={index} onClick={(SyntheticEvent) => darVuelta(SyntheticEvent)} >
+                                   
+                                    <img className={opacidad} id="imgFicha" src={ficha.src} alt={ficha.alt} />                            
+
+                                    
                                 </div>
                             ))}
                         </div>
