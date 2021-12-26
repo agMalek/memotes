@@ -63,10 +63,12 @@ const Memotes = () => {
         setTimeout( () => {
             setOpacidad(transparente)
             setPodesJugar(true)
+            console.log("pasoooo")
         }, tiempo)
     }
 
     const dameArrayDeFichas = () => {
+        console.log(tema)
         let retorno = []
         switch(tema){
             case "Banderas":
@@ -163,7 +165,6 @@ const Memotes = () => {
     }, [cantVolteadas])
     
     const reiniciar = () => {
-        console.log("holaaaaa")
         setCantCoincidencias(0)
         prepararJuego()
         setOpacidad(opaca)
@@ -181,6 +182,9 @@ const Memotes = () => {
             juegoEmpezado={juegoEmpezado}
             setJuegoEmpezado={setJuegoEmpezado}
             setNivel={setNivel}
+            banderas={Banderas}
+            animales={Animales}
+            comidas={Comidas}
             setTema={setTema}
             tema={tema}
             tiempo={tiempo}
@@ -191,6 +195,7 @@ const Memotes = () => {
             cantParejas={cantParejas}
             reiniciar={reiniciar}
             nuevoJuego={nuevoJuego}
+            setTiempo={setTiempo}
         />
     )
 

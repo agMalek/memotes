@@ -8,6 +8,9 @@ export function Layout ({
     setJuegoEmpezado,
     setNivel,
     setTema,
+    banderas,
+    animales,
+    comidas,
     tema,
     tiempo,
     fichas,
@@ -16,7 +19,8 @@ export function Layout ({
     cantCoincidencias,
     cantParejas,
     reiniciar,
-    nuevoJuego
+    nuevoJuego,
+    setTiempo
 }){
     return(
         <div>
@@ -34,19 +38,26 @@ export function Layout ({
                 </div>
                 : tema === "" ?
                 <div>
-                    <button onClick={()=>setTema("Banderas")}>Banderas</button>
-                    <button onClick={()=>setTema("Animales")}>Animales</button>
-                    <button onClick={()=>setTema("Comida")}>Comida</button>
+                     <div>
+                        <button onClick={()=>setTema("Banderas")}>Banderas</button>
+                        <button onClick={()=>setTema("Animales")}>Animales</button>
+                        <button onClick={()=>setTema("Comida")}>Comida</button>
+                    </div>
+                    <button onClick={() => {setTiempo(undefined)}}>Volver a elegir nivel</button>
                 </div>
 
                 : fichas.length !== 0 
                 ? cantCoincidencias < cantParejas 
-                    ?   <div className="contenedorFichas" >
-                            {fichas.map((ficha, index) => (
-                                <div className='ficha' key={index} onClick={(SyntheticEvent) => darVuelta(SyntheticEvent)} >
-                                    <img className={opacidad} id="imgFicha" src={ficha.src} alt={ficha.alt} />                            
-                                </div>
-                            ))}
+                    ?   <div>
+                            <div className="contenedorFichas" >
+                                {fichas.map((ficha, index) => (
+                                    <div className='ficha' key={index} onClick={(SyntheticEvent) => darVuelta(SyntheticEvent)} >
+                                        <img className={opacidad} id="imgFicha" src={ficha.src} alt={ficha.alt} />                            
+                                    </div>
+                                ))}
+                            </div>
+                            <button className='btn btn-success botonGanaste' onClick={() => reiniciar()}>Reiniciar</button>
+                            <button className='btn btn-success botonGanaste' onClick={() => nuevoJuego()} >Nuevo Juego</button>
                         </div>
                     :   <div className="contenedorGanaste">
                             <h3 className='tituloGanaste'>Ganaste!!!</h3>
