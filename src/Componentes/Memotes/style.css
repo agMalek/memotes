@@ -1,10 +1,33 @@
+.contenedor{
+    background: #006;
+    min-width: 100vw;
+    min-height: 100vh;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row wrap;
+}
 
+.contenedorBotonesSeccionTemas{
+    justify-content: center;
+}
+
+.titulo{
+    display: flex;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+.boton{
+    margin: 18px;
+    font-size: 40px;
+}
 
 .contenedorFichas{
     display: flex;
     justify-content: center;
     flex-flow: row wrap;
-    background: #006;
 }
 
 .ficha{
@@ -26,6 +49,7 @@
     width: 100%;
     height: 100%;    
 }
+
 
 .transparente{
     display: none;
@@ -85,15 +109,18 @@
 
 .contenedorGanaste{
     width: 400px;
-    height: 250px;
+    height: 180px;
     padding: 40px;
-    background-color: #006;
     margin: auto;
+    border: 2px solid #006;
+    border-radius: 20px;
+    /* background-color: rgba(40, 40, 40, 0.4); */
+
 }
 
 .tituloGanaste{
     text-align: center;
-    color: rgb(158, 242, 138);
+    color: rgb(66, 66, 218)
 }
 
 .botonGanaste{
