@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
 import {Banderas, Animales, Comidas} from '../../utils/fichas'
+import FormCondiciones from './FormCondiciones/FormCondiciones'
 /* import {Layout} from "./Memotes_layout" */
 import './Memotest.css'
 import Titulo from './Titulo/Titulo'
@@ -257,35 +258,9 @@ const Memotes = () => {
 
                 : !juegoEmpezado ?
                 
-                    <div className=''>
+                    <div>
                        <Titulo />
-                        <form className='contenedorCondiciones' onSubmit={(SyntheticEvent) => iniciarJuego(SyntheticEvent)}>
-                            <div className='contenedorDificultad '>
-                                <div className='mx-3'>
-                                    <label className='labelDificultad' htmlFor="Easy">Easy</label>
-                                    <input className='inputDificultad' type="radio" id="Easy" onChange={(SyntheticEvent)=>setNivel(SyntheticEvent.target.id)} name='dificultad'/>
-                                </div>
-                                <div  className='mx-3'>
-                                    <label className='labelDificultad' htmlFor="Medium">Medium</label>
-                                    <input className='inputDificultad' type="radio" id="Medium" onChange={(SyntheticEvent)=>setNivel(SyntheticEvent.target.id)} name='dificultad'/>
-                                </div>
-                                <div  className='mx-3'>
-                                    <label className='labelDificultad' htmlFor="Hard">Hard</label>
-                                    <input className='inputDificultad' type="radio" id="Hard" onChange={(SyntheticEvent)=>setNivel(SyntheticEvent.target.id)} name='dificultad'/>
-                                </div>
-                            </div>
-                            <div className='contenedorTemas'>
-                                
-                                <select className='selectTema'>
-                                    <option value="Banderas">Banderas</option>
-                                    <option value="Animales">Animales</option>
-                                    <option value="Comidas">Comidas</option>
-                                </select>
-                            </div>
-                            <div>
-                                <button className='btn btn-outline-primary my-4 w-100'>Iniciar</button>
-                            </div>
-                        </form>
+                       <FormCondiciones iniciarJuego={iniciarJuego} setNivel={setNivel} />
                     </div>
                     
                 

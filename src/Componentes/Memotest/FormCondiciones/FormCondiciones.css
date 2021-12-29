@@ -1,0 +1,40 @@
+
+
+.contenedorCondiciones{
+    /* display: flex;
+    align-items: center; */
+}
+
+
+.contenedorDificultad{
+    display: flex;
+    color: aqua
+}
+
+
+.labelDificultad{
+    padding: 10px;
+    /* display: flex;
+    justify-content: flex-start; */
+    border: 1 solid red
+}
+
+.inputDificultad{
+    /*  display: flex;
+    justify-content: center; */
+    border: 1 solid red;
+    /* text-align: center; */
+}
+
+
+.contenedorTemas{
+    padding: 20px;
+    text-align: center;
+}
+
+.selectTema{
+    width: 100%;
+    background-color: #fff;
+    outline: none;
+}
+

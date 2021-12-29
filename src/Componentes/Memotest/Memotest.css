@@ -8,40 +8,6 @@
     flex-flow: row wrap;
 }
 
-.contenedorTemas{
-    padding: 20px;
-    text-align: center;
-}
-
-.contenedorDificultad{
-    display: flex;
-}
-
-.contenedorCondiciones{
-    /* display: flex;
-    align-items: center; */
-}
-
-.labelDificultad{
-    padding: 10px;
-    /* display: flex;
-    justify-content: flex-start; */
-    border: 1 solid red
-}
-
-.inputDificultad{
-   /*  display: flex;
-    justify-content: center; */
-    border: 1 solid red;
-    /* text-align: center; */
-}
-
-.selectTema{
-    width: 100%;
-    background-color: #fff;
-    outline: none;
-}
-
 .boton{
     margin: 18px;
     font-size: 40px;
@@ -74,9 +40,7 @@
     animation: giro-de-ficha 1s linear
 } */
 
-.contenedorDificultad{
-    color: aqua
-}
+
 
 #imgFicha {
     width: 100%;
