@@ -13,27 +13,9 @@
     font-size: 40px;
 }
 
-.contenedorFichas{
-    display: flex;
-    justify-content: center;
-    flex-flow: row wrap;
-    /* width: 75%; */
-    margin-left: 60px;
-}
 
-.contenedorBotonesEnPartida{
-    flex-flow: column;
-}
 
-.ficha{
-    height: 95px;
-    width: 95px;
-    border-radius: 8px;
-    border: 4px solid #fff;
-    text-align: center;
-    margin: 7px;
-    background-color: #ccc;
-}
+
 
 
 /* .animacionGiro{
@@ -42,10 +24,7 @@
 
 
 
-#imgFicha {
-    width: 100%;
-    height: 100%;    
-}
+
 
 
 .transparente{
@@ -122,11 +101,7 @@
     font-size: 35px;
 }
 
-.botonEnPartida{
-    padding: 10px;
-    margin: 10px;
-    
-}
+
 
 .contenedorBotonesGanaste{
     display: flex;

@@ -6,6 +6,7 @@ import FormCondiciones from './FormCondiciones/FormCondiciones'
 /* import {Layout} from "./Memotes_layout" */
 import './Memotest.css'
 import Spinner from './Spinner/Spinner'
+import Tablero from './Tablero/Tablero'
 
 
 
@@ -271,21 +272,14 @@ const Memotes = () => {
                     <Spinner />
                 : fichas.length !== 0 
                 ? cantCoincidencias < dificultad.cantParejas 
-                    ?   <div className='d-flex justify-content-center'>
-                            <div className='d-flex contenedorBotonesEnPartida justify-content-center align-items-center'>
-                                <Titulo />
-                                <button className='btn btn-primary botonEnPartida' disabled={botonInhabilitado} onClick={() => reiniciar()}>Reiniciar</button>
-                                <button className='btn btn-primary botonEnPartida' disabled={botonInhabilitado} onClick={() => nuevoJuego()} >Nuevo Juego</button>
-                            </div>
-                            <div className="contenedorFichas" >
-                                {fichas.map((ficha, index) => (
-                                    <div className='ficha' key={index} onClick={(SyntheticEvent) => darVuelta(SyntheticEvent)} >
-                                        <img className={opacidad} id="imgFicha" src={ficha.src} alt={ficha.alt} />                            
-                                    </div>
-                                ))}
-                            </div>
-                            
-                        </div>
+                    ?   <Tablero 
+                            botonInhabilitado={botonInhabilitado} 
+                            reiniciar={reiniciar}
+                            nuevoJuego={nuevoJuego}
+                            fichas={fichas}
+                            darVuelta={darVuelta}
+                            opacidad={opacidad}
+                        />
                     :   <div className="contenedorGanaste">
                             <h3 className='tituloGanaste'>Ganaste!!!</h3>
                             <div className='contenedorBotonesGanaste w-100 my-4'>
