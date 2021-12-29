@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react'
 
 import {Banderas, Animales, Comidas} from '../../utils/fichas'
+import Titulo from './Titulo/Titulo'
 import FormCondiciones from './FormCondiciones/FormCondiciones'
 /* import {Layout} from "./Memotes_layout" */
 import './Memotest.css'
-import Titulo from './Titulo/Titulo'
+import Spinner from './Spinner/Spinner'
 
 
 
@@ -267,9 +268,7 @@ const Memotes = () => {
                 
 
                 : cargando ? 
-                    <div className="spinner-border text-light" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div>
+                    <Spinner />
                 : fichas.length !== 0 
                 ? cantCoincidencias < dificultad.cantParejas 
                     ?   <div className='d-flex justify-content-center'>
