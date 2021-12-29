@@ -1,11 +1,11 @@
 
-import Memotes from "./Componentes/Memotes/code"
+import Memotest from "./Componentes/Memotest/Memotest"
 
 
 function App() {
   return (
     <div className="App">
-      <Memotes />
+      <Memotest />
     </div>
   );
 }
