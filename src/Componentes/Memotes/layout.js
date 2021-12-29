@@ -4,33 +4,28 @@ import './style.css'
 /* import Ganaste from './Ganaste/code' */
 
 export function Layout ({
-    juegoEmpezado,
+    inicioJuego,
     setInicioJuego,
+    juegoEmpezado,
+    iniciarJuego,
     setNivel,
-    setTema,
-    banderas,
+    /* banderas,
     animales,
-    comidas,
-    tema,
-    tiempo,
+    comidas, */
+    cargando,
+    cantCoincidencias,
+    cantParejas,
+    botonInhabilitado,
+    reiniciar,
+    nuevoJuego,
     fichas,
     opacidad,
     darVuelta,
-    cantCoincidencias,
-    cantParejas,
-    reiniciar,
-    nuevoJuego,
-    setTiempo,
-    inicioJuego,
-    iniciarJuego,
-    cargando,
-    botonInhabilitado
 }){
     return(
         <div className='contenedor'>
             
             
-           {/*  <h1 className='tituloMemotes mx-4'>Memotest</h1>  */}
             {
                 !inicioJuego ? 
                 <div className='d-flex align-items-center'>
@@ -45,9 +40,6 @@ export function Layout ({
                         <h1 className='tituloMemotes'>Memotest</h1> 
                         <form className='contenedorCondiciones' onSubmit={(SyntheticEvent) => iniciarJuego(SyntheticEvent)}>
                             <div className='contenedorDificultad '>
-                                {/* <button className='btn btn-outline-primary boton' onClick={()=>setNivel("Easy")}>Easy</button>
-                                <button className='btn btn-outline-primary boton' onClick={()=>setNivel("Medium")}>Medium</button>
-                                <button className='btn btn-outline-primary boton' onClick={()=>setNivel("Hard")}>Hard</button> */}
                                 <div className='mx-3'>
                                     <label className='labelDificultad' htmlFor="Easy">Easy</label>
                                     <input className='inputDificultad' type="radio" id="Easy" onChange={(SyntheticEvent)=>setNivel(SyntheticEvent.target.id)} name='dificultad'/>
@@ -62,15 +54,11 @@ export function Layout ({
                                 </div>
                             </div>
                             <div className='contenedorTemas'>
-                                {/*  <div className='border border-warning'>
-                                    <button className='btn btn-outline-primary boton' onClick={()=>setTema("Banderas")}>Banderas</button>
-                                    <button className='btn btn-outline-primary boton' onClick={()=>setTema("Animales")}>Animales</button>
-                                    <button className='btn btn-outline-primary boton' onClick={()=>setTema("Comidas")}>Comida</button>
-                                </div> */}
+                                
                                 <select className='selectTema'>
-                                    <option value="Banderas" /* onChange={(SyntheticEvent) => inputChange(SyntheticEvent)} */>Banderas</option>
-                                    <option value="Animales" /* onChange={(SyntheticEvent) => inputChange(SyntheticEvent)} */>Animales</option>
-                                    <option value="Comidas"  /* onChange={(SyntheticEvent) => inputChange(SyntheticEvent)} */>Comidas</option>
+                                    <option value="Banderas">Banderas</option>
+                                    <option value="Animales">Animales</option>
+                                    <option value="Comidas">Comidas</option>
                                 </select>
                             </div>
                             <div>

@@ -23,26 +23,21 @@ const Memotes = () => {
     
 
     const [juegoEmpezado, setJuegoEmpezado] = useState(false)
-    /* const [tiempo, setTiempo] = useState()
-    const [cantParejas, setCantParejas] = useState() */
+    const [inicioJuego, setInicioJuego] = useState(false)
     const [dificultad, setDificultad] = useState({tiempo: undefined, cantParejas:undefined})
     const [tema, setTema] = useState("")
     const [fichas, setFichas] = useState([])
     const [opacidad, setOpacidad] = useState(opaca)
     const [cantVolteadas, setCantVolteadas] = useState(0)
+    const [cantCoincidencias, setCantCoincidencias] = useState(0)
     const [primeraVolteada, setPrimeraVolteada] = useState()
     const [segundaVolteada, setSegundaVolteada] = useState()
     const [podesJugar, setPodesJugar] = useState(false)
-    const [cantCoincidencias, setCantCoincidencias] = useState(0)
-    const [inicioJuego, setInicioJuego] = useState(false)
     const [contenedor, setContenedor] = useState()
     const [widthContenedor, setWidthContenedor] = useState("")
     const [cargando, setCargando] = useState(true)
     const [botonInhabilitado, setBotonInhabilitado] = useState(true)
     
-    
-
-
 
     const setNivel = (nivel) => {
         switch(nivel){
@@ -52,12 +47,8 @@ const Memotes = () => {
                     cantParejas: cantParejasNivelA
                 })
                 setWidthContenedor("40%")
-                /* setTiempo(tiempoNivelA)
-                setCantParejas(cantParejasNivelA) */
                 break;
             case "Medium":
-               /*  setTiempo(tiempoNivelB)
-                setCantParejas(cantParejasNivelB) */
                 setDificultad({
                     tiempo: tiempoNivelB,
                     cantParejas: cantParejasNivelB
@@ -65,8 +56,6 @@ const Memotes = () => {
                 setWidthContenedor("65%")
                 break;
             case "Hard":
-                /* setTiempo(tiempoNivelC)
-                setCantParejas(cantParejasNivelC) */
                 setDificultad({
                     tiempo: tiempoNivelC,
                     cantParejas: cantParejasNivelC
@@ -79,32 +68,8 @@ const Memotes = () => {
 
     }
 
-    useEffect(() =>{
-        if(fichas.length > 0){
-            setTimeout(() => {
-                setCargando(false)
-            }, 1000)
-        }
-    }, [fichas])
-
-    useEffect(() =>{
-        console.log("cambio el cargando")
-        if(!cargando){
-            setContenedor(window.document.querySelector(".contenedorFichas"))
-            setTimeout( () => {
-                setOpacidad(transparente)
-                setPodesJugar(true)
-                setBotonInhabilitado(false)
-                console.log("pasoooo")
-            }, dificultad.tiempo)
-        }
-    }, [cargando])
-
-    useEffect(() =>{
-        if(contenedor !== undefined){
-           contenedor.style.width = widthContenedor
-        }
-    }, [contenedor])
+    
+    
     
     const iniciarJuego = (e) =>{
         e.preventDefault()
@@ -120,8 +85,7 @@ const Memotes = () => {
         arrayDeFichas = arrayDeFichas.slice(0, dificultad.cantParejas)
         arrayDeFichas = armarParejas(arrayDeFichas)
         arrayDeFichas = mezclarFichas(arrayDeFichas)
-        setFichas(arrayDeFichas)
-        
+        setFichas(arrayDeFichas)   
     }
 
     const dameArrayDeFichas = () => {
@@ -131,9 +95,9 @@ const Memotes = () => {
             case "Banderas":
                 retorno = Banderas
                 break;
-            case "Animales":
-                retorno = Animales
-                break;
+                case "Animales":
+                    retorno = Animales
+                    break;
             case "Comidas":
                 retorno = Comidas
                 break;
@@ -161,7 +125,7 @@ const Memotes = () => {
         return retorno
     }
 
-
+    
     const mezclarArray = () =>{
         let array = []
         let numRandom
@@ -174,15 +138,27 @@ const Memotes = () => {
         return array
     }
     
-
-    useEffect(() => {
-        console.log(tema)
-        if(tema !== ""){
-            prepararJuego()
-            setJuegoEmpezado(true)
-        }
-    }, [tema])
-
+    
+    const reiniciar = () => {
+        setCantCoincidencias(0)
+        setCargando(true)
+        prepararJuego()
+        setOpacidad(opaca)
+    }
+    
+    const nuevoJuego = () => { 
+        setCantCoincidencias(0)
+        setDificultad({
+            tiempo: undefined,
+            cantParejas: undefined
+        })
+        setTema("")
+        setFichas([])
+        setOpacidad(opaca)
+        setJuegoEmpezado(false)
+        setCargando(true)
+    }
+    
     
     const darVuelta = (event) =>{
         if(podesJugar){
@@ -201,6 +177,44 @@ const Memotes = () => {
             }
         }
     }
+    
+    
+    
+    useEffect(() => {
+        console.log(tema)
+        if(tema !== ""){
+            prepararJuego()
+            setJuegoEmpezado(true)
+        }
+    }, [tema])
+
+    useEffect(() =>{
+        if(fichas.length > 0){
+            setTimeout(() => {
+                setCargando(false)
+            }, 1000)
+        }
+    }, [fichas])
+    
+    useEffect(() =>{
+        console.log("cambio el cargando")
+        if(!cargando){
+            setContenedor(window.document.querySelector(".contenedorFichas"))
+            setTimeout( () => {
+                setOpacidad(transparente)
+                setPodesJugar(true)
+                setBotonInhabilitado(false)
+                console.log("pasoooo")
+            }, dificultad.tiempo)
+        }
+    }, [cargando])
+    
+    useEffect(() =>{
+        if(contenedor !== undefined){
+            contenedor.style.width = widthContenedor
+        }
+    }, [contenedor])
+
 
     useEffect(() => {
         console.log(Banderas)
@@ -221,52 +235,27 @@ const Memotes = () => {
             setCantVolteadas(0)
         }
     }, [cantVolteadas])
-    
-    const reiniciar = () => {
-        setCantCoincidencias(0)
-        setCargando(true)
-        prepararJuego()
-        setOpacidad(opaca)
-    }
 
-    const nuevoJuego = () => { 
-        setCantCoincidencias(0)
-        setDificultad({
-            tiempo: undefined,
-            cantParejas: undefined
-        })
-        /* setTiempo(undefined) */
-        setTema("")
-        setFichas([])
-        setOpacidad(opaca)
-        setJuegoEmpezado(false)
-        setCargando(true)
-    }
 
     return(
         <Layout 
-            juegoEmpezado={juegoEmpezado}
-            inicioJuego={inicioJuego}
+        inicioJuego={inicioJuego}
             setInicioJuego={setInicioJuego}
-            /* setJuegoEmpezado={setJuegoEmpezado} */
+            juegoEmpezado={juegoEmpezado}
+            iniciarJuego={iniciarJuego}
             setNivel={setNivel}
-            banderas={Banderas}
-            animales={Animales}
-            comidas={Comidas}
-            setTema={setTema}
-            tema={tema}
-            tiempo={dificultad.tiempo}
+           /*  banderas={Banderas}
+           animales={Animales}
+           comidas={Comidas} */
+           cargando={cargando}
+            cantCoincidencias={cantCoincidencias}
+            cantParejas={dificultad.cantParejas}
+            botonInhabilitado={botonInhabilitado}
+            reiniciar={reiniciar}
+            nuevoJuego={nuevoJuego}
             fichas={fichas}
             opacidad={opacidad}
             darVuelta={darVuelta}
-            cantCoincidencias={cantCoincidencias}
-            cantParejas={dificultad.cantParejas}
-            reiniciar={reiniciar}
-            nuevoJuego={nuevoJuego}
-            /* setTiempo={setTiempo} */
-            iniciarJuego={iniciarJuego}
-            cargando={cargando}
-            botonInhabilitado={botonInhabilitado}
             
         />
     )
