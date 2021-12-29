@@ -7,13 +7,13 @@ import {Layout} from "./layout"
 
 const Memotes = () => {
 
-    const tiempoNivelA = 8000
+    const tiempoNivelA = 1000
     const tiempoNivelB = 5000
     const tiempoNivelC = 3000
 
     const tiempoEntreTurnos = 500
 
-    const cantParejasNivelA = 10
+    const cantParejasNivelA = 1
     const cantParejasNivelB = 15
     const cantParejasNivelC = 20
 
@@ -37,6 +37,8 @@ const Memotes = () => {
     const [inicioJuego, setInicioJuego] = useState(false)
     const [contenedor, setContenedor] = useState()
     const [widthContenedor, setWidthContenedor] = useState("")
+    const [cargando, setCargando] = useState(true)
+    const [botonInhabilitado, setBotonInhabilitado] = useState(true)
     
     
 
@@ -79,9 +81,24 @@ const Memotes = () => {
 
     useEffect(() =>{
         if(fichas.length > 0){
-            setContenedor(window.document.querySelector(".contenedorFichas"))
+            setTimeout(() => {
+                setCargando(false)
+            }, 1000)
         }
     }, [fichas])
+
+    useEffect(() =>{
+        console.log("cambio el cargando")
+        if(!cargando){
+            setContenedor(window.document.querySelector(".contenedorFichas"))
+            setTimeout( () => {
+                setOpacidad(transparente)
+                setPodesJugar(true)
+                setBotonInhabilitado(false)
+                console.log("pasoooo")
+            }, dificultad.tiempo)
+        }
+    }, [cargando])
 
     useEffect(() =>{
         if(contenedor !== undefined){
@@ -104,11 +121,7 @@ const Memotes = () => {
         arrayDeFichas = armarParejas(arrayDeFichas)
         arrayDeFichas = mezclarFichas(arrayDeFichas)
         setFichas(arrayDeFichas)
-        setTimeout( () => {
-            setOpacidad(transparente)
-            setPodesJugar(true)
-            console.log("pasoooo")
-        }, dificultad.tiempo)
+        
     }
 
     const dameArrayDeFichas = () => {
@@ -211,11 +224,12 @@ const Memotes = () => {
     
     const reiniciar = () => {
         setCantCoincidencias(0)
+        setCargando(true)
         prepararJuego()
         setOpacidad(opaca)
     }
 
-    const nuevoJuego = () => {
+    const nuevoJuego = () => { 
         setCantCoincidencias(0)
         setDificultad({
             tiempo: undefined,
@@ -226,6 +240,7 @@ const Memotes = () => {
         setFichas([])
         setOpacidad(opaca)
         setJuegoEmpezado(false)
+        setCargando(true)
     }
 
     return(
@@ -250,6 +265,8 @@ const Memotes = () => {
             nuevoJuego={nuevoJuego}
             /* setTiempo={setTiempo} */
             iniciarJuego={iniciarJuego}
+            cargando={cargando}
+            botonInhabilitado={botonInhabilitado}
             
         />
     )

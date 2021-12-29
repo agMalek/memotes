@@ -22,7 +22,9 @@ export function Layout ({
     nuevoJuego,
     setTiempo,
     inicioJuego,
-    iniciarJuego
+    iniciarJuego,
+    cargando,
+    botonInhabilitado
 }){
     return(
         <div className='contenedor'>
@@ -80,13 +82,17 @@ export function Layout ({
                 
                 
 
+                : cargando ? 
+                    <div className="spinner-border text-light" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
                 : fichas.length !== 0 
                 ? cantCoincidencias < cantParejas 
                     ?   <div className='d-flex justify-content-center'>
                             <div className='d-flex contenedorBotonesEnPartida justify-content-center align-items-center'>
                                 <h1 className='tituloMemotes'>Memotest</h1>
-                                <button className='btn btn-primary botonEnPartida' onClick={() => reiniciar()}>Reiniciar</button>
-                                <button className='btn btn-primary botonEnPartida' onClick={() => nuevoJuego()} >Nuevo Juego</button>
+                                <button className='btn btn-primary botonEnPartida' disabled={botonInhabilitado} onClick={() => reiniciar()}>Reiniciar</button>
+                                <button className='btn btn-primary botonEnPartida' disabled={botonInhabilitado} onClick={() => nuevoJuego()} >Nuevo Juego</button>
                             </div>
                             <div className="contenedorFichas" >
                                 {fichas.map((ficha, index) => (
