@@ -6,7 +6,7 @@ import FormCondiciones from './FormCondiciones/FormCondiciones'
 /* import {Layout} from "./Memotes_layout" */
 import './Memotest.css'
 import Spinner from './Spinner/Spinner'
-import Tablero from './Tablero/Tablero'
+import VistaJuego from './VistaJuego/VistaJuego'
 
 
 
@@ -272,7 +272,7 @@ const Memotes = () => {
                     <Spinner />
                 : fichas.length !== 0 
                 ? cantCoincidencias < dificultad.cantParejas 
-                    ?   <Tablero 
+                    ?   <VistaJuego 
                             botonInhabilitado={botonInhabilitado} 
                             reiniciar={reiniciar}
                             nuevoJuego={nuevoJuego}

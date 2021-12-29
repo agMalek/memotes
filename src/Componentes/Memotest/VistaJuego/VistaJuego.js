@@ -1,5 +1,5 @@
 
-import './Tablero.css'
+import './VistaJuego.css'
 import Titulo from '../Titulo/Titulo';
 
 const Tablero = (props) => {
