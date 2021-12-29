@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react'
 import {Banderas, Animales, Comidas} from '../../utils/fichas'
 /* import {Layout} from "./Memotes_layout" */
 import './Memotest.css'
+import Titulo from './Titulo/Titulo'
 
 
 
@@ -155,7 +156,7 @@ const Memotes = () => {
         setJuegoEmpezado(false)
         limpiarValores()
     }
-    
+
     const limpiarValores = () =>{
         setCantCoincidencias(0)
         setCargando(true)
@@ -247,7 +248,9 @@ const Memotes = () => {
             {
                 !inicioJuego ? 
                 <div className='d-flex align-items-center'>
-                    <h1 className='tituloMemotes mx-4'>Memotest</h1> 
+                    <div className='mx-4'>    
+                        <Titulo/> 
+                    </div>
                     <button className='btn btn-outline-primary boton' onClick={() => setInicioJuego(true)}>EMPEZAR JUEGO</button>
                 </div>
                 
@@ -255,7 +258,7 @@ const Memotes = () => {
                 : !juegoEmpezado ?
                 
                     <div className=''>
-                        <h1 className='tituloMemotes'>Memotest</h1> 
+                       <Titulo />
                         <form className='contenedorCondiciones' onSubmit={(SyntheticEvent) => iniciarJuego(SyntheticEvent)}>
                             <div className='contenedorDificultad '>
                                 <div className='mx-3'>
@@ -296,7 +299,7 @@ const Memotes = () => {
                 ? cantCoincidencias < dificultad.cantParejas 
                     ?   <div className='d-flex justify-content-center'>
                             <div className='d-flex contenedorBotonesEnPartida justify-content-center align-items-center'>
-                                <h1 className='tituloMemotes'>Memotest</h1>
+                                <Titulo />
                                 <button className='btn btn-primary botonEnPartida' disabled={botonInhabilitado} onClick={() => reiniciar()}>Reiniciar</button>
                                 <button className='btn btn-primary botonEnPartida' disabled={botonInhabilitado} onClick={() => nuevoJuego()} >Nuevo Juego</button>
                             </div>
