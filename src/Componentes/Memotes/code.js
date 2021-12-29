@@ -7,13 +7,13 @@ import {Layout} from "./layout"
 
 const Memotes = () => {
 
-    const tiempoNivelA = 1000
-    const tiempoNivelB = 2000
+    const tiempoNivelA = 8000
+    const tiempoNivelB = 5000
     const tiempoNivelC = 3000
 
     const tiempoEntreTurnos = 500
 
-    const cantParejasNivelA = 2
+    const cantParejasNivelA = 10
     const cantParejasNivelB = 15
     const cantParejasNivelC = 20
 
@@ -35,6 +35,9 @@ const Memotes = () => {
     const [podesJugar, setPodesJugar] = useState(false)
     const [cantCoincidencias, setCantCoincidencias] = useState(0)
     const [inicioJuego, setInicioJuego] = useState(false)
+    const [contenedor, setContenedor] = useState()
+    const [widthContenedor, setWidthContenedor] = useState("")
+    
     
 
 
@@ -46,6 +49,7 @@ const Memotes = () => {
                     tiempo: tiempoNivelA,
                     cantParejas: cantParejasNivelA
                 })
+                setWidthContenedor("40%")
                 /* setTiempo(tiempoNivelA)
                 setCantParejas(cantParejasNivelA) */
                 break;
@@ -56,6 +60,7 @@ const Memotes = () => {
                     tiempo: tiempoNivelB,
                     cantParejas: cantParejasNivelB
                 })
+                setWidthContenedor("65%")
                 break;
             case "Hard":
                 /* setTiempo(tiempoNivelC)
@@ -64,6 +69,7 @@ const Memotes = () => {
                     tiempo: tiempoNivelC,
                     cantParejas: cantParejasNivelC
                 })
+                setWidthContenedor("65%")
                 break;
             default:
                 break;
@@ -71,6 +77,17 @@ const Memotes = () => {
 
     }
 
+    useEffect(() =>{
+        if(fichas.length > 0){
+            setContenedor(window.document.querySelector(".contenedorFichas"))
+        }
+    }, [fichas])
+
+    useEffect(() =>{
+        if(contenedor !== undefined){
+           contenedor.style.width = widthContenedor
+        }
+    }, [contenedor])
     
     const iniciarJuego = (e) =>{
         e.preventDefault()
@@ -206,6 +223,7 @@ const Memotes = () => {
         })
         /* setTiempo(undefined) */
         setTema("")
+        setFichas([])
         setOpacidad(opaca)
         setJuegoEmpezado(false)
     }
