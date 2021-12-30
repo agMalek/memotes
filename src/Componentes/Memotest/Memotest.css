@@ -49,7 +49,7 @@
     }  
 } */
   
-@keyframes giro-de-ficha{
+/* @keyframes giro-de-ficha{
     from {
       transform: rotateY(0deg);
     }
@@ -75,4 +75,4 @@
       display: none;
     }
 }
-
+ */

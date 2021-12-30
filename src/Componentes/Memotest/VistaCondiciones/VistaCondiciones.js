@@ -8,7 +8,7 @@ const VistaCondiciones = (props) => {
     return (  
         <div>
             <Titulo/>
-            {<FormCondiciones iniciarJuego={iniciarJuego} setNivel={setNivel} />}
+            <FormCondiciones iniciarJuego={iniciarJuego} setNivel={setNivel} />
         </div>
     );
 }

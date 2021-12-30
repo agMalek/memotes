@@ -28,21 +28,21 @@ const Memotes = () => {
     const descubierta =  "descubierta"
     
 
-    const [juegoEmpezado, setJuegoEmpezado] = useState(false)
-    const [inicioJuego, setInicioJuego] = useState(false)
-    const [dificultad, setDificultad] = useState({tiempo: undefined, cantParejas:undefined})
-    const [tema, setTema] = useState("")
-    const [fichas, setFichas] = useState([])
-    const [opacidad, setOpacidad] = useState(opaca)
+    const [juegoEmpezado, setJuegoEmpezado] = useState(false)/*  */
+    const [inicioJuego, setInicioJuego] = useState(false) /*  */
+    const [dificultad, setDificultad] = useState({tiempo: undefined, cantParejas:undefined})/*  */
+    const [tema, setTema] = useState("")/*  */
+    const [fichas, setFichas] = useState([])/*  */
+    const [opacidad, setOpacidad] = useState(opaca)/*  */
     const [cantVolteadas, setCantVolteadas] = useState(0)
-    const [cantCoincidencias, setCantCoincidencias] = useState(0)
+    const [cantCoincidencias, setCantCoincidencias] = useState(0)/*  */
     const [primeraVolteada, setPrimeraVolteada] = useState()
     const [segundaVolteada, setSegundaVolteada] = useState()
-    const [podesJugar, setPodesJugar] = useState(false)
+    const [podesJugar, setPodesJugar] = useState(false)/*  */
     const [contenedor, setContenedor] = useState()
     const [widthContenedor, setWidthContenedor] = useState("")
-    const [cargando, setCargando] = useState(true)
-    const [botonInhabilitado, setBotonInhabilitado] = useState(true)
+    const [cargando, setCargando] = useState(true)/*  */
+    const [botonInhabilitado, setBotonInhabilitado] = useState(true)/*  */
     
 
     const setNivel = (nivel) => {
@@ -74,9 +74,7 @@ const Memotes = () => {
 
     }
 
-    
-    
-    
+
     const iniciarJuego = (e) =>{
         e.preventDefault()
         if(dificultad.tiempo === undefined || dificultad.cantParejas === undefined){
@@ -86,7 +84,7 @@ const Memotes = () => {
         }
     }
 
-    const prepararJuego = () => {
+    /*  */const prepararJuego = () => {
         let arrayDeFichas = dameArrayDeFichas()
         arrayDeFichas = arrayDeFichas.slice(0, dificultad.cantParejas)
         arrayDeFichas = armarParejas(arrayDeFichas)
@@ -94,7 +92,7 @@ const Memotes = () => {
         setFichas(arrayDeFichas)   
     }
 
-    const dameArrayDeFichas = () => {
+    /*  */const dameArrayDeFichas = () => {
         console.log(tema)
         let retorno = []
         switch(tema){
@@ -113,14 +111,14 @@ const Memotes = () => {
         return retorno
     }
     
-    const armarParejas = (array) =>{
+    /*  */const armarParejas = (array) =>{
         array.map(ficha => {
             array.push({...ficha})
         })
         return array
     }
      
-    const mezclarFichas = (array) => {
+    /*  */const mezclarFichas = (array) => {
         let random = mezclarArray()
         let retorno = []
         let i = 0
@@ -132,7 +130,7 @@ const Memotes = () => {
     }
 
     
-    const mezclarArray = () =>{
+    /*  */const mezclarArray = () =>{
         let array = []
         let numRandom
         while(array.length < dificultad.cantParejas*2){
@@ -189,7 +187,7 @@ const Memotes = () => {
     
     
     
-    useEffect(() => {
+    /*  */useEffect(() => {
         console.log(tema)
         if(tema !== ""){
             prepararJuego()
@@ -197,7 +195,7 @@ const Memotes = () => {
         }
     }, [tema])
 
-    useEffect(() =>{
+    /*  */useEffect(() =>{
         if(fichas.length > 0){
             setTimeout(() => {
                 setCargando(false)
@@ -205,7 +203,7 @@ const Memotes = () => {
         }
     }, [fichas])
     
-    useEffect(() =>{
+    /*  */useEffect(() =>{
         console.log("cambio el cargando")
         if(!cargando){
             setContenedor(window.document.querySelector(".contenedorFichas"))
