@@ -1,1 +1,28 @@
 
+
+
+
+.contenedorGanaste{
+    width: 400px;
+    height: 180px;
+    padding: 40px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, .8);
+    border: 2px solid #000;
+    border-radius: 20px;
+    /* background-color: rgba(40, 40, 40, 0.4); */
+
+}
+
+.tituloGanaste{
+    text-align: center;
+    color: rgb(13,110,253);
+    font-size: 35px;
+}
+
+
+
+.contenedorBotonesGanaste{
+    display: flex;
+    justify-content: space-evenly;
+}

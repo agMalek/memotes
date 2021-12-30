@@ -6,6 +6,7 @@ import Spinner from './Spinner/Spinner'
 import VistaJuego from './VistaJuego/VistaJuego'
 import VistaCondiciones from './VistaCondiciones/VistaCondiciones'
 import Home from './Home/Home'
+import Ganaste from './Ganaste/Ganaste'
 
 
 
@@ -249,22 +250,24 @@ const Memotes = () => {
         <div className='contenedor'> 
             {
                 !inicioJuego ? 
-                <Home setInicioJuego={setInicioJuego}/>
-                
-
+                    <Home 
+                        setInicioJuego={setInicioJuego}
+                    />
+            
                 : !juegoEmpezado ?
-                
-                    
+            
                     <VistaCondiciones
                         iniciarJuego={iniciarJuego}
                         setNivel={setNivel}
                     />
-                
-
+    
                 : cargando ? 
+        
                     <Spinner />
+
                 : fichas.length !== 0 
                 ? cantCoincidencias < dificultad.cantParejas 
+
                     ?   <VistaJuego 
                             botonInhabilitado={botonInhabilitado} 
                             reiniciar={reiniciar}
@@ -273,13 +276,8 @@ const Memotes = () => {
                             darVuelta={darVuelta}
                             opacidad={opacidad}
                         />
-                    :   <div className="contenedorGanaste">
-                            <h3 className='tituloGanaste'>Ganaste!!!</h3>
-                            <div className='contenedorBotonesGanaste w-100 my-4'>
-                                <button className='btn btn-primary botonGanaste' onClick={() => reiniciar()}>Reiniciar</button>
-                                <button className='btn btn-primary botonGanaste' onClick={() => nuevoJuego()} >Nuevo Juego</button>
-                            </div>
-                        </div>
+                        
+                    :   <Ganaste/>
                  
                 : <h3>Hubo un error</h3>
            
