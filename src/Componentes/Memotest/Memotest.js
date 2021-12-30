@@ -1,12 +1,10 @@
 import React, {useState, useEffect} from 'react'
 
 import {Banderas, Animales, Comidas} from '../../utils/fichas'
-import Titulo from './Titulo/Titulo'
-import FormCondiciones from './FormCondiciones/FormCondiciones'
-/* import {Layout} from "./Memotes_layout" */
 import './Memotest.css'
 import Spinner from './Spinner/Spinner'
 import VistaJuego from './VistaJuego/VistaJuego'
+import VistaCondiciones from './VistaCondiciones/VistaCondiciones'
 import Home from './Home/Home'
 
 
@@ -256,12 +254,11 @@ const Memotes = () => {
 
                 : !juegoEmpezado ?
                 
-                    <div>
-                       <Titulo />
-                       <FormCondiciones iniciarJuego={iniciarJuego} setNivel={setNivel} />
-                    </div>
                     
-                
+                    <VistaCondiciones
+                        iniciarJuego={iniciarJuego}
+                        setNivel={setNivel}
+                    />
                 
 
                 : cargando ? 
