@@ -1,7 +1,7 @@
 
 import'./VistaBotonesJuego.css'
 import Titulo from '../../Titulo/Titulo';
-import BotonesEnPartida from './BotonesJuego/BotonesEnPartida';
+import BotonesBasicos from '../../BotonesBasicos/BotonesBasicos';
 
 
 const VistaBotonesJuego = (props) => {
@@ -9,7 +9,7 @@ const VistaBotonesJuego = (props) => {
     return (  
         <div className='d-flex contenedorBotonesEnPartida justify-content-center align-items-center'>
             <Titulo />
-            <BotonesEnPartida 
+            <BotonesBasicos 
                 botonInhabilitado={botonInhabilitado}
                 reiniciar={reiniciar}
                 nuevoJuego={nuevoJuego}

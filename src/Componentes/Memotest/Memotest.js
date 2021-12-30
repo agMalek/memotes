@@ -278,7 +278,10 @@ const Memotes = () => {
                             opacidad={opacidad}
                         />
 
-                    :   <Ganaste/>
+                    :   <Ganaste
+                            reiniciar={reiniciar}
+                            nuevoJuego={nuevoJuego}
+                        />
                  
                 : <Error/>
            
