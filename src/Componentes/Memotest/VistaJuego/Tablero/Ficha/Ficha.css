@@ -1,0 +1,15 @@
+.ficha{
+    height: 95px;
+    width: 95px;
+    border-radius: 8px;
+    border: 4px solid #fff;
+    text-align: center;
+    margin: 7px;
+    background-color: #ccc;
+}
+
+
+#imgFicha {
+    width: 100%;
+    height: 100%;    
+}

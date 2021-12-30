@@ -1,8 +1,9 @@
 
 import './VistaJuego.css'
 import Titulo from '../Titulo/Titulo';
+import Tablero from './Tablero/Tablero';
 
-const Tablero = (props) => {
+const VistaJuego = (props) => {
     const {botonInhabilitado, reiniciar, nuevoJuego, fichas, darVuelta, opacidad} = props
     return ( 
         <div className='d-flex justify-content-center'>
@@ -11,16 +12,15 @@ const Tablero = (props) => {
                 <button className='btn btn-primary botonEnPartida' disabled={botonInhabilitado} onClick={() => reiniciar()}>Reiniciar</button>
                 <button className='btn btn-primary botonEnPartida' disabled={botonInhabilitado} onClick={() => nuevoJuego()} >Nuevo Juego</button>
             </div>
-            <div className="contenedorFichas" >
-                {fichas.map((ficha, index) => (
-                    <div className='ficha' key={index} onClick={(SyntheticEvent) => darVuelta(SyntheticEvent)} >
-                        <img className={opacidad} id="imgFicha" src={ficha.src} alt={ficha.alt} />                            
-                    </div>
-                ))}
-            </div>
+            <Tablero 
+                fichas={fichas}
+                darVuelta={darVuelta}
+                opacidad={opacidad} 
+            />
+            
                             
         </div>
     );
 }
  
-export default Tablero;
+export default VistaJuego;
