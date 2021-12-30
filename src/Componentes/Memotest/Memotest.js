@@ -7,6 +7,7 @@ import FormCondiciones from './FormCondiciones/FormCondiciones'
 import './Memotest.css'
 import Spinner from './Spinner/Spinner'
 import VistaJuego from './VistaJuego/VistaJuego'
+import Home from './Home/Home'
 
 
 
@@ -250,12 +251,7 @@ const Memotes = () => {
         <div className='contenedor'> 
             {
                 !inicioJuego ? 
-                <div className='d-flex align-items-center'>
-                    <div className='mx-4'>    
-                        <Titulo/> 
-                    </div>
-                    <button className='btn btn-outline-primary boton' onClick={() => setInicioJuego(true)}>EMPEZAR JUEGO</button>
-                </div>
+                <Home setInicioJuego={setInicioJuego}/>
                 
 
                 : !juegoEmpezado ?
