@@ -7,6 +7,7 @@ import VistaJuego from './VistaJuego/VistaJuego'
 import VistaCondiciones from './VistaCondiciones/VistaCondiciones'
 import Home from './Home/Home'
 import Ganaste from './Ganaste/Ganaste'
+import Error from './Error/Error'
 
 
 
@@ -276,38 +277,15 @@ const Memotes = () => {
                             darVuelta={darVuelta}
                             opacidad={opacidad}
                         />
-                        
+
                     :   <Ganaste/>
                  
-                : <h3>Hubo un error</h3>
+                : <Error/>
            
             }
-
         </div>
     )
 }
 
-
-    /* return(
-        <Layout 
-            inicioJuego={inicioJuego}
-            setInicioJuego={setInicioJuego}
-            juegoEmpezado={juegoEmpezado}
-            iniciarJuego={iniciarJuego}
-            setNivel={setNivel}
-             banderas={Banderas}
-            animales={Animales}
-            comidas={Comidas}
-            cargando={cargando}
-            cantCoincidencias={cantCoincidencias}
-            cantParejas={dificultad.cantParejas}
-            botonInhabilitado={botonInhabilitado}
-            reiniciar={reiniciar}
-            nuevoJuego={nuevoJuego}
-            fichas={fichas}
-            opacidad={opacidad}
-            darVuelta={darVuelta}
-        />
-    ) */
 
 export default Memotes
