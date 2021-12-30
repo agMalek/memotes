@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 
 import {Banderas, Animales, Comidas} from '../../utils/fichas'
 import './Memotest.css'
@@ -93,7 +93,6 @@ const Memotes = () => {
     }
 
     const dameArrayDeFichas = () => {
-        console.log(tema)
         let retorno = []
         switch(tema){
             case "Banderas":
@@ -162,6 +161,7 @@ const Memotes = () => {
     const limpiarValores = () =>{
         setCantCoincidencias(0)
         setCargando(true)
+        setPodesJugar(false)
         setOpacidad(opaca)
         setCantVolteadas(0)
         setPrimeraVolteada(undefined)
@@ -172,7 +172,6 @@ const Memotes = () => {
     const darVuelta = (event) =>{
         if(podesJugar){
             let img = event.target.querySelector('img')
-            console.log(img)
             if(img !== null && img.className !== opaca && img.className !== descubierta){
                 if(primeraVolteada === undefined){
                     setPrimeraVolteada(img)
@@ -191,7 +190,6 @@ const Memotes = () => {
     
     
     useEffect(() => {
-        console.log(tema)
         if(tema !== ""){
             prepararJuego()
             setJuegoEmpezado(true)
@@ -207,14 +205,12 @@ const Memotes = () => {
     }, [fichas])
     
     useEffect(() =>{
-        console.log("cambio el cargando")
         if(!cargando){
             setContenedor(window.document.querySelector(".contenedorFichas"))
             setTimeout( () => {
                 setOpacidad(transparente)
                 setPodesJugar(true)
                 setBotonInhabilitado(false)
-                console.log("pasoooo")
             }, dificultad.tiempo)
         }
     }, [cargando])
@@ -227,7 +223,6 @@ const Memotes = () => {
 
 
     useEffect(() => {
-        /* console.log(Banderas) */
         if(cantVolteadas === 2){
             setTimeout( () => {
                 if(primeraVolteada.alt !== segundaVolteada.alt){

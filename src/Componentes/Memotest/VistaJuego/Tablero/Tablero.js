@@ -8,12 +8,13 @@ const Tablero = (props) => {
     return ( 
         <div className="contenedorFichas" >
             {fichas.map((ficha, index) => (
-                <Ficha 
-                    ficha={ficha}
-                    index={index}
-                    darVuelta={darVuelta}
-                    opacidad={opacidad}
-                />
+                <div key={index}>                    
+                    <Ficha
+                        ficha={ficha}
+                        darVuelta={darVuelta}
+                        opacidad={opacidad}
+                        />
+                </div>
             ))}
         </div>
     );
