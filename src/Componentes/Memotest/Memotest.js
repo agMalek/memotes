@@ -17,7 +17,7 @@ const Memotes = () => {
     const tiempoNivelB = 5000
     const tiempoNivelC = 3000
 
-    const tiempoEntreTurnos = 500
+    const tiempoEntreTurnos = 1500
 
     const cantParejasNivelA = 1
     const cantParejasNivelB = 15
@@ -170,7 +170,8 @@ const Memotes = () => {
     const darVuelta = (event) =>{
         if(podesJugar){
             let img = event.target.querySelector('img')
-            if(img !== null){
+            console.log(img)
+            if(img !== null && img.className !== opaca && img.className !== descubierta){
                 if(primeraVolteada === undefined){
                     setPrimeraVolteada(img)
                     setCantVolteadas(cantVolteadas+1)
@@ -224,7 +225,7 @@ const Memotes = () => {
 
 
     useEffect(() => {
-        console.log(Banderas)
+        /* console.log(Banderas) */
         if(cantVolteadas === 2){
             setTimeout( () => {
                 if(primeraVolteada.alt !== segundaVolteada.alt){
