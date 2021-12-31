@@ -1,0 +1,17 @@
+.contenedorTectoCantInt{
+    width: 100%;
+}
+
+
+.textoCantInt{
+    margin: 10px 0;
+    text-align: center;
+    color: aqua;
+    border: 1px solid aqua;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.numCantInt{
+    display: block;
+}

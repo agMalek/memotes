@@ -2,11 +2,12 @@
 import './VistaJuego.css'
 import Tablero from './Tablero/Tablero';
 import VistaBotonesJuego from './VistaBotonesJuego/VistaBotonesJuego';
+import InfoPartida from '../InfoPartida/InfoPartida';
 
 const VistaJuego = (props) => {
     const {botonInhabilitado, reiniciar, nuevoJuego, fichas, darVuelta, opacidad} = props
     return ( 
-        <div className='d-flex justify-content-center'>
+        <div className='d-flex justify-content-evenly'>
             <VistaBotonesJuego 
                 botonInhabilitado={botonInhabilitado}
                 reiniciar={reiniciar}
@@ -16,7 +17,11 @@ const VistaJuego = (props) => {
                 fichas={fichas}
                 darVuelta={darVuelta}
                 opacidad={opacidad} 
-            />             
+            />
+            <div className='d-flex flex-column justify-content-evenly'>
+                <InfoPartida/>
+                {/* <InfoPartida/> */}
+            </div>
         </div>
     );
 }

@@ -19,8 +19,8 @@ const Memotes = () => {
 
     const tiempoEntreTurnos = 1500
 
-    const cantParejasNivelA = 1
-    const cantParejasNivelB = 15
+    const cantParejasNivelA = 8
+    const cantParejasNivelB = 12
     const cantParejasNivelC = 20
 
     const opaca = "opaca"
@@ -55,14 +55,14 @@ const Memotes = () => {
                     tiempo: tiempoNivelA,
                     cantParejas: cantParejasNivelA
                 })
-                setWidthContenedor("40%")
+                setWidthContenedor("35%")
                 break;
             case "Medium":
                 setDificultad({
                     tiempo: tiempoNivelB,
                     cantParejas: cantParejasNivelB
                 })
-                setWidthContenedor("65%")
+                setWidthContenedor("55%")
                 break;
             case "Hard":
                 setDificultad({
