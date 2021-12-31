@@ -43,6 +43,7 @@ const Memotes = () => {
     const [widthContenedor, setWidthContenedor] = useState("")
     const [cargando, setCargando] = useState(true)
     const [botonInhabilitado, setBotonInhabilitado] = useState(true)
+    const [iniciarCronometro, setIniciarCronometro] = useState(false)
     
 
 
@@ -234,6 +235,7 @@ const Memotes = () => {
                 setOpacidad(transparente)
                 setPodesJugar(true)
                 setBotonInhabilitado(false)
+                setIniciarCronometro(true)
             }, dificultad.tiempo)
         }
     }, [cargando])
@@ -298,6 +300,7 @@ const Memotes = () => {
                             fichas={fichas}
                             darVuelta={darVuelta}
                             opacidad={opacidad}
+                            iniciarCronometro={iniciarCronometro}
                         />
 
                     :   <Ganaste

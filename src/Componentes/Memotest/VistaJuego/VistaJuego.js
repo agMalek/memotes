@@ -5,7 +5,7 @@ import VistaBotonesJuego from './VistaBotonesJuego/VistaBotonesJuego';
 import InfoPartida from '../InfoPartida/InfoPartida';
 
 const VistaJuego = (props) => {
-    const {botonInhabilitado, reiniciar, nuevoJuego, fichas, darVuelta, opacidad} = props
+    const {botonInhabilitado, reiniciar, nuevoJuego, fichas, darVuelta, opacidad, iniciarCronometro} = props
     return ( 
         <div className='d-flex justify-content-evenly'>
             <VistaBotonesJuego 
@@ -19,7 +19,9 @@ const VistaJuego = (props) => {
                 opacidad={opacidad} 
             />
             <div className='d-flex flex-column justify-content-evenly'>
-                <InfoPartida/>
+                <InfoPartida 
+                    iniciarCronometro={iniciarCronometro}
+                />
                 {/* <InfoPartida/> */}
             </div>
         </div>
