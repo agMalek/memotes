@@ -45,6 +45,9 @@ const Memotes = () => {
     const [botonInhabilitado, setBotonInhabilitado] = useState(true)
     
 
+
+    /* ----------  SETEA EN DIFICULTAD LOS TIEMPOS Y CONDICIONES QUE CORRESPONDAN  ------------ */
+    /* se usa cunado elije la dificultad en el form de condiciones */
     const setNivel = (nivel) => {
         switch(nivel){
             case "Easy":
@@ -71,10 +74,10 @@ const Memotes = () => {
             default:
                 break;
         }
-
     }
 
-
+    /* -------------- SETEA EL TEMA -------------- */
+    /* se usa cuando le doy al boton iniciar en el form de condiciones */
     const iniciarJuego = (e) =>{
         e.preventDefault()
         if(dificultad.tiempo === undefined || dificultad.cantParejas === undefined){
@@ -84,6 +87,8 @@ const Memotes = () => {
         }
     }
 
+    /* -------------- PREPARA EL JUEGO TENEINDO EN CUANTA LAS VARISNTES DE DIFICULTAD Y TEMA ------------- */
+    /* se ejecuta en el useEffect caundo el tema sea elejido, al darle boton de inicio en el form de cond. y al darle a reiniciar sea en ganaste o en partida */
     const prepararJuego = () => {
         let arrayDeFichas = dameArrayDeFichas()
         arrayDeFichas = arrayDeFichas.slice(0, dificultad.cantParejas)
@@ -92,6 +97,8 @@ const Memotes = () => {
         setFichas(arrayDeFichas)   
     }
 
+    /* ---------  SELECCIONO EL ARRAY A USAR SEGUN EL TEMA ELEGIDO -----------  */
+    /* en prepararJuego */
     const dameArrayDeFichas = () => {
         let retorno = []
         switch(tema){
@@ -110,6 +117,8 @@ const Memotes = () => {
         return retorno
     }
     
+    /* ---------  DUPLICA EL ARRAY, PARA QUE SEA EN PAREJAS ---------- */
+    /* en prepararJuego */
     const armarParejas = (array) =>{
         array.map(ficha => {
             array.push({...ficha})
@@ -117,6 +126,8 @@ const Memotes = () => {
         return array
     }
      
+    /* ---------- UBICA EN EL ORDEN DESORDENADO LAS FICHAS ------------- */
+    /* en prepararJuego */
     const mezclarFichas = (array) => {
         let random = mezclarArray()
         let retorno = []
@@ -128,7 +139,8 @@ const Memotes = () => {
         return retorno
     }
 
-    
+    /* ------------ DEFINE EL DESORDEN DE LAS FICHAS ------------ */
+    /* en mezclarFichas */
     const mezclarArray = () =>{
         let array = []
         let numRandom
@@ -142,12 +154,16 @@ const Memotes = () => {
     }
     
     
+    /* ------- LIMPIA VALORES Y PREPARA UN NUEVO JUEGO CON LAS MISMAS CONDICIONES DE DIFICULTAD Y TEMA ---------- */
+    /* en VistaDeJuego y en Ganaste */
     const reiniciar = () => {
         limpiarValores()
         prepararJuego()
     }
     
-    const nuevoJuego = () => { 
+    /* -------- lIMPIA VALORES Y CONDICIONES DE DIFICULTAD Y TEMA, PARA EMPEZAR UN NUEVO TOTAL, ME REDIRECCIONA AL FORM DE COND. ------- */
+    /* en VistaDeJuego y en Ganaste */
+    const nuevoJuego = () => {
         setDificultad({
             tiempo: undefined,
             cantParejas: undefined
@@ -158,6 +174,8 @@ const Memotes = () => {
         limpiarValores()
     }
 
+    /* -------- PONE VALORES A LO INICIAL ---------- */
+    /* en reiniciar y en nuevoJuego */
     const limpiarValores = () =>{
         setCantCoincidencias(0)
         setCargando(true)
@@ -169,6 +187,8 @@ const Memotes = () => {
     }
     
     
+    /*  --------- MUESTRA LA IMAGEN DE LA FICHA, Y LA GUARDA PARA DESPUES COMPARARLA ----------- */
+    /* cuando haga click en la ficha */
     const darVuelta = (event) =>{
         if(podesJugar){
             let img = event.target.querySelector('img')
@@ -188,7 +208,7 @@ const Memotes = () => {
     }
     
     
-    
+    /* CUANDO DE CLICK EN EL BOTON INICIAR DEL FORM DE CONDICIONES */
     useEffect(() => {
         if(tema !== ""){
             prepararJuego()
@@ -196,6 +216,8 @@ const Memotes = () => {
         }
     }, [tema])
 
+
+    /* --------- PARA SACAR EL SPINNER DESPUES DE UN SEGUNDO ----------- */
     useEffect(() =>{
         if(fichas.length > 0){
             setTimeout(() => {
@@ -204,6 +226,7 @@ const Memotes = () => {
         }
     }, [fichas])
     
+    /* ------------- OCULTA LAS IMAGENES Y HABILITA LOS BOTONES -----------*/
     useEffect(() =>{
         if(!cargando){
             setContenedor(window.document.querySelector(".contenedorFichas"))
@@ -215,6 +238,8 @@ const Memotes = () => {
         }
     }, [cargando])
     
+
+    /* PARA DEFINIR EL ANCHO DEL TABLERO, SEGUN LAS CANT DE FICHAS */
     useEffect(() =>{
         if(contenedor !== undefined){
             contenedor.style.width = widthContenedor
@@ -222,6 +247,7 @@ const Memotes = () => {
     }, [contenedor])
 
 
+    /* ----------- HACE LA COMPARACION ENTRA LAS FICHAS VOLTEADAS */
     useEffect(() => {
         if(cantVolteadas === 2){
             setTimeout( () => {
