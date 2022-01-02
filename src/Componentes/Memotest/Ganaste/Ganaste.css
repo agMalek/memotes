@@ -3,12 +3,12 @@
 
 
 .contenedorGanaste{
-    width: 400px;
-    height: 180px;
+    width: 500px;
+    height: 280px;
     padding: 40px;
     margin: auto;
-    background-color: rgba(255, 255, 255, .8);
-    border: 2px solid #000;
+    background-color: rgba(0, 0, 102, .1);
+    border: 10px double aqua  ;
     border-radius: 20px;
     /* background-color: rgba(40, 40, 40, 0.4); */
 

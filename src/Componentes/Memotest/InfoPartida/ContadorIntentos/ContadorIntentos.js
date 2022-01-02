@@ -1,10 +1,10 @@
 import './ContadorIntentos.css'
 
 
-const ContadorIntentos = () => {
+const ContadorIntentos = ({contadorIntentos, setContadorIntentos}) => {
     return (  
         <div className='contenedorTectoCantInt'>
-            <p className='textoCantInt'>N° de intentos <span className='numCantInt'>10</span></p>
+            <p className='textoCantInt'>{contadorIntentos} intentos</p>
         </div>
     );
 }

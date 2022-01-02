@@ -6,8 +6,8 @@ const BotonesBasicos = (props) => {
     const {botonInhabilitado, reiniciar, nuevoJuego} = props
     return (
         <>
-            <button className='btn btn-primary mb-4' disabled={botonInhabilitado} onClick={() => reiniciar()}>Reiniciar</button>
-            <button className='btn btn-primary mb-4' disabled={botonInhabilitado} onClick={() => nuevoJuego()} >Nuevo Juego</button>
+            <button className='btn btn-primary mb-4 mx-2 w-75' disabled={botonInhabilitado} onClick={() => reiniciar()}>Reiniciar</button>
+            <button className='btn btn-primary mb-4 mx-2 w-75' disabled={botonInhabilitado} onClick={() => nuevoJuego()} >Nuevo Juego</button>
         </>  
     );
 }

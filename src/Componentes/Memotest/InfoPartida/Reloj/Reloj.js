@@ -3,11 +3,11 @@ import './Reloj.css'
 
 const Reloj = (props) => {
 
-    const {iniciarCronometro} = props
+    const {iniciarCronometro, segundos, minutos, horas, setSegundos, setMinutos, setHoras} = props
 
-    const [minutos, setMinutos] = useState(9)
+    /* const [minutos, setMinutos] = useState(9)
     const [segundos, setSegundos] = useState(55)
-    const [horas, setHoras] = useState(0)
+    const [horas, setHoras] = useState(0) */
 
    /*  let segundos = useRef(0)
     let minutos = useRef(0) */
@@ -17,9 +17,11 @@ const Reloj = (props) => {
   
     const contador = () => {
         setSegundos((prev) => prev + 1);
+        console.log(segundos)
     }
 
     useEffect(() => {
+        console.log(iniciarCronometro)
         if(iniciarCronometro === true)
         intervalRef.current = setInterval(contador, 1000);
         return () => clearInterval(intervalRef.current);
@@ -31,6 +33,7 @@ const Reloj = (props) => {
             setSegundos(0)
             setMinutos((prev) => prev + 1)
         }
+        console.log("paso por segundos")
     },[segundos])
 
     useEffect(()=> {
@@ -40,23 +43,6 @@ const Reloj = (props) => {
         }
     },[minutos])
         
-
-
-
-    /* useEffect(() => {
-        if(iniciarCronometro === true){
-           comenzar()
-        }
-
-    }, [iniciarCronometro]) */
-
-    
-    const comenzar = () => {
-        setInterval(() => {
-            console.log(segundos)
-            segundos.current = (segundos+1)
-        }, 1000);
-    }
 
     return (  
         <div className='contenedorReloj'>

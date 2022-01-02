@@ -1,11 +1,13 @@
 
 .contenedorReloj{
-    width: 100%;
+    width: 180px;
 }
 
 .reloj{
+    height: 53px;
     margin: 15px 0;
     text-align: center;
+    padding: 3px;
     color: aqua;
     font-size: 30px;
     border: 1px solid aqua;

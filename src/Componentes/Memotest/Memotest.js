@@ -17,9 +17,9 @@ const Memotes = () => {
     const tiempoNivelB = 5000
     const tiempoNivelC = 3000
 
-    const tiempoEntreTurnos = 1500
+    const tiempoEntreTurnos = 500
 
-    const cantParejasNivelA = 8
+    const cantParejasNivelA = 2
     const cantParejasNivelB = 12
     const cantParejasNivelC = 20
 
@@ -42,9 +42,35 @@ const Memotes = () => {
     const [contenedor, setContenedor] = useState()
     const [widthContenedor, setWidthContenedor] = useState("")
     const [cargando, setCargando] = useState(true)
+    const [gano, setGano] = useState(false)
     const [botonInhabilitado, setBotonInhabilitado] = useState(true)
-    const [iniciarCronometro, setIniciarCronometro] = useState(false)
+    const [contadorIntentos, setContadorIntentos] = useState(0)
+
+    let contInt = {
+        contadorIntentos : contadorIntentos,
+        setContadorIntentos : setContadorIntentos
+    }
+
     
+    const [iniciarCronometro, setIniciarCronometro] = useState(false)
+    const [segundos, setSegundos] = useState(55)
+    const [minutos, setMinutos] = useState(59)
+    const [horas, setHoras] = useState(0)
+    let reloj = {
+        iniciarCronometro: iniciarCronometro,
+        setIniciarCronometro: setIniciarCronometro,
+        segundos: segundos,
+        setSegundos: setSegundos, 
+        minutos: minutos,
+        setMinutos: setMinutos,
+        horas: horas,
+        setHoras: setHoras
+    }
+    
+
+    useEffect(()=>{
+        console.log(reloj.iniciarCronometro)
+    },[reloj.iniciarCronometro])
 
 
     /* ----------  SETEA EN DIFICULTAD LOS TIEMPOS Y CONDICIONES QUE CORRESPONDAN  ------------ */
@@ -185,6 +211,13 @@ const Memotes = () => {
         setCantVolteadas(0)
         setPrimeraVolteada(undefined)
         setBotonInhabilitado(true)
+        setIniciarCronometro(false)
+        setSegundos(0)
+        setMinutos(0)
+        setHoras(0)
+        setContadorIntentos(0)
+        setGano(false)
+
     }
     
     
@@ -263,11 +296,20 @@ const Memotes = () => {
                 }
                 setPodesJugar(true)
             }, tiempoEntreTurnos)
+            setContadorIntentos(contadorIntentos+1)
             setPrimeraVolteada(undefined)
             setSegundaVolteada(undefined)
             setCantVolteadas(0)
         }
     }, [cantVolteadas])
+
+
+    useEffect(() =>{
+        if(cantCoincidencias === dificultad.cantParejas){
+            setGano(true)
+            setIniciarCronometro(false)
+        }
+    }, [cantCoincidencias])
 
 
 
@@ -291,7 +333,7 @@ const Memotes = () => {
                     <Spinner />
 
                 : fichas.length !== 0 
-                ? cantCoincidencias < dificultad.cantParejas 
+                ? !gano
 
                     ?   <VistaJuego 
                             botonInhabilitado={botonInhabilitado} 
@@ -300,12 +342,15 @@ const Memotes = () => {
                             fichas={fichas}
                             darVuelta={darVuelta}
                             opacidad={opacidad}
-                            iniciarCronometro={iniciarCronometro}
+                            reloj={reloj}
+                            contInt={contInt}
                         />
 
                     :   <Ganaste
                             reiniciar={reiniciar}
                             nuevoJuego={nuevoJuego}
+                            reloj={reloj}
+                            contInt={contInt}
                         />
                  
                 : <Error/>
