@@ -11,7 +11,7 @@ import Error from './Error/Error'
 
 
 import { sumaContInt, reiniciarValores, iniciarReloj, pararReloj} from '../../app/slice/infoPartidaSlice'
-import { setDificultad, dif, width, getTema, setTema } from '../../app/slice/setCondicionesSlice'
+import { setDificultad, dif, width, getTema, setTema, getJuegoEmpezado, terminarJuego} from '../../app/slice/setCondicionesSlice'
 
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -23,6 +23,7 @@ const Memotes = () => {
     const aux = useSelector(dif)
     const widthContenedor = useSelector(width)
     const tema = useSelector(getTema)
+    const juegoEmpezado = useSelector(getJuegoEmpezado)
 
     const tiempoEntreTurnos = 500
 
@@ -31,7 +32,7 @@ const Memotes = () => {
     const descubierta =  "descubierta"
     
 
-    const [juegoEmpezado, setJuegoEmpezado] = useState(false)
+/*     const [juegoEmpezado, setJuegoEmpezado] = useState(false) */
     const [inicioJuego, setInicioJuego] = useState(false) 
 /*     const [dificultad, setDificultad] = useState({tiempo: undefined, cantParejas:undefined}) */
 /*     const [tema, setTema] = useState("") */
@@ -179,7 +180,8 @@ const Memotes = () => {
         }))
         dispatch(setTema(""))
         setFichas([])
-        setJuegoEmpezado(false)
+        /* setJuegoEmpezado(false) */
+        dispatch(terminarJuego())
         limpiarValores()
     }
 
@@ -318,7 +320,7 @@ const Memotes = () => {
                         /* setWidthContenedor={setWidthContenedor} */
                         /* tema={tema} */
                         prepararJuego={prepararJuego}
-                        setJuegoEmpezado={setJuegoEmpezado}
+                        /* setJuegoEmpezado={setJuegoEmpezado} */
                     />
     
                 : cargando ? 
