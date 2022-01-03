@@ -3,13 +3,15 @@ import './FormCondiciones.css'
 
 import {useEffect, useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setWidthContenedor, setDificultad } from '../../../../app/slice/setCondicionesSlice'
+import { setWidthContenedor, setDificultad, setTema, getTema} from '../../../../app/slice/setCondicionesSlice'
 /* import { dif, width } from '../../../../app/slice/setCondicionesSlice' */
 
 const FormCondiciones = (props) => {
-    const {dificultad, setTema, tema, prepararJuego, setJuegoEmpezado} = props
+    const {dificultad, setTema2, prepararJuego, setJuegoEmpezado} = props
 
     const dispatch = useDispatch()
+
+    const tema = useSelector(getTema)
   
 
     const tiempoNivelA = 1000
@@ -28,11 +30,6 @@ const FormCondiciones = (props) => {
     const setNivel = () => {
         switch(level){
             case "Easy":
-                /* setDificultad({
-                    tiempo: tiempoNivelA,
-                    cantParejas: cantParejasNivelA
-                }) */
-               /*  setWidthContenedor("35%") */
                 dispatch(setDificultad({
                     tiempo: tiempoNivelA,
                     cantParejas: cantParejasNivelA
@@ -40,11 +37,6 @@ const FormCondiciones = (props) => {
                 dispatch(setWidthContenedor("35%"))
                 break;
             case "Medium":
-                /* setDificultad({
-                    tiempo: tiempoNivelB,
-                    cantParejas: cantParejasNivelB
-                }) */
-                /* setWidthContenedor("55%") */
                 dispatch(setDificultad({
                     tiempo: tiempoNivelB,
                     cantParejas: cantParejasNivelB
@@ -52,11 +44,6 @@ const FormCondiciones = (props) => {
                 dispatch(setWidthContenedor("55%"))
                 break;
             case "Hard":
-                /* setDificultad({
-                    tiempo: tiempoNivelC,
-                    cantParejas: cantParejasNivelC
-                }) */
-                /* setWidthContenedor("65%") */
                 dispatch(setDificultad({
                     tiempo: tiempoNivelC,
                     cantParejas: cantParejasNivelC
@@ -79,7 +66,7 @@ const FormCondiciones = (props) => {
             alert("Debes seleccionar un nivel de dificultad")
         }else{
             setNivel()
-            setTema(e.target.querySelector("select").value)
+            dispatch(setTema(e.target.querySelector("select").value))
         }
     }
 

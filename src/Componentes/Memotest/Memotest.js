@@ -11,7 +11,7 @@ import Error from './Error/Error'
 
 
 import { sumaContInt, reiniciarValores, iniciarReloj, pararReloj} from '../../app/slice/infoPartidaSlice'
-import { setDificultad, dif, width } from '../../app/slice/setCondicionesSlice'
+import { setDificultad, dif, width, getTema, setTema } from '../../app/slice/setCondicionesSlice'
 
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -22,6 +22,7 @@ const Memotes = () => {
     const dispatch = useDispatch()
     const aux = useSelector(dif)
     const widthContenedor = useSelector(width)
+    const tema = useSelector(getTema)
 
     const tiempoEntreTurnos = 500
 
@@ -33,7 +34,7 @@ const Memotes = () => {
     const [juegoEmpezado, setJuegoEmpezado] = useState(false)
     const [inicioJuego, setInicioJuego] = useState(false) 
 /*     const [dificultad, setDificultad] = useState({tiempo: undefined, cantParejas:undefined}) */
-    const [tema, setTema] = useState("")
+/*     const [tema, setTema] = useState("") */
     const [fichas, setFichas] = useState([])
     const [opacidad, setOpacidad] = useState(opaca)
     const [cantVolteadas, setCantVolteadas] = useState(0)
@@ -176,7 +177,7 @@ const Memotes = () => {
             tiempo: undefined,
             cantParejas: undefined
         }))
-        setTema("")
+        dispatch(setTema(""))
         setFichas([])
         setJuegoEmpezado(false)
         limpiarValores()
@@ -312,10 +313,10 @@ const Memotes = () => {
                         /* iniciarJuego={iniciarJuego} */
                         /* setNivel={setNivel} */
                       /*   dificultad={dificultad} */
-                        setTema={setTema}
+                        /* setTema={setTema} */
                         /* setDificultad={setDificultad} */
                         /* setWidthContenedor={setWidthContenedor} */
-                        tema={tema}
+                        /* tema={tema} */
                         prepararJuego={prepararJuego}
                         setJuegoEmpezado={setJuegoEmpezado}
                     />

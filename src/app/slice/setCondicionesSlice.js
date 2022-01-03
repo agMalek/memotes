@@ -35,8 +35,10 @@ export const setCondicionesSlice = createSlice({
                 cantParejas: action.payload.cantParejas
             }
         },
+        setTema: (state, action) => {
+            state.condiciones.tema = action.payload
+        },
         setWidthContenedor: (state, action) =>{
-            /* console.log(action.payload) */
             state.condiciones.widthContenedor = action.payload
         }
 
@@ -45,9 +47,10 @@ export const setCondicionesSlice = createSlice({
     }
 })
 
-export const {setDificultad, setWidthContenedor} = setCondicionesSlice.actions
+export const {setDificultad, setTema, setWidthContenedor} = setCondicionesSlice.actions
 
 export const dif = state => state.setCondicionesSlice.condiciones.dificultad
+export const getTema = state => state.setCondicionesSlice.condiciones.tema
 export const width = state => state.setCondicionesSlice.condiciones.widthContenedor
 
 
