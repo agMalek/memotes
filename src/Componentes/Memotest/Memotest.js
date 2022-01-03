@@ -10,8 +10,16 @@ import Ganaste from './Ganaste/Ganaste'
 import Error from './Error/Error'
 
 
+import { sumaContInt, reiniciarValores, iniciarReloj, pararReloj} from '../../app/slice/infoPartidaSlice'
+
+
+import { useDispatch } from 'react-redux'
+
+
 
 const Memotes = () => {
+
+    const dispatch = useDispatch()
 
     const tiempoNivelA = 1000
     const tiempoNivelB = 5000
@@ -211,11 +219,12 @@ const Memotes = () => {
         setCantVolteadas(0)
         setPrimeraVolteada(undefined)
         setBotonInhabilitado(true)
-        setIniciarCronometro(false)
+        /* setIniciarCronometro(false)
         setSegundos(0)
         setMinutos(0)
         setHoras(0)
-        setContadorIntentos(0)
+        setContadorIntentos(0) */
+        dispatch(reiniciarValores())
         setGano(false)
 
     }
@@ -268,7 +277,8 @@ const Memotes = () => {
                 setOpacidad(transparente)
                 setPodesJugar(true)
                 setBotonInhabilitado(false)
-                setIniciarCronometro(true)
+                /* setIniciarCronometro(true) */
+                dispatch(iniciarReloj())
             }, dificultad.tiempo)
         }
     }, [cargando])
@@ -296,7 +306,8 @@ const Memotes = () => {
                 }
                 setPodesJugar(true)
             }, tiempoEntreTurnos)
-            setContadorIntentos(contadorIntentos+1)
+            dispatch(sumaContInt())
+            /* setContadorIntentos(contadorIntentos+1) */
             setPrimeraVolteada(undefined)
             setSegundaVolteada(undefined)
             setCantVolteadas(0)
@@ -307,7 +318,8 @@ const Memotes = () => {
     useEffect(() =>{
         if(cantCoincidencias === dificultad.cantParejas){
             setGano(true)
-            setIniciarCronometro(false)
+            dispatch(pararReloj())
+            /* setIniciarCronometro(false) */
         }
     }, [cantCoincidencias])
 
