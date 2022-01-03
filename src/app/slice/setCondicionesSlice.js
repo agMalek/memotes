@@ -46,19 +46,23 @@ export const setCondicionesSlice = createSlice({
         },
         terminarJuego: state =>{
             state.juegoEmpezado = false    
-        }
+        },
+        setFichas: (state, action) =>{
+            state.fichas = action.payload
+        },
 
 
 
     }
 })
 
-export const {setDificultad, setTema, setWidthContenedor, empezarJuego, terminarJuego} = setCondicionesSlice.actions
+export const {setDificultad, setTema, setWidthContenedor, empezarJuego, terminarJuego, setFichas} = setCondicionesSlice.actions
 
 export const dif = state => state.setCondicionesSlice.condiciones.dificultad
 export const getTema = state => state.setCondicionesSlice.condiciones.tema
 export const width = state => state.setCondicionesSlice.condiciones.widthContenedor
 export const getJuegoEmpezado = state => state.setCondicionesSlice.juegoEmpezado
+export const getFichas = state => state.setCondicionesSlice.fichas
 
 
 export default setCondicionesSlice.reducer

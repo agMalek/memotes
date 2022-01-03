@@ -11,7 +11,7 @@ import Error from './Error/Error'
 
 
 import { sumaContInt, reiniciarValores, iniciarReloj, pararReloj} from '../../app/slice/infoPartidaSlice'
-import { setDificultad, dif, width, getTema, setTema, getJuegoEmpezado, terminarJuego} from '../../app/slice/setCondicionesSlice'
+import { setDificultad, dif, width, getTema, setTema, getJuegoEmpezado, terminarJuego, getFichas,setFichas} from '../../app/slice/setCondicionesSlice'
 
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -20,10 +20,11 @@ import { useSelector, useDispatch } from 'react-redux'
 const Memotes = () => {
 
     const dispatch = useDispatch()
-    const aux = useSelector(dif)
+    const dife = useSelector(dif)
     const widthContenedor = useSelector(width)
     const tema = useSelector(getTema)
     const juegoEmpezado = useSelector(getJuegoEmpezado)
+    const fichas = useSelector(getFichas)
 
     const tiempoEntreTurnos = 500
 
@@ -36,7 +37,7 @@ const Memotes = () => {
     const [inicioJuego, setInicioJuego] = useState(false) 
 /*     const [dificultad, setDificultad] = useState({tiempo: undefined, cantParejas:undefined}) */
 /*     const [tema, setTema] = useState("") */
-    const [fichas, setFichas] = useState([])
+    /* const [fichas, setFichas] = useState([]) */
     const [opacidad, setOpacidad] = useState(opaca)
     const [cantVolteadas, setCantVolteadas] = useState(0)
     const [cantCoincidencias, setCantCoincidencias] = useState(0)
@@ -95,12 +96,11 @@ const Memotes = () => {
     /* -------------- PREPARA EL JUEGO TENEINDO EN CUANTA LAS VARISNTES DE DIFICULTAD Y TEMA ------------- */
     /* se ejecuta en el useEffect caundo el tema sea elejido, al darle boton de inicio en el form de cond. y al darle a reiniciar sea en ganaste o en partida */
     const prepararJuego = () => {
-        console.log(aux)
         let arrayDeFichas = dameArrayDeFichas()
-        arrayDeFichas = arrayDeFichas.slice(0, aux.cantParejas)
+        arrayDeFichas = arrayDeFichas.slice(0, dife.cantParejas)
         arrayDeFichas = armarParejas(arrayDeFichas)
         arrayDeFichas = mezclarFichas(arrayDeFichas)
-        setFichas(arrayDeFichas)   
+        dispatch(setFichas(arrayDeFichas))
     }
 
     /* ---------  SELECCIONO EL ARRAY A USAR SEGUN EL TEMA ELEGIDO -----------  */
@@ -150,8 +150,8 @@ const Memotes = () => {
     const mezclarArray = () =>{
         let array = []
         let numRandom
-        while(array.length < aux.cantParejas*2){
-            numRandom = (Math.floor(Math.random()*aux.cantParejas*2))
+        while(array.length < dife.cantParejas*2){
+            numRandom = (Math.floor(Math.random()*dife.cantParejas*2))
             if(!array.some(num => num === numRandom)){
                 array.push(numRandom)
             }
@@ -179,7 +179,8 @@ const Memotes = () => {
             cantParejas: undefined
         }))
         dispatch(setTema(""))
-        setFichas([])
+        /* setFichas([]) */
+        dispatch(setFichas([]))
         /* setJuegoEmpezado(false) */
         dispatch(terminarJuego())
         limpiarValores()
@@ -255,7 +256,7 @@ const Memotes = () => {
                 setBotonInhabilitado(false)
                 /* setIniciarCronometro(true) */
                 dispatch(iniciarReloj())
-            }, aux.tiempo)
+            }, dife.tiempo)
         }
     }, [cargando])
     
@@ -292,7 +293,7 @@ const Memotes = () => {
 
 
     useEffect(() =>{
-        if(cantCoincidencias === aux.cantParejas){
+        if(cantCoincidencias === dife.cantParejas){
             setGano(true)
             dispatch(pararReloj())
             /* setIniciarCronometro(false) */
