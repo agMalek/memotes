@@ -4,11 +4,19 @@ import Titulo from "../Titulo/Titulo";
 import FormCondiciones from './FormCondiciones/FormCondiciones';
 
 const VistaCondiciones = (props) => {
-    const {iniciarJuego, setNivel} = props
+    const { dificultad, setTema, setDificultad, setWidthContenedor, tema, prepararJuego, setJuegoEmpezado} = props
     return (  
         <div>
             <Titulo/>
-            <FormCondiciones iniciarJuego={iniciarJuego} setNivel={setNivel} />
+            <FormCondiciones 
+                dificultad={dificultad}
+                setTema={setTema}
+                setDificultad={setDificultad}
+                setWidthContenedor={setWidthContenedor} 
+                tema={tema}
+                prepararJuego={prepararJuego}
+                setJuegoEmpezado={setJuegoEmpezado}
+            />
         </div>
     );
 }

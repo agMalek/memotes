@@ -11,25 +11,19 @@ import Error from './Error/Error'
 
 
 import { sumaContInt, reiniciarValores, iniciarReloj, pararReloj} from '../../app/slice/infoPartidaSlice'
+import { setDificultad, dif, width } from '../../app/slice/setCondicionesSlice'
 
-
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 
 
 const Memotes = () => {
 
     const dispatch = useDispatch()
-
-    const tiempoNivelA = 1000
-    const tiempoNivelB = 5000
-    const tiempoNivelC = 3000
+    const aux = useSelector(dif)
+    const widthContenedor = useSelector(width)
 
     const tiempoEntreTurnos = 500
-
-    const cantParejasNivelA = 2
-    const cantParejasNivelB = 12
-    const cantParejasNivelC = 20
 
     const opaca = "opaca"
     const transparente = "transparente"
@@ -38,7 +32,7 @@ const Memotes = () => {
 
     const [juegoEmpezado, setJuegoEmpezado] = useState(false)
     const [inicioJuego, setInicioJuego] = useState(false) 
-    const [dificultad, setDificultad] = useState({tiempo: undefined, cantParejas:undefined})
+/*     const [dificultad, setDificultad] = useState({tiempo: undefined, cantParejas:undefined}) */
     const [tema, setTema] = useState("")
     const [fichas, setFichas] = useState([])
     const [opacidad, setOpacidad] = useState(opaca)
@@ -48,42 +42,16 @@ const Memotes = () => {
     const [segundaVolteada, setSegundaVolteada] = useState()
     const [podesJugar, setPodesJugar] = useState(false)
     const [contenedor, setContenedor] = useState()
-    const [widthContenedor, setWidthContenedor] = useState("")
+    /* const [widthContenedor, setWidthContenedor] = useState("") */
     const [cargando, setCargando] = useState(true)
     const [gano, setGano] = useState(false)
     const [botonInhabilitado, setBotonInhabilitado] = useState(true)
-    const [contadorIntentos, setContadorIntentos] = useState(0)
-
-    let contInt = {
-        contadorIntentos : contadorIntentos,
-        setContadorIntentos : setContadorIntentos
-    }
-
     
-    const [iniciarCronometro, setIniciarCronometro] = useState(false)
-    const [segundos, setSegundos] = useState(55)
-    const [minutos, setMinutos] = useState(59)
-    const [horas, setHoras] = useState(0)
-    let reloj = {
-        iniciarCronometro: iniciarCronometro,
-        setIniciarCronometro: setIniciarCronometro,
-        segundos: segundos,
-        setSegundos: setSegundos, 
-        minutos: minutos,
-        setMinutos: setMinutos,
-        horas: horas,
-        setHoras: setHoras
-    }
-    
-
-    useEffect(()=>{
-        console.log(reloj.iniciarCronometro)
-    },[reloj.iniciarCronometro])
 
 
     /* ----------  SETEA EN DIFICULTAD LOS TIEMPOS Y CONDICIONES QUE CORRESPONDAN  ------------ */
     /* se usa cunado elije la dificultad en el form de condiciones */
-    const setNivel = (nivel) => {
+    /* const setNivel = (nivel) => {
         switch(nivel){
             case "Easy":
                 setDificultad({
@@ -109,24 +77,25 @@ const Memotes = () => {
             default:
                 break;
         }
-    }
+    } */
 
     /* -------------- SETEA EL TEMA -------------- */
     /* se usa cuando le doy al boton iniciar en el form de condiciones */
-    const iniciarJuego = (e) =>{
+    /* const iniciarJuego = (e) =>{
         e.preventDefault()
         if(dificultad.tiempo === undefined || dificultad.cantParejas === undefined){
             alert("Debes seleccionar un nivel de dificultad")
         }else{
             setTema(e.target.querySelector("select").value)
         }
-    }
+    } */
 
     /* -------------- PREPARA EL JUEGO TENEINDO EN CUANTA LAS VARISNTES DE DIFICULTAD Y TEMA ------------- */
     /* se ejecuta en el useEffect caundo el tema sea elejido, al darle boton de inicio en el form de cond. y al darle a reiniciar sea en ganaste o en partida */
     const prepararJuego = () => {
+        console.log(aux)
         let arrayDeFichas = dameArrayDeFichas()
-        arrayDeFichas = arrayDeFichas.slice(0, dificultad.cantParejas)
+        arrayDeFichas = arrayDeFichas.slice(0, aux.cantParejas)
         arrayDeFichas = armarParejas(arrayDeFichas)
         arrayDeFichas = mezclarFichas(arrayDeFichas)
         setFichas(arrayDeFichas)   
@@ -179,8 +148,8 @@ const Memotes = () => {
     const mezclarArray = () =>{
         let array = []
         let numRandom
-        while(array.length < dificultad.cantParejas*2){
-            numRandom = (Math.floor(Math.random()*dificultad.cantParejas*2))
+        while(array.length < aux.cantParejas*2){
+            numRandom = (Math.floor(Math.random()*aux.cantParejas*2))
             if(!array.some(num => num === numRandom)){
                 array.push(numRandom)
             }
@@ -199,10 +168,14 @@ const Memotes = () => {
     /* -------- lIMPIA VALORES Y CONDICIONES DE DIFICULTAD Y TEMA, PARA EMPEZAR UN NUEVO TOTAL, ME REDIRECCIONA AL FORM DE COND. ------- */
     /* en VistaDeJuego y en Ganaste */
     const nuevoJuego = () => {
-        setDificultad({
+        /* setDificultad({
             tiempo: undefined,
             cantParejas: undefined
-        })
+        }) */
+        dispatch(setDificultad({
+            tiempo: undefined,
+            cantParejas: undefined
+        }))
         setTema("")
         setFichas([])
         setJuegoEmpezado(false)
@@ -251,13 +224,13 @@ const Memotes = () => {
     }
     
     
-    /* CUANDO DE CLICK EN EL BOTON INICIAR DEL FORM DE CONDICIONES */
-    useEffect(() => {
+    /* --------- CUANDO DE CLICK EN EL BOTON INICIAR DEL FORM DE CONDICIONES -------- */
+    /* useEffect(() => {
         if(tema !== ""){
             prepararJuego()
             setJuegoEmpezado(true)
         }
-    }, [tema])
+    }, [tema]) */
 
 
     /* --------- PARA SACAR EL SPINNER DESPUES DE UN SEGUNDO ----------- */
@@ -279,7 +252,7 @@ const Memotes = () => {
                 setBotonInhabilitado(false)
                 /* setIniciarCronometro(true) */
                 dispatch(iniciarReloj())
-            }, dificultad.tiempo)
+            }, aux.tiempo)
         }
     }, [cargando])
     
@@ -316,7 +289,7 @@ const Memotes = () => {
 
 
     useEffect(() =>{
-        if(cantCoincidencias === dificultad.cantParejas){
+        if(cantCoincidencias === aux.cantParejas){
             setGano(true)
             dispatch(pararReloj())
             /* setIniciarCronometro(false) */
@@ -336,8 +309,15 @@ const Memotes = () => {
                 : !juegoEmpezado ?
             
                     <VistaCondiciones
-                        iniciarJuego={iniciarJuego}
-                        setNivel={setNivel}
+                        /* iniciarJuego={iniciarJuego} */
+                        /* setNivel={setNivel} */
+                      /*   dificultad={dificultad} */
+                        setTema={setTema}
+                        /* setDificultad={setDificultad} */
+                        /* setWidthContenedor={setWidthContenedor} */
+                        tema={tema}
+                        prepararJuego={prepararJuego}
+                        setJuegoEmpezado={setJuegoEmpezado}
                     />
     
                 : cargando ? 
@@ -354,15 +334,13 @@ const Memotes = () => {
                             fichas={fichas}
                             darVuelta={darVuelta}
                             opacidad={opacidad}
-                            reloj={reloj}
-                            contInt={contInt}
+                            
                         />
 
                     :   <Ganaste
                             reiniciar={reiniciar}
                             nuevoJuego={nuevoJuego}
-                            reloj={reloj}
-                            contInt={contInt}
+                            
                         />
                  
                 : <Error/>
