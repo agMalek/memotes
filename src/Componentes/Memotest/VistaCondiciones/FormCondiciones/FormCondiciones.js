@@ -3,8 +3,9 @@ import './FormCondiciones.css'
 
 import {useEffect, useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setWidthContenedor, setDificultad, setTema, getTema, empezarJuego} from '../../../../app/slice/setCondicionesSlice'
+import { setWidthContenedor, setDificultad, setTema, getTema} from '../../../../app/slice/setCondicionesSlice'
 /* import { dif, width } from '../../../../app/slice/setCondicionesSlice' */
+import { empezarJuego } from '../../../../app/slice/enJuegoSlice'
 
 const FormCondiciones = (props) => {
     const {dificultad, setTema2, prepararJuego, setJuegoEmpezado} = props

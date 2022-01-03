@@ -11,7 +11,8 @@ import Error from './Error/Error'
 
 
 import { sumaContInt, reiniciarValores, iniciarReloj, pararReloj} from '../../app/slice/infoPartidaSlice'
-import { setDificultad, dif, width, getTema, setTema, getJuegoEmpezado, terminarJuego, getFichas,setFichas} from '../../app/slice/setCondicionesSlice'
+import { setDificultad, dif, width, getTema, setTema} from '../../app/slice/setCondicionesSlice'
+import { terminarJuego, getFichas, setFichas, getJuegoEmpezado } from '../../app/slice/enJuegoSlice'
 
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -337,8 +338,7 @@ const Memotes = () => {
                             nuevoJuego={nuevoJuego}
                             fichas={fichas}
                             darVuelta={darVuelta}
-                            opacidad={opacidad}
-                            
+                            opacidad={opacidad}  
                         />
 
                     :   <Ganaste

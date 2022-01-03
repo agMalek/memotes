@@ -1,16 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialStateValues = {
-    juegoEmpezado: false,
-    condiciones: {
-        dificultad: {
-            tiempo: undefined, 
-            cantParejas:undefined
-        },
-        tema: "",
-        widthContenedor: ""
+    dificultad: {
+        tiempo: undefined, 
+        cantParejas:undefined
     },
-    fichas: []
+    tema: "",
+    widthContenedor: ""
 }
 
 export const setCondicionesSlice = createSlice({
@@ -18,8 +14,7 @@ export const setCondicionesSlice = createSlice({
     initialState: initialStateValues,
     reducers: {
         reiniciarValores: state => {
-            state.juegoEmpezado = false
-            state.condiciones = {
+            state = {
                 dificultad: {
                     tiempo: undefined, 
                     cantParejas:undefined
@@ -27,42 +22,26 @@ export const setCondicionesSlice = createSlice({
                 tema: "",
                 widthContenedor: ""
             }
-            state.fichas = []
         },
         setDificultad: (state, action) =>{
-            state.condiciones.dificultad = {
+            state.dificultad = {
                 tiempo: action.payload.tiempo, 
                 cantParejas: action.payload.cantParejas
             }
         },
         setTema: (state, action) => {
-            state.condiciones.tema = action.payload
+            state.tema = action.payload
         },
         setWidthContenedor: (state, action) =>{
-            state.condiciones.widthContenedor = action.payload
-        },
-        empezarJuego: state =>{
-            state.juegoEmpezado = true    
-        },
-        terminarJuego: state =>{
-            state.juegoEmpezado = false    
-        },
-        setFichas: (state, action) =>{
-            state.fichas = action.payload
-        },
-
-
-
+            state.widthContenedor = action.payload
+        }
     }
 })
 
-export const {setDificultad, setTema, setWidthContenedor, empezarJuego, terminarJuego, setFichas} = setCondicionesSlice.actions
+export const {reiniciarValores, setDificultad, setTema, setWidthContenedor} = setCondicionesSlice.actions
 
-export const dif = state => state.setCondicionesSlice.condiciones.dificultad
-export const getTema = state => state.setCondicionesSlice.condiciones.tema
-export const width = state => state.setCondicionesSlice.condiciones.widthContenedor
-export const getJuegoEmpezado = state => state.setCondicionesSlice.juegoEmpezado
-export const getFichas = state => state.setCondicionesSlice.fichas
-
+export const dif = state => state.setCondicionesSlice.dificultad
+export const getTema = state => state.setCondicionesSlice.tema
+export const width = state => state.setCondicionesSlice.widthContenedor
 
 export default setCondicionesSlice.reducer
