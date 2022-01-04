@@ -5,14 +5,13 @@ import BotonesBasicos from '../../BotonesBasicos/BotonesBasicos';
 
 
 const VistaBotonesJuego = (props) => {
-    const {botonInhabilitado, reiniciar, nuevoJuego} = props
+    const {botonInhabilitado, prepararJuego} = props
     return (  
         <div className='d-flex contenedorBotonesEnPartida justify-content-center align-items-center'>
             <Titulo />
             <BotonesBasicos 
                 botonInhabilitado={botonInhabilitado}
-                reiniciar={reiniciar}
-                nuevoJuego={nuevoJuego}
+                prepararJuego={prepararJuego}
             />
         </div>
     );

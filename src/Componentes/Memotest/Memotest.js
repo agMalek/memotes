@@ -12,7 +12,7 @@ import Error from './Error/Error'
 
 import { sumaContInt, reiniciarValores, iniciarReloj, pararReloj} from '../../app/slice/infoPartidaSlice'
 import { setDificultad, dif, width, getTema, setTema} from '../../app/slice/setCondicionesSlice'
-import { terminarJuego, getFichas, setFichas, getJuegoEmpezado } from '../../app/slice/enJuegoSlice'
+import { terminarJuego, getFichas, setFichas, getJuegoEmpezado, getCargando, setCargando } from '../../app/slice/enJuegoSlice'
 
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -27,6 +27,7 @@ const Memotes = () => {
     const juegoEmpezado = useSelector(getJuegoEmpezado)
     const fichas = useSelector(getFichas)
     const gano = useSelector(getGano)
+    const cargando = useSelector(getCargando)
 
 
     const opaca = "opaca"
@@ -47,7 +48,7 @@ const Memotes = () => {
    /*  const [podesJugar, setPodesJugar] = useState(false) */
    /*  const [contenedor, setContenedor] = useState() */
     /* const [widthContenedor, setWidthContenedor] = useState("") */
-    const [cargando, setCargando] = useState(true)
+    /* const [cargando, setCargando] = useState(true) */
     /* const [gano, setGano] = useState(false) */
     /* const [botonInhabilitado, setBotonInhabilitado] = useState(true) */
     
@@ -160,59 +161,14 @@ const Memotes = () => {
         return array
     }
     
-    
-    /* ------- LIMPIA VALORES Y PREPARA UN NUEVO JUEGO CON LAS MISMAS CONDICIONES DE DIFICULTAD Y TEMA ---------- */
-    /* en VistaDeJuego y en Ganaste */
-    const reiniciar = () => {
-        limpiarValores()
-        prepararJuego()
-    }
-    
-    /* -------- lIMPIA VALORES Y CONDICIONES DE DIFICULTAD Y TEMA, PARA EMPEZAR UN NUEVO TOTAL, ME REDIRECCIONA AL FORM DE COND. ------- */
-    /* en VistaDeJuego y en Ganaste */
-    const nuevoJuego = () => {
-        /* setDificultad({
-            tiempo: undefined,
-            cantParejas: undefined
-        }) */
-        dispatch(setDificultad({
-            tiempo: undefined,
-            cantParejas: undefined
-        }))
-        dispatch(setTema(""))
-        /* setFichas([]) */
-        dispatch(setFichas([]))
-        /* setJuegoEmpezado(false) */
-        dispatch(terminarJuego())
-        limpiarValores()
-    }
 
-    /* -------- PONE VALORES A LO INICIAL ---------- */
-    /* en reiniciar y en nuevoJuego */
-    const limpiarValores = () =>{
-       /*  setCantCoincidencias(0) */
-        setCargando(true)
-       /*  setPodesJugar(false) */
-        /* setOpacidad(opaca) */
-       /*  setCantVolteadas(0)
-        setPrimeraVolteada(undefined) */
-       /*  setBotonInhabilitado(true) */
-        /* setIniciarCronometro(false)
-        setSegundos(0)
-        setMinutos(0)
-        setHoras(0)
-        setContadorIntentos(0) */
-        dispatch(reiniciarValores())
-        dispatch(setGano(false))
-
-    }
     
     
     /* --------- PARA SACAR EL SPINNER DESPUES DE UN SEGUNDO ----------- */
     useEffect(() =>{
         if(fichas.length > 0){
             setTimeout(() => {
-                setCargando(false)
+                dispatch(setCargando(false))
             }, 1000)
         }
     }, [fichas])
@@ -250,9 +206,10 @@ const Memotes = () => {
 
                     ?   <VistaJuego 
                             /* botonInhabilitado={botonInhabilitado}  */
-                            reiniciar={reiniciar}
-                            nuevoJuego={nuevoJuego}
-                            fichas={fichas}
+                           /*  reiniciar={reiniciar}
+                            nuevoJuego={nuevoJuego} */
+                            prepararJuego={prepararJuego}
+                           
                             /* darVuelta={darVuelta} */
                            /*  opacidad={opacidad} */
                             /* setCantVolteadas={setCantVolteadas} */
@@ -260,8 +217,9 @@ const Memotes = () => {
                         />
 
                     :   <Ganaste
-                            reiniciar={reiniciar}
-                            nuevoJuego={nuevoJuego}
+                           /*  reiniciar={reiniciar}
+                            nuevoJuego={nuevoJuego} */
+                            prepararJuego={prepararJuego}
                             
                         />
                  

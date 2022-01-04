@@ -11,7 +11,9 @@ const initialStateValues = {
     }, */
    /*  cantCoincidencias: 0, */
   /*   opacidad: "", */
-    gano: false
+    gano: false,
+    cargando: true
+
 }
 
 export const enJuegoSlice = createSlice({
@@ -43,11 +45,14 @@ export const enJuegoSlice = createSlice({
         } */
         setGano: (state, action) => {
             state.gano = action.payload
+        },
+        setCargando: (state, action) => {
+            state.cargando = action.payload
         }
     }
 })
 
-export const {empezarJuego, terminarJuego, setFichas, setGano} = enJuegoSlice.actions
+export const {empezarJuego, terminarJuego, setFichas, setGano, setCargando} = enJuegoSlice.actions
 
 export const getJuegoEmpezado = state => state.enJuegoSlice.juegoEmpezado
 export const getFichas = state => state.enJuegoSlice.fichas
@@ -56,6 +61,7 @@ export const getPodesJugar = state => state.enJuegoSlice.podesJugar */
 /* export const getVolteadas = state => state.enJuegoSlice.volteadas */
 /* export const getCantCoincidencias = state => state.enJuegoSlice.cantCoincidencias */
 export const getGano = state => state.enJuegoSlice.gano
+export const getCargando = state => state.enJuegoSlice.cargando
 
 
 export default enJuegoSlice.reducer

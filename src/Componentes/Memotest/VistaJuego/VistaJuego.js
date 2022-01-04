@@ -13,7 +13,7 @@ import './VistaJuego.css'
 
 
 const VistaJuego = (props) => {
-    const {reiniciar, nuevoJuego, fichas} = props
+    const {prepararJuego} = props
 
     const dispatch = useDispatch()
     const dife = useSelector(dif)
@@ -50,11 +50,10 @@ const VistaJuego = (props) => {
         <div className='d-flex justify-content-evenly'>
             <VistaBotonesJuego 
                 botonInhabilitado={botonInhabilitado}
-                reiniciar={reiniciar}
-                nuevoJuego={nuevoJuego}
+                prepararJuego={prepararJuego}
             />
             <Tablero 
-                fichas={fichas}
+                /* fichas={fichas} */
                 /* darVuelta={darVuelta} */
                 opacidad={opacidad}
                 podesJugar={podesJugar}

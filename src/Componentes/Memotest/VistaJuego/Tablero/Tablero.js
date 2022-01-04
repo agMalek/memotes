@@ -3,18 +3,20 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { sumaContInt, pararReloj } from "../../../../app/slice/infoPartidaSlice";
 import { dif } from "../../../../app/slice/setCondicionesSlice";
-import { setGano } from "../../../../app/slice/enJuegoSlice";
+import { setGano, getFichas } from "../../../../app/slice/enJuegoSlice";
 
 import Ficha from "./Ficha/Ficha";
 import './Tablero.css'
 
 
 
-const Tablero = ({fichas, opacidad, podesJugar, setPodesJugar}) => {
+const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
 
 
     const dispatch = useDispatch()
     const dife = useSelector(dif)
+    const fichas = useSelector(getFichas)
+
 
 
     const opaca = "opaca"
@@ -27,7 +29,7 @@ const Tablero = ({fichas, opacidad, podesJugar, setPodesJugar}) => {
     const [cantCoincidencias, setCantCoincidencias] = useState(0)
     const [primeraVolteada, setPrimeraVolteada] = useState()
     const [segundaVolteada, setSegundaVolteada] = useState()
-   /*  const [gano, setGano] = useState(false) */
+
 
 /*  --------- MUESTRA LA IMAGEN DE LA FICHA, Y LA GUARDA PARA DESPUES COMPARARLA ----------- */
     /* cuando haga click en la ficha */
@@ -49,15 +51,6 @@ const Tablero = ({fichas, opacidad, podesJugar, setPodesJugar}) => {
         }
     }
     
-    
-    /* --------- CUANDO DE CLICK EN EL BOTON INICIAR DEL FORM DE CONDICIONES -------- */
-    /* useEffect(() => {
-        if(tema !== ""){
-            prepararJuego()
-            setJuegoEmpezado(true)
-        }
-    }, [tema]) */
-
 
 
     /* ----------- HACE LA COMPARACION ENTRA LAS FICHAS VOLTEADAS */
@@ -75,7 +68,6 @@ const Tablero = ({fichas, opacidad, podesJugar, setPodesJugar}) => {
                 setPodesJugar(true)
             }, tiempoEntreTurnos)
             dispatch(sumaContInt())
-            /* setContadorIntentos(contadorIntentos+1) */
             setPrimeraVolteada(undefined)
             setSegundaVolteada(undefined)
             setCantVolteadas(0)
@@ -87,18 +79,9 @@ const Tablero = ({fichas, opacidad, podesJugar, setPodesJugar}) => {
         if(cantCoincidencias === dife.cantParejas){
             dispatch(setGano(true))
             dispatch(pararReloj())
-            /* setIniciarCronometro(false) */
         }
     }, [cantCoincidencias])
 
-
-
-    
-
-    /* useEffect(()=>{
-        setPrimeraVolteada(undefined)
-        setCantVolteadas(0)
-    },[]) */
 
     return ( 
         <div className="contenedorFichas" >

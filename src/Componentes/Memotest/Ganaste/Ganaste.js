@@ -4,7 +4,7 @@ import InfoPartida from '../InfoPartida/InfoPartida';
 import './Ganaste.css'
 
 const Ganaste = (props) => {
-    const {reiniciar, nuevoJuego}= props
+    const {prepararJuego}= props
     return (  
         <div className="contenedorGanaste">
             <h3 className='tituloGanaste'>Ganaste!!!</h3>
@@ -13,8 +13,7 @@ const Ganaste = (props) => {
             </div>
             <div className='contenedorBotonesGanaste w-100 my-4'>
                <BotonesBasicos
-                    reiniciar={reiniciar}
-                    nuevoJuego={nuevoJuego}
+                    prepararJuego={prepararJuego}
                />
             </div>
         </div>
