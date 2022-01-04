@@ -1,20 +1,18 @@
 
-import './FormCondiciones.css'
-
 import {useEffect, useState} from 'react'
+
 import { useSelector, useDispatch } from 'react-redux'
 import { setWidthContenedor, setDificultad, setTema, getTema} from '../../../../app/slice/setCondicionesSlice'
-/* import { dif, width } from '../../../../app/slice/setCondicionesSlice' */
 import { empezarJuego } from '../../../../app/slice/enJuegoSlice'
 
-const FormCondiciones = (props) => {
-    const {dificultad, setTema2, prepararJuego, setJuegoEmpezado} = props
+import './FormCondiciones.css'
+
+const FormCondiciones = ({prepararJuego}) => {
 
     const dispatch = useDispatch()
 
     const tema = useSelector(getTema)
   
-
     const tiempoNivelA = 1000
     const tiempoNivelB = 5000
     const tiempoNivelC = 3000
@@ -22,6 +20,7 @@ const FormCondiciones = (props) => {
     const cantParejasNivelA = 2
     const cantParejasNivelB = 12
     const cantParejasNivelC = 20
+
 
     const [level, setLevel] = useState("")
 
@@ -71,6 +70,7 @@ const FormCondiciones = (props) => {
         }
     }
 
+
     /* --------- CUANDO DE CLICK EN EL BOTON INICIAR DEL FORM DE CONDICIONES -------- */
     useEffect(() => {
         if(tema !== ""){
@@ -80,6 +80,7 @@ const FormCondiciones = (props) => {
         }
     }, [tema])
     
+
     return ( 
         <form className='contenedorCondiciones' onSubmit={(SyntheticEvent) => iniciarJuego(SyntheticEvent)}>
             <div className='contenedorDificultad '>

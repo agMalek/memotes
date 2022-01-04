@@ -1,9 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
-import './Reloj.css'
-import { sumaSegundo, sumaMinuto, sumaHora, reloj } from '../../../../app/slice/infoPartidaSlice'; 
-import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useRef } from 'react';
 
-const Reloj = (props) => {
+import { useSelector, useDispatch } from 'react-redux';
+import { sumaSegundo, sumaMinuto, sumaHora, reloj } from '../../../../app/slice/infoPartidaSlice'; 
+
+import './Reloj.css'
+
+const Reloj = () => {
 
     const dispatch = useDispatch()
     const {horas, minutos, segundos, iniciarCronometro} = useSelector(reloj)

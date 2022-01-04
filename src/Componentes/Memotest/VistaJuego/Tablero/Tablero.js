@@ -1,30 +1,28 @@
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 
+import { useSelector, useDispatch } from "react-redux";
 import { sumaContInt, pararReloj } from "../../../../app/slice/infoPartidaSlice";
 import { dif } from "../../../../app/slice/setCondicionesSlice";
 import { setGano, getFichas } from "../../../../app/slice/enJuegoSlice";
 
 import Ficha from "./Ficha/Ficha";
-import './Tablero.css'
 
+import './Tablero.css'
 
 
 const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
 
-
     const dispatch = useDispatch()
+
     const dife = useSelector(dif)
     const fichas = useSelector(getFichas)
-
-
 
     const opaca = "opaca"
     const transparente = "transparente"
     const descubierta =  "descubierta"
-
     const tiempoEntreTurnos = 500
 
+    
     const [cantVolteadas, setCantVolteadas] = useState(0)
     const [cantCoincidencias, setCantCoincidencias] = useState(0)
     const [primeraVolteada, setPrimeraVolteada] = useState()

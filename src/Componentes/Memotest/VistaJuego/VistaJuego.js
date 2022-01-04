@@ -1,9 +1,9 @@
 
 import { useEffect, useState } from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { iniciarReloj } from '../../../app/slice/infoPartidaSlice';
-import { dif } from '../../../app/slice/setCondicionesSlice';
-import { width } from '../../../app/slice/setCondicionesSlice';
+import { dif, width} from '../../../app/slice/setCondicionesSlice';
 
 import Tablero from './Tablero/Tablero';
 import VistaBotonesJuego from './VistaBotonesJuego/VistaBotonesJuego';
@@ -12,10 +12,10 @@ import InfoPartida from '../InfoPartida/InfoPartida';
 import './VistaJuego.css'
 
 
-const VistaJuego = (props) => {
-    const {prepararJuego} = props
+const VistaJuego = ({prepararJuego}) => {
 
     const dispatch = useDispatch()
+
     const dife = useSelector(dif)
     const widthContenedor = useSelector(width)
 
@@ -39,12 +39,14 @@ const VistaJuego = (props) => {
         }, dife.tiempo)
     }, [])
 
+
     /* PARA DEFINIR EL ANCHO DEL TABLERO, SEGUN LAS CANT DE FICHAS */
     useEffect(() =>{
         if(contenedor !== undefined){
             contenedor.style.width = widthContenedor
         }
     }, [contenedor])
+
 
     return ( 
         <div className='d-flex justify-content-evenly'>
@@ -53,17 +55,14 @@ const VistaJuego = (props) => {
                 prepararJuego={prepararJuego}
             />
             <Tablero 
-                /* fichas={fichas} */
-                /* darVuelta={darVuelta} */
                 opacidad={opacidad}
                 podesJugar={podesJugar}
                 setPodesJugar={setPodesJugar}
             />
             <div className='d-flex flex-column justify-content-evenly'>
-            <div className='d-flex flex-column'>
-                <InfoPartida />
-            </div>
-                {/* <InfoPartida/> */}
+                <div className='d-flex flex-column'>
+                    <InfoPartida />
+                </div>
             </div>
         </div>
     );

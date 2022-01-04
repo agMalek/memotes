@@ -1,6 +1,7 @@
-import './ContadorIntentos.css'
 import { useSelector } from 'react-redux';
 import { contIntentos } from '../../../../app/slice/infoPartidaSlice'; 
+
+import './ContadorIntentos.css'
 
 const ContadorIntentos = () => {
     

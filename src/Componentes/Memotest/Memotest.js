@@ -1,99 +1,36 @@
 import {useState, useEffect} from 'react'
 
+import { useSelector, useDispatch } from 'react-redux'
+import { dif, getTema} from '../../app/slice/setCondicionesSlice'
+import { getGano, getFichas, setFichas, getJuegoEmpezado, getCargando, setCargando } from '../../app/slice/enJuegoSlice'
+
 import {Banderas, Animales, Comidas} from '../../utils/fichas'
-import './Memotest.css'
+
+import Home from './Home/Home'
+import VistaCondiciones from './VistaCondiciones/VistaCondiciones'
 import Spinner from './Spinner/Spinner'
 import VistaJuego from './VistaJuego/VistaJuego'
-import VistaCondiciones from './VistaCondiciones/VistaCondiciones'
-import Home from './Home/Home'
 import Ganaste from './Ganaste/Ganaste'
 import Error from './Error/Error'
 
-
-import { sumaContInt, reiniciarValores, iniciarReloj, pararReloj} from '../../app/slice/infoPartidaSlice'
-import { setDificultad, dif, width, getTema, setTema} from '../../app/slice/setCondicionesSlice'
-import { terminarJuego, getFichas, setFichas, getJuegoEmpezado, getCargando, setCargando } from '../../app/slice/enJuegoSlice'
-
-import { useSelector, useDispatch } from 'react-redux'
-
-import { getGano, setGano } from '../../app/slice/enJuegoSlice'
+import './Memotest.css'
 
 const Memotes = () => {
 
     const dispatch = useDispatch()
-    const dife = useSelector(dif)
-    const widthContenedor = useSelector(width)
-    const tema = useSelector(getTema)
+
     const juegoEmpezado = useSelector(getJuegoEmpezado)
     const fichas = useSelector(getFichas)
-    const gano = useSelector(getGano)
+    const dife = useSelector(dif)
+    const tema = useSelector(getTema)
     const cargando = useSelector(getCargando)
+    const gano = useSelector(getGano)
 
 
-    const opaca = "opaca"
-    const transparente = "transparente"
-    const descubierta =  "descubierta"
+
+    const [inicioJuego, setInicioJuego] = useState(false)
+
     
-
-/*     const [juegoEmpezado, setJuegoEmpezado] = useState(false) */
-    const [inicioJuego, setInicioJuego] = useState(false) 
-/*     const [dificultad, setDificultad] = useState({tiempo: undefined, cantParejas:undefined}) */
-/*     const [tema, setTema] = useState("") */
-    /* const [fichas, setFichas] = useState([]) */
-   /*  const [opacidad, setOpacidad] = useState(opaca) */
-    /* const [cantVolteadas, setCantVolteadas] = useState(0)
-    const [cantCoincidencias, setCantCoincidencias] = useState(0)
-    const [primeraVolteada, setPrimeraVolteada] = useState()
-    const [segundaVolteada, setSegundaVolteada] = useState() */
-   /*  const [podesJugar, setPodesJugar] = useState(false) */
-   /*  const [contenedor, setContenedor] = useState() */
-    /* const [widthContenedor, setWidthContenedor] = useState("") */
-    /* const [cargando, setCargando] = useState(true) */
-    /* const [gano, setGano] = useState(false) */
-    /* const [botonInhabilitado, setBotonInhabilitado] = useState(true) */
-    
-
-
-    /* ----------  SETEA EN DIFICULTAD LOS TIEMPOS Y CONDICIONES QUE CORRESPONDAN  ------------ */
-    /* se usa cunado elije la dificultad en el form de condiciones */
-    /* const setNivel = (nivel) => {
-        switch(nivel){
-            case "Easy":
-                setDificultad({
-                    tiempo: tiempoNivelA,
-                    cantParejas: cantParejasNivelA
-                })
-                setWidthContenedor("35%")
-                break;
-            case "Medium":
-                setDificultad({
-                    tiempo: tiempoNivelB,
-                    cantParejas: cantParejasNivelB
-                })
-                setWidthContenedor("55%")
-                break;
-            case "Hard":
-                setDificultad({
-                    tiempo: tiempoNivelC,
-                    cantParejas: cantParejasNivelC
-                })
-                setWidthContenedor("65%")
-                break;
-            default:
-                break;
-        }
-    } */
-
-    /* -------------- SETEA EL TEMA -------------- */
-    /* se usa cuando le doy al boton iniciar en el form de condiciones */
-    /* const iniciarJuego = (e) =>{
-        e.preventDefault()
-        if(dificultad.tiempo === undefined || dificultad.cantParejas === undefined){
-            alert("Debes seleccionar un nivel de dificultad")
-        }else{
-            setTema(e.target.querySelector("select").value)
-        }
-    } */
 
     /* -------------- PREPARA EL JUEGO TENEINDO EN CUANTA LAS VARISNTES DE DIFICULTAD Y TEMA ------------- */
     /* se ejecuta en el useEffect caundo el tema sea elejido, al darle boton de inicio en el form de cond. y al darle a reiniciar sea en ganaste o en partida */
@@ -186,15 +123,7 @@ const Memotes = () => {
                 : !juegoEmpezado ?
             
                     <VistaCondiciones
-                        /* iniciarJuego={iniciarJuego} */
-                        /* setNivel={setNivel} */
-                      /*   dificultad={dificultad} */
-                        /* setTema={setTema} */
-                        /* setDificultad={setDificultad} */
-                        /* setWidthContenedor={setWidthContenedor} */
-                        /* tema={tema} */
                         prepararJuego={prepararJuego}
-                        /* setJuegoEmpezado={setJuegoEmpezado} */
                     />
     
                 : cargando ? 
@@ -205,22 +134,11 @@ const Memotes = () => {
                 ? !gano
 
                     ?   <VistaJuego 
-                            /* botonInhabilitado={botonInhabilitado}  */
-                           /*  reiniciar={reiniciar}
-                            nuevoJuego={nuevoJuego} */
                             prepararJuego={prepararJuego}
-                           
-                            /* darVuelta={darVuelta} */
-                           /*  opacidad={opacidad} */
-                            /* setCantVolteadas={setCantVolteadas} */
-                            /* setPrimeraVolteada={setPrimeraVolteada} */
                         />
 
                     :   <Ganaste
-                           /*  reiniciar={reiniciar}
-                            nuevoJuego={nuevoJuego} */
                             prepararJuego={prepararJuego}
-                            
                         />
                  
                 : <Error/>

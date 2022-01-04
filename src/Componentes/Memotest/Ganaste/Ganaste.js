@@ -3,8 +3,8 @@ import BotonesBasicos from '../BotonesBasicos/BotonesBasicos';
 import InfoPartida from '../InfoPartida/InfoPartida';
 import './Ganaste.css'
 
-const Ganaste = (props) => {
-    const {prepararJuego}= props
+const Ganaste = ({prepararJuego}) => {
+
     return (  
         <div className="contenedorGanaste">
             <h3 className='tituloGanaste'>Ganaste!!!</h3>

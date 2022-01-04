@@ -6,9 +6,7 @@ import { reiniciarValores as reiniciarReloj } from '../../../app/slice/infoParti
 
 import './BotonesBasicos.css'
 
-const BotonesBasicos = (props) => {
-    const {botonInhabilitado, prepararJuego} = props
-    
+const BotonesBasicos = ({botonInhabilitado, prepararJuego}) => {
     
     const dispatch = useDispatch()
 
@@ -22,18 +20,12 @@ const BotonesBasicos = (props) => {
     /* -------- lIMPIA VALORES Y CONDICIONES DE DIFICULTAD Y TEMA, PARA EMPEZAR UN NUEVO TOTAL, ME REDIRECCIONA AL FORM DE COND. ------- */
     /* en VistaDeJuego y en Ganaste */
     const nuevoJuego = () => {
-        /* setDificultad({
-            tiempo: undefined,
-            cantParejas: undefined
-        }) */
         dispatch(setDificultad({
             tiempo: undefined,
             cantParejas: undefined
         }))
         dispatch(setTema(""))
-        /* setFichas([]) */
         dispatch(setFichas([]))
-        /* setJuegoEmpezado(false) */
         dispatch(terminarJuego())
         limpiarValores()
     }
@@ -41,21 +33,9 @@ const BotonesBasicos = (props) => {
     /* -------- PONE VALORES A LO INICIAL ---------- */
     /* en reiniciar y en nuevoJuego */
     const limpiarValores = () =>{
-       /*  setCantCoincidencias(0) */
         dispatch(setCargando(true))
-       /*  setPodesJugar(false) */
-        /* setOpacidad(opaca) */
-       /*  setCantVolteadas(0)
-        setPrimeraVolteada(undefined) */
-       /*  setBotonInhabilitado(true) */
-        /* setIniciarCronometro(false)
-        setSegundos(0)
-        setMinutos(0)
-        setHoras(0)
-        setContadorIntentos(0) */
         dispatch(reiniciarReloj())
         dispatch(setGano(false))
-
     }
 
     return (

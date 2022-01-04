@@ -1,7 +1,7 @@
 import Titulo from "../Titulo/Titulo";
 
-const Home = (props) => {
-    const {setInicioJuego} = props
+const Home = ({setInicioJuego}) => {
+
     return (  
         <div className='d-flex align-items-center'>
             <div className='mx-4'>    
