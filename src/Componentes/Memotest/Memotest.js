@@ -16,7 +16,7 @@ import { terminarJuego, getFichas, setFichas, getJuegoEmpezado } from '../../app
 
 import { useSelector, useDispatch } from 'react-redux'
 
-
+import { getGano, setGano } from '../../app/slice/enJuegoSlice'
 
 const Memotes = () => {
 
@@ -26,8 +26,8 @@ const Memotes = () => {
     const tema = useSelector(getTema)
     const juegoEmpezado = useSelector(getJuegoEmpezado)
     const fichas = useSelector(getFichas)
+    const gano = useSelector(getGano)
 
-    const tiempoEntreTurnos = 500
 
     const opaca = "opaca"
     const transparente = "transparente"
@@ -39,17 +39,17 @@ const Memotes = () => {
 /*     const [dificultad, setDificultad] = useState({tiempo: undefined, cantParejas:undefined}) */
 /*     const [tema, setTema] = useState("") */
     /* const [fichas, setFichas] = useState([]) */
-    const [opacidad, setOpacidad] = useState(opaca)
-    const [cantVolteadas, setCantVolteadas] = useState(0)
+   /*  const [opacidad, setOpacidad] = useState(opaca) */
+    /* const [cantVolteadas, setCantVolteadas] = useState(0)
     const [cantCoincidencias, setCantCoincidencias] = useState(0)
     const [primeraVolteada, setPrimeraVolteada] = useState()
-    const [segundaVolteada, setSegundaVolteada] = useState()
-    const [podesJugar, setPodesJugar] = useState(false)
-    const [contenedor, setContenedor] = useState()
+    const [segundaVolteada, setSegundaVolteada] = useState() */
+   /*  const [podesJugar, setPodesJugar] = useState(false) */
+   /*  const [contenedor, setContenedor] = useState() */
     /* const [widthContenedor, setWidthContenedor] = useState("") */
     const [cargando, setCargando] = useState(true)
-    const [gano, setGano] = useState(false)
-    const [botonInhabilitado, setBotonInhabilitado] = useState(true)
+    /* const [gano, setGano] = useState(false) */
+    /* const [botonInhabilitado, setBotonInhabilitado] = useState(true) */
     
 
 
@@ -190,54 +190,24 @@ const Memotes = () => {
     /* -------- PONE VALORES A LO INICIAL ---------- */
     /* en reiniciar y en nuevoJuego */
     const limpiarValores = () =>{
-        setCantCoincidencias(0)
+       /*  setCantCoincidencias(0) */
         setCargando(true)
-        setPodesJugar(false)
-        setOpacidad(opaca)
-        setCantVolteadas(0)
-        setPrimeraVolteada(undefined)
-        setBotonInhabilitado(true)
+       /*  setPodesJugar(false) */
+        /* setOpacidad(opaca) */
+       /*  setCantVolteadas(0)
+        setPrimeraVolteada(undefined) */
+       /*  setBotonInhabilitado(true) */
         /* setIniciarCronometro(false)
         setSegundos(0)
         setMinutos(0)
         setHoras(0)
         setContadorIntentos(0) */
         dispatch(reiniciarValores())
-        setGano(false)
+        dispatch(setGano(false))
 
     }
     
     
-    /*  --------- MUESTRA LA IMAGEN DE LA FICHA, Y LA GUARDA PARA DESPUES COMPARARLA ----------- */
-    /* cuando haga click en la ficha */
-    const darVuelta = (event) =>{
-        if(podesJugar){
-            let img = event.target.querySelector('img')
-            if(img !== null && img.className !== opaca && img.className !== descubierta){
-                if(primeraVolteada === undefined){
-                    setPrimeraVolteada(img)
-                    setCantVolteadas(cantVolteadas+1)
-                }else{
-                    setSegundaVolteada(img)
-                    setCantVolteadas(cantVolteadas+1)
-                    setPodesJugar(false)
-                }
-                /* event.target.className += " animacionGiro" */
-                img.className = opaca
-            }
-        }
-    }
-    
-    
-    /* --------- CUANDO DE CLICK EN EL BOTON INICIAR DEL FORM DE CONDICIONES -------- */
-    /* useEffect(() => {
-        if(tema !== ""){
-            prepararJuego()
-            setJuegoEmpezado(true)
-        }
-    }, [tema]) */
-
-
     /* --------- PARA SACAR EL SPINNER DESPUES DE UN SEGUNDO ----------- */
     useEffect(() =>{
         if(fichas.length > 0){
@@ -246,60 +216,6 @@ const Memotes = () => {
             }, 1000)
         }
     }, [fichas])
-    
-    /* ------------- OCULTA LAS IMAGENES Y HABILITA LOS BOTONES -----------*/
-    useEffect(() =>{
-        if(!cargando){
-            setContenedor(window.document.querySelector(".contenedorFichas"))
-            setTimeout( () => {
-                setOpacidad(transparente)
-                setPodesJugar(true)
-                setBotonInhabilitado(false)
-                /* setIniciarCronometro(true) */
-                dispatch(iniciarReloj())
-            }, dife.tiempo)
-        }
-    }, [cargando])
-    
-
-    /* PARA DEFINIR EL ANCHO DEL TABLERO, SEGUN LAS CANT DE FICHAS */
-    useEffect(() =>{
-        if(contenedor !== undefined){
-            contenedor.style.width = widthContenedor
-        }
-    }, [contenedor])
-
-
-    /* ----------- HACE LA COMPARACION ENTRA LAS FICHAS VOLTEADAS */
-    useEffect(() => {
-        if(cantVolteadas === 2){
-            setTimeout( () => {
-                if(primeraVolteada.alt !== segundaVolteada.alt){
-                    primeraVolteada.className = transparente
-                    segundaVolteada.className = transparente                
-                }else{
-                    setCantCoincidencias(cantCoincidencias+1)
-                    primeraVolteada.className = descubierta
-                    segundaVolteada.className = descubierta 
-                }
-                setPodesJugar(true)
-            }, tiempoEntreTurnos)
-            dispatch(sumaContInt())
-            /* setContadorIntentos(contadorIntentos+1) */
-            setPrimeraVolteada(undefined)
-            setSegundaVolteada(undefined)
-            setCantVolteadas(0)
-        }
-    }, [cantVolteadas])
-
-
-    useEffect(() =>{
-        if(cantCoincidencias === dife.cantParejas){
-            setGano(true)
-            dispatch(pararReloj())
-            /* setIniciarCronometro(false) */
-        }
-    }, [cantCoincidencias])
 
 
 
@@ -333,12 +249,14 @@ const Memotes = () => {
                 ? !gano
 
                     ?   <VistaJuego 
-                            botonInhabilitado={botonInhabilitado} 
+                            /* botonInhabilitado={botonInhabilitado}  */
                             reiniciar={reiniciar}
                             nuevoJuego={nuevoJuego}
                             fichas={fichas}
-                            darVuelta={darVuelta}
-                            opacidad={opacidad}  
+                            /* darVuelta={darVuelta} */
+                           /*  opacidad={opacidad} */
+                            /* setCantVolteadas={setCantVolteadas} */
+                            /* setPrimeraVolteada={setPrimeraVolteada} */
                         />
 
                     :   <Ganaste
