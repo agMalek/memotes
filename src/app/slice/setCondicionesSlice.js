@@ -14,14 +14,9 @@ export const setCondicionesSlice = createSlice({
     initialState: initialStateValues,
     reducers: {
         reiniciarValores: state => {
-            state = {
-                dificultad: {
-                    tiempo: undefined, 
-                    cantParejas:undefined
-                },
-                tema: "",
-                widthContenedor: ""
-            }
+            state.dificultad = initialStateValues.dificultad
+            state.tema = initialStateValues.tema
+            state.widthContenedor = initialStateValues.widthContenedor
         },
         setDificultad: (state, action) =>{
             state.dificultad = {
@@ -40,8 +35,8 @@ export const setCondicionesSlice = createSlice({
 
 export const {reiniciarValores, setDificultad, setTema, setWidthContenedor} = setCondicionesSlice.actions
 
-export const dif = state => state.setCondicionesSlice.dificultad
+export const getDificultad = state => state.setCondicionesSlice.dificultad
 export const getTema = state => state.setCondicionesSlice.tema
-export const width = state => state.setCondicionesSlice.widthContenedor
+export const getWidthContenedor = state => state.setCondicionesSlice.widthContenedor
 
 export default setCondicionesSlice.reducer

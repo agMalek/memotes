@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { iniciarReloj } from '../../../app/slice/infoPartidaSlice';
-import { dif, width} from '../../../app/slice/setCondicionesSlice';
+import { getDificultad, getWidthContenedor} from '../../../app/slice/setCondicionesSlice';
 
 import Tablero from './Tablero/Tablero';
 import VistaBotonesJuego from './VistaBotonesJuego/VistaBotonesJuego';
@@ -16,8 +16,8 @@ const VistaJuego = ({prepararJuego}) => {
 
     const dispatch = useDispatch()
 
-    const dife = useSelector(dif)
-    const widthContenedor = useSelector(width)
+    const dife = useSelector(getDificultad)
+    const widthContenedor = useSelector(getWidthContenedor)
 
     const opaca = "opaca"
     const transparente = "transparente"

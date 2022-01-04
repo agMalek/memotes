@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import { sumaContInt, pararReloj } from "../../../../app/slice/infoPartidaSlice";
-import { dif } from "../../../../app/slice/setCondicionesSlice";
+import { getDificultad } from "../../../../app/slice/setCondicionesSlice";
 import { setGano, getFichas } from "../../../../app/slice/enJuegoSlice";
 
 import Ficha from "./Ficha/Ficha";
@@ -14,7 +14,7 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
 
     const dispatch = useDispatch()
 
-    const dife = useSelector(dif)
+    const dife = useSelector(getDificultad)
     const fichas = useSelector(getFichas)
 
     const opaca = "opaca"

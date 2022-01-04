@@ -1,6 +1,6 @@
 
 import { useDispatch } from 'react-redux'
-import { setDificultad, setTema } from '../../../app/slice/setCondicionesSlice'
+import { reiniciarValores as reiniciarCondiciones} from '../../../app/slice/setCondicionesSlice'
 import { setFichas, terminarJuego, setCargando, setGano} from '../../../app/slice/enJuegoSlice'
 import { reiniciarValores as reiniciarReloj } from '../../../app/slice/infoPartidaSlice'
 
@@ -20,11 +20,7 @@ const BotonesBasicos = ({botonInhabilitado, prepararJuego}) => {
     /* -------- lIMPIA VALORES Y CONDICIONES DE DIFICULTAD Y TEMA, PARA EMPEZAR UN NUEVO TOTAL, ME REDIRECCIONA AL FORM DE COND. ------- */
     /* en VistaDeJuego y en Ganaste */
     const nuevoJuego = () => {
-        dispatch(setDificultad({
-            tiempo: undefined,
-            cantParejas: undefined
-        }))
-        dispatch(setTema(""))
+        dispatch(reiniciarCondiciones())
         dispatch(setFichas([]))
         dispatch(terminarJuego())
         limpiarValores()

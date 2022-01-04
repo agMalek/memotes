@@ -61,7 +61,6 @@ const FormCondiciones = ({prepararJuego}) => {
     /* se usa cuando le doy al boton iniciar en el form de condiciones */
     const iniciarJuego = (e) =>{
         e.preventDefault()
-        /* if(dificultad.tiempo === undefined || dificultad.cantParejas === undefined){ */
         if(level === ""){
             alert("Debes seleccionar un nivel de dificultad")
         }else{
@@ -75,7 +74,6 @@ const FormCondiciones = ({prepararJuego}) => {
     useEffect(() => {
         if(tema !== ""){
             prepararJuego()
-            /* setJuegoEmpezado(true) */
             dispatch(empezarJuego())
         }
     }, [tema])

@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { dif, getTema} from '../../app/slice/setCondicionesSlice'
+import { getDificultad, getTema} from '../../app/slice/setCondicionesSlice'
 import { getGano, getFichas, setFichas, getJuegoEmpezado, getCargando, setCargando } from '../../app/slice/enJuegoSlice'
 
 import {Banderas, Animales, Comidas} from '../../utils/fichas'
@@ -21,7 +21,7 @@ const Memotes = () => {
 
     const juegoEmpezado = useSelector(getJuegoEmpezado)
     const fichas = useSelector(getFichas)
-    const dife = useSelector(dif)
+    const dife = useSelector(getDificultad)
     const tema = useSelector(getTema)
     const cargando = useSelector(getCargando)
     const gano = useSelector(getGano)
