@@ -21,13 +21,14 @@ const FormCondiciones = ({prepararJuego}) => {
     const cantParejasNivelC = 20
 
 
-    const [level, setLevel] = useState("")
+    const [nivel, setNivel] = useState("")
+    const [tematica, setTematica] = useState("Banderas")
 
 
     /* ----------  SETEA EN DIFICULTAD LOS TIEMPOS Y CONDICIONES QUE CORRESPONDAN  ------------ */
     /* se usa cunado elije la dificultad en el form de condiciones */
-    const setNivel = () => {
-        switch(level){
+    const armadoDificultad = () => {
+        switch(nivel){
             case "Easy":
                 dispatch(setDificultad({
                     tiempo: tiempoNivelA,
@@ -54,17 +55,16 @@ const FormCondiciones = ({prepararJuego}) => {
         }
     }
 
-    
 
     /* -------------- SETEA EL TEMA -------------- */
     /* se usa cuando le doy al boton iniciar en el form de condiciones */
     const iniciarJuego = (e) =>{
         e.preventDefault()
-        if(level === ""){
+        if(nivel === ""){
             alert("Debes seleccionar un nivel de dificultad")
         }else{
-            setNivel()
-            dispatch(setTema(e.target.querySelector("select").value))
+            armadoDificultad()
+            dispatch(setTema(tematica))
         }
     }
 
@@ -83,19 +83,19 @@ const FormCondiciones = ({prepararJuego}) => {
             <div className='contenedorDificultad '>
                 <div className='mx-3'>
                     <label className='labelDificultad' htmlFor="Easy">Easy</label>
-                    <input className='inputDificultad' type="radio" id="Easy" onChange={(SyntheticEvent)=>setLevel(SyntheticEvent.target.id)} name='dificultad'/>
+                    <input className='inputDificultad' type="radio" id="Easy" onChange={(SyntheticEvent)=>setNivel(SyntheticEvent.target.id)} name='dificultad'/>
                 </div>
                 <div  className='mx-3'>
                     <label className='labelDificultad' htmlFor="Medium">Medium</label>
-                    <input className='inputDificultad' type="radio" id="Medium" onChange={(SyntheticEvent)=>setLevel(SyntheticEvent.target.id)} name='dificultad'/>
+                    <input className='inputDificultad' type="radio" id="Medium" onChange={(SyntheticEvent)=>setNivel(SyntheticEvent.target.id)} name='dificultad'/>
                 </div>
                 <div  className='mx-3'>
                     <label className='labelDificultad' htmlFor="Hard">Hard</label>
-                    <input className='inputDificultad' type="radio" id="Hard" onChange={(SyntheticEvent)=>setLevel(SyntheticEvent.target.id)} name='dificultad'/>
+                    <input className='inputDificultad' type="radio" id="Hard" onChange={(SyntheticEvent)=>setNivel(SyntheticEvent.target.id)} name='dificultad'/>
                 </div>
             </div>
             <div className='contenedorTemas'>  
-                <select className='selectTema'>
+                <select className='selectTema' onChange={(SyntheticEvent)=>setTematica(SyntheticEvent.target.value)}>
                     <option value="Banderas">Banderas</option>
                     <option value="Animales">Animales</option>
                     <option value="Comidas">Comidas</option>
