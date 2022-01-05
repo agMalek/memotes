@@ -33,11 +33,11 @@ export const enJuegoSlice = createSlice({
 
 
 
-export const {empezarJuego, terminarJuego, setFichas, setGano, setCargando} = enJuegoSlice.actions
+/* export const {empezarJuego, terminarJuego, setFichas, setGano, setCargando} = enJuegoSlice.actions */
 
-export const getJuegoEmpezado = state => state.enJuegoSlice.juegoEmpezado
+/* export const getJuegoEmpezado = state => state.enJuegoSlice.juegoEmpezado
 export const getFichas = state => state.enJuegoSlice.fichas
 export const getGano = state => state.enJuegoSlice.gano
-export const getCargando = state => state.enJuegoSlice.cargando
+export const getCargando = state => state.enJuegoSlice.cargando */
 
 export default enJuegoSlice.reducer

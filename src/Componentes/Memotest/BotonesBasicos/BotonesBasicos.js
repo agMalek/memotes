@@ -1,8 +1,8 @@
 
 import { useDispatch } from 'react-redux'
-import { reiniciarValores as reiniciarCondiciones} from '../../../app/slice/setCondicionesSlice'
-import { setFichas, terminarJuego, setCargando, setGano} from '../../../app/slice/enJuegoSlice'
-import { reiniciarValores as reiniciarReloj } from '../../../app/slice/infoPartidaSlice'
+
+import { reiniciarCondiciones, setFichas, terminarJuego, setCargando, setGano, reiniciarInfoPartida } from '../MemotestSlice'
+
 
 import './BotonesBasicos.css'
 
@@ -30,7 +30,7 @@ const BotonesBasicos = ({botonInhabilitado, prepararJuego}) => {
     /* en reiniciar y en nuevoJuego */
     const limpiarValores = () =>{
         dispatch(setCargando(true))
-        dispatch(reiniciarReloj())
+        dispatch(reiniciarInfoPartida())
         dispatch(setGano(false))
     }
 

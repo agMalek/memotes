@@ -2,8 +2,7 @@
 import { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { iniciarReloj } from '../../../app/slice/infoPartidaSlice';
-import { getDificultad, getWidthContenedor} from '../../../app/slice/setCondicionesSlice';
+import { iniciarReloj, getDificultad, getWidthContenedor } from '../MemotestSlice';
 
 import Tablero from './Tablero/Tablero';
 import VistaBotonesJuego from './VistaBotonesJuego/VistaBotonesJuego';

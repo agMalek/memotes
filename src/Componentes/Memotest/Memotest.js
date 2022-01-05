@@ -1,8 +1,7 @@
 import {useState, useEffect} from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { getDificultad, getTema} from '../../app/slice/setCondicionesSlice'
-import { getGano, getFichas, setFichas, getJuegoEmpezado, getCargando, setCargando } from '../../app/slice/enJuegoSlice'
+import { getDificultad, getTema, getGano, getFichas, setFichas, getJuegoEmpezado, getCargando, setCargando } from './MemotestSlice'
 
 import {Banderas, Animales, Comidas} from '../../utils/fichas'
 

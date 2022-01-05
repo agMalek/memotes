@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { sumaContInt, pararReloj } from "../../../../app/slice/infoPartidaSlice";
-import { getDificultad } from "../../../../app/slice/setCondicionesSlice";
-import { setGano, getFichas } from "../../../../app/slice/enJuegoSlice";
+import { sumaContInt, pararReloj, getDificultad, setGano, getFichas } from "../../MemotestSlice";
 
 import Ficha from "./Ficha/Ficha";
 

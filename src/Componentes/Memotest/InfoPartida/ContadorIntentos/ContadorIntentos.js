@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { contIntentos } from '../../../../app/slice/infoPartidaSlice'; 
+import { contIntentos } from '../../MemotestSlice';
 
 import './ContadorIntentos.css'
 

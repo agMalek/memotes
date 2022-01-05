@@ -2,8 +2,7 @@
 import {useEffect, useState} from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { setWidthContenedor, setDificultad, setTema, getTema} from '../../../../app/slice/setCondicionesSlice'
-import { empezarJuego } from '../../../../app/slice/enJuegoSlice'
+import { setWidthContenedor, setDificultad, setTema, getTema, empezarJuego } from '../../MemotestSlice'
 
 import './FormCondiciones.css'
 

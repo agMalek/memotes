@@ -1,6 +1,7 @@
 import ContadorIntentos from './ContadorIntentos/ContadorIntentos';
-import'./InfoPartida.css'
 import Reloj from './Reloj/Reloj';
+
+import'./InfoPartida.css'
 
 const InfoPartida = () => {
     return (  

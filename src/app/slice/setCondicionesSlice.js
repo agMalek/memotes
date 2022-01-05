@@ -33,10 +33,10 @@ export const setCondicionesSlice = createSlice({
     }
 })
 
-export const {reiniciarValores, setDificultad, setTema, setWidthContenedor} = setCondicionesSlice.actions
-
+/* export const {reiniciarValores, setDificultad, setTema, setWidthContenedor} = setCondicionesSlice.actions */
+/* 
 export const getDificultad = state => state.setCondicionesSlice.dificultad
 export const getTema = state => state.setCondicionesSlice.tema
 export const getWidthContenedor = state => state.setCondicionesSlice.widthContenedor
-
+ */
 export default setCondicionesSlice.reducer
