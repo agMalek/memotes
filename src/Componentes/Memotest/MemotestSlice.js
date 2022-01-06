@@ -15,7 +15,8 @@ const initialStateValues = {
             ayuda: {
                 tiempoEntreAyudas: 0,
                 cantAyudas: 0, 
-                porcentaje: 0
+                porcentaje: 0,
+                duracion: 0
             }
         },
         tema: "",
@@ -66,7 +67,8 @@ export const memotestSlice = createSlice({
                 ayuda : {
                     tiempoEntreAyudas: action.payload.ayuda.tiempoEntreAyudas,
                     cantAyudas: action.payload.ayuda.cantAyudas, 
-                    porcentaje: action.payload.ayuda.porcentaje
+                    porcentaje: action.payload.ayuda.porcentaje,
+                    duracion: action.payload.ayuda.duracion
                 }
             }
         },

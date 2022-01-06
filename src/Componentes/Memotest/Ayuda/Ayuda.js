@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import './Ayuda.css'
 import { useSelector } from 'react-redux';
-import { getDificultad } from '../../MemotestSlice';
+import { getDificultad } from '../MemotestSlice';
 
 const Ayuda = ({contenedor, setPodesJugar}) => {
 
-    const {ayuda: {tiempoEntreAyudas, cantAyudas, porcentaje}} = useSelector(getDificultad)
+    const {ayuda: {tiempoEntreAyudas, cantAyudas, porcentaje, duracion}} = useSelector(getDificultad)
 
     const transparente = "transparente"
     const opaca = "opaca"
@@ -69,7 +69,7 @@ const Ayuda = ({contenedor, setPodesJugar}) => {
                 girarFichas(arrayIndices, arrayFiltrado, transparente)  
                 setEmpezoAyuda(false)
                 setPodesJugar(true)
-            }, 2000)
+            }, duracion)
             return () => clearTimeout(time);
         }else{
             time = setTimeout(() => {

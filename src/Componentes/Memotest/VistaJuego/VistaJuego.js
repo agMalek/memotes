@@ -5,10 +5,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { iniciarReloj, getDificultad, getWidthContenedor } from '../MemotestSlice';
 
 import Tablero from './Tablero/Tablero';
-import VistaBotonesJuego from './VistaBotonesJuego/VistaBotonesJuego';
-import InfoPartida from '../InfoPartida/InfoPartida';
 
 import './VistaJuego.css'
+import Titulo from '../Titulo/Titulo';
+import BotonesBasicos from '../BotonesBasicos/BotonesBasicos';
+import Reloj from '../Reloj/Reloj';
+import Ayuda from '../Ayuda/Ayuda';
+import ContadorIntentos from '../ContadorIntentos/ContadorIntentos';
 
 
 const VistaJuego = ({prepararJuego}) => {
@@ -33,7 +36,6 @@ const VistaJuego = ({prepararJuego}) => {
             setOpacidad(transparente)
             setPodesJugar(true)
             setBotonInhabilitado(false)
-            /* setIniciarCronometro(true) */
             dispatch(iniciarReloj())
         }, dife.tiempo)
     }, [])
@@ -49,18 +51,23 @@ const VistaJuego = ({prepararJuego}) => {
 
     return ( 
         <div className='d-flex justify-content-evenly'>
-            <VistaBotonesJuego 
-                botonInhabilitado={botonInhabilitado}
-                prepararJuego={prepararJuego}
-            />
+            <div className='d-flex flex-column justify-content-center align-items-center'>
+                <Titulo/>
+                <BotonesBasicos 
+                    botonInhabilitado={botonInhabilitado}
+                    prepararJuego={prepararJuego}
+                />
+            </div>
             <Tablero 
                 opacidad={opacidad}
                 podesJugar={podesJugar}
                 setPodesJugar={setPodesJugar}
             />
             <div className='d-flex flex-column justify-content-evenly'>
-                <div className='d-flex flex-column'>
-                    <InfoPartida contenedor={contenedor} setPodesJugar={setPodesJugar}/>
+                <div className='d-flex flex-column'>               
+                    <Reloj />
+                    <Ayuda contenedor={contenedor} setPodesJugar={setPodesJugar}/>
+                    <ContadorIntentos/>
                 </div>
             </div>
         </div>

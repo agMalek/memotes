@@ -12,25 +12,51 @@ const FormCondiciones = ({prepararJuego}) => {
 
     const tema = useSelector(getTema)
   
-    const tiempoNivelA = 1000
-    const tiempoNivelB = 5000
-    const tiempoNivelC = 3000
 
-    const cantParejasNivelA = 2
-    const cantParejasNivelB = 12
-    const cantParejasNivelC = 20
+    const nivelA = {
+        tiempo: 1000,
+        cantParejas: 2,
+        ayuda : {
+            tiempoEntreAyudas: 5000,
+            cantAyudas: 5, 
+            porcentaje: 0.6,
+            duracion: 8000
+        }
+    }
 
-    const msgNivelA = `Jugarás con ${cantParejasNivelA*2} fichas (${cantParejasNivelA}) parejas. \n
-    Tendrás ${tiempoNivelA/1000} segundos al inicio del juego para ver y memorizar las fichas.`
-    const msgNivelB = `Jugarás con ${cantParejasNivelB*2} fichas (${cantParejasNivelB}) parejas. \n
-    Tendrás ${tiempoNivelB/1000} segundos al inicio del juego para ver y memorizar las fichas.`
-    const msgNivelC = `Jugarás con ${cantParejasNivelC*2} fichas (${cantParejasNivelC}) parejas. \n
-    Tendrás ${tiempoNivelC/1000} segundos al inicio del juego para ver y memorizar las fichas.`
+    const nivelB = {
+        tiempo: 5000,
+        cantParejas: 12,
+        ayuda : {
+            tiempoEntreAyudas: 10000,
+            cantAyudas: 4, 
+            porcentaje: 0.4,
+            duracion: 5000
+        }
+    }
 
+    const nivelC = {
+        tiempo: 3000,
+        cantParejas: 20,
+        ayuda : {
+            tiempoEntreAyudas: 20000,
+            cantAyudas: 3, 
+            porcentaje: 0.2,
+            duracion: 3000
+        }
+    }
+
+/*     const msgNivelA = `Jugarás con ${nivelA.cantParejas*2} fichas (${nivelA.cantParejas}) parejas. \n
+    Tendrás ${nivelA.tiempo/1000} segundos al inicio del juego para ver y memorizar las fichas.`
+    const msgNivelB = `Jugarás con ${nivelB.cantParejas*2} fichas (${nivelB.cantParejas}) parejas. \n
+    Tendrás ${nivelB.tiempo/1000} segundos al inicio del juego para ver y memorizar las fichas.`
+    const msgNivelC = `Jugarás con ${nivelC.cantParejas*2} fichas (${nivelC.cantParejas}) parejas. \n
+    Tendrás ${nivelC.tiempo/1000} segundos al inicio del juego para ver y memorizar las fichas.`
+ */
 
     const [nivel, setNivel] = useState("")
     const [tematica, setTematica] = useState("Banderas")
-    const [msgNivel, setMsgNivel] = useState("")
+   /*  const [msgNivel, setMsgNivel] = useState("") */
 
 
     const mostarMsgNivel = (value) => {
@@ -56,39 +82,15 @@ const FormCondiciones = ({prepararJuego}) => {
     const armadoDificultad = () => {
         switch(nivel){
             case "Easy":
-                dispatch(setDificultad({
-                    tiempo: tiempoNivelA,
-                    cantParejas: cantParejasNivelA,
-                    ayuda : {
-                        tiempoEntreAyudas: 5000,
-                        cantAyudas: 5, 
-                        porcentaje: 0.6
-                    }
-                }))
+                dispatch(setDificultad(nivelA))
                 dispatch(setWidthContenedor("35%"))
                 break;
             case "Medium":
-                dispatch(setDificultad({
-                    tiempo: tiempoNivelB,
-                    cantParejas: cantParejasNivelB,
-                    ayuda : {
-                        tiempoEntreAyudas: 10000,
-                        cantAyudas: 4, 
-                        porcentaje: 0.4
-                    }
-                }))
+                dispatch(setDificultad(nivelB))
                 dispatch(setWidthContenedor("55%"))
                 break;
             case "Hard":
-                dispatch(setDificultad({
-                    tiempo: tiempoNivelC,
-                    cantParejas: cantParejasNivelC,
-                    ayuda : {
-                        tiempoEntreAyudas: 20000,
-                        cantAyudas: 3, 
-                        porcentaje: 0.2
-                    }
-                }))
+                dispatch(setDificultad(nivelC))
                 dispatch(setWidthContenedor("65%"))
                 break;
             default:
