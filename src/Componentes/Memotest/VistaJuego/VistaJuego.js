@@ -60,7 +60,7 @@ const VistaJuego = ({prepararJuego}) => {
             />
             <div className='d-flex flex-column justify-content-evenly'>
                 <div className='d-flex flex-column'>
-                    <InfoPartida />
+                    <InfoPartida contenedor={contenedor} setPodesJugar={setPodesJugar}/>
                 </div>
             </div>
         </div>

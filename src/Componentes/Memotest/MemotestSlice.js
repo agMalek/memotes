@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialStateValues = {
-    infoGeneral: {  
+    infoGeneral: {
+        quieroJugar: false,
         juegoEmpezado: false,
         fichas: [],
         gano: false,
@@ -10,7 +11,12 @@ const initialStateValues = {
     condiciones: {
         dificultad: {
             tiempo: undefined, 
-            cantParejas:undefined
+            cantParejas:undefined,
+            ayuda: {
+                tiempoEntreAyudas: 0,
+                cantAyudas: 0, 
+                porcentaje: 0
+            }
         },
         tema: "",
         widthContenedor: ""
@@ -30,6 +36,9 @@ export const memotestSlice = createSlice({
     name: "memotestSlice",
     initialState: initialStateValues,
     reducers: {
+        setQuieroJugar: (state, action) => {
+            state.infoGeneral.quieroJugar = action.payload
+        },
         empezarJuego: state =>{
             state.infoGeneral.juegoEmpezado = true    
         },
@@ -53,7 +62,12 @@ export const memotestSlice = createSlice({
         setDificultad: (state, action) =>{
             state.condiciones.dificultad = {
                 tiempo: action.payload.tiempo, 
-                cantParejas: action.payload.cantParejas
+                cantParejas: action.payload.cantParejas,
+                ayuda : {
+                    tiempoEntreAyudas: action.payload.ayuda.tiempoEntreAyudas,
+                    cantAyudas: action.payload.ayuda.cantAyudas, 
+                    porcentaje: action.payload.ayuda.porcentaje
+                }
             }
         },
         setTema: (state, action) => {
@@ -91,6 +105,7 @@ export const memotestSlice = createSlice({
 })
 
 export const {
+    setQuieroJugar,
     empezarJuego, 
     terminarJuego, 
     setFichas, 
@@ -113,6 +128,7 @@ export const {
 
 
 
+export const getQuieroJugar = state => state.memotestSlice.infoGeneral.quieroJugar
 export const getJuegoEmpezado = state => state.memotestSlice.infoGeneral.juegoEmpezado
 export const getFichas = state => state.memotestSlice.infoGeneral.fichas
 export const getGano = state => state.memotestSlice.infoGeneral.gano

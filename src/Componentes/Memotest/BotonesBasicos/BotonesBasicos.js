@@ -1,7 +1,7 @@
 
 import { useDispatch } from 'react-redux'
 
-import { reiniciarCondiciones, setFichas, terminarJuego, setCargando, setGano, reiniciarInfoPartida } from '../MemotestSlice'
+import { reiniciarCondiciones, setFichas, terminarJuego, setCargando, setGano, reiniciarInfoPartida, setQuieroJugar} from '../MemotestSlice'
 
 
 import './BotonesBasicos.css'
@@ -33,11 +33,18 @@ const BotonesBasicos = ({botonInhabilitado, prepararJuego}) => {
         dispatch(reiniciarInfoPartida())
         dispatch(setGano(false))
     }
+    
+
+    const volverAHome = () => {
+        nuevoJuego()
+        dispatch(setQuieroJugar(false))
+    }
 
     return (
         <>
-            <button className='btn btn-primary mb-4 mx-2 w-75' disabled={botonInhabilitado} onClick={() => reiniciar()}>Reiniciar</button>
-            <button className='btn btn-primary mb-4 mx-2 w-75' disabled={botonInhabilitado} onClick={() => nuevoJuego()} >Nuevo Juego</button>
+            <button className='btn btn-primary mb-4 mx-3 w-100' disabled={botonInhabilitado} onClick={() => reiniciar()}>Reiniciar</button>
+            <button className='btn btn-primary mb-4 mx-3 w-100' disabled={botonInhabilitado} onClick={() => nuevoJuego()} >Nuevo Juego</button>
+            <button className='btn btn-primary mb-4 mx-3 w-100' disabled={botonInhabilitado} onClick={() => volverAHome()} >Volver al Home</button>
         </>  
     );
 }

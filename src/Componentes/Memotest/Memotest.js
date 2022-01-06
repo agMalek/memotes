@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { getDificultad, getTema, getGano, getFichas, setFichas, getJuegoEmpezado, getCargando, setCargando } from './MemotestSlice'
+import { getDificultad, getTema, getGano, getFichas, setFichas, getJuegoEmpezado, getCargando, setCargando, getQuieroJugar } from './MemotestSlice'
 
 import {Banderas, Animales, Comidas} from '../../utils/fichas'
 
@@ -24,10 +24,10 @@ const Memotes = () => {
     const tema = useSelector(getTema)
     const cargando = useSelector(getCargando)
     const gano = useSelector(getGano)
+    const quieroJugar = useSelector(getQuieroJugar)
 
 
-
-    const [inicioJuego, setInicioJuego] = useState(false)
+    /* const [inicioJuego, setInicioJuego] = useState(false) */
 
     
 
@@ -114,9 +114,9 @@ const Memotes = () => {
     return(
         <div className='contenedor'> 
             {
-                !inicioJuego ? 
+                !quieroJugar ? 
                     <Home 
-                        setInicioJuego={setInicioJuego}
+                        /* setInicioJuego={setInicioJuego} */
                     />
             
                 : !juegoEmpezado ?
