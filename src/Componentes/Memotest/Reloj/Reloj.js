@@ -1,44 +1,66 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { sumaSegundo, sumaMinuto, sumaHora, reloj } from '../MemotestSlice';
+import { sumaSegundo, sumaMinuto, sumaHora, reloj, setReloj, setGano, contIntentos , getGano} from '../MemotestSlice';
 
 import './Reloj.css'
 
 const Reloj = () => {
 
     const dispatch = useDispatch()
-    const {horas, minutos, segundos, iniciarCronometro} = useSelector(reloj)
+    const { horas, minutos, segundos, iniciarCronometro} = useSelector(reloj)
+    const gano = useSelector(getGano)
+
+    const [contHoras, setContHoras] = useState(horas) 
+    const [contMinutos, setContMinutos] = useState(minutos) 
+    const [contSegundos, setContSegundos] = useState(segundos) 
+    /* const [iniciarCronometro, setIniciarCronometro] = useState(false)  */
     
     let intervalRef = useRef();
     
     useEffect(() => {
-        if(iniciarCronometro === true)
-        intervalRef.current = setInterval(contador, 1000);
-        return () => clearInterval(intervalRef.current);
+        if(iniciarCronometro === true){
+            intervalRef.current = setInterval(contador, 1000);
+            return () => clearInterval(intervalRef.current);
+        }else if(contSegundos > 0 && !gano){
+                dispatch(setReloj({
+                    iniciarCronometro : iniciarCronometro,
+                    segundos: contSegundos,
+                    minutos: contMinutos,
+                    horas: contHoras
+                }))
+                dispatch(setGano(true))
+        }
     }, [iniciarCronometro]);
+    
+
     
     
     const contador = () => {
-        dispatch(sumaSegundo())
+       /*  dispatch(sumaSegundo()) */
+       setContSegundos(prev => prev + 1)
     }
 
     useEffect(()=> {
-        if(segundos === 60){
-            dispatch(sumaMinuto())
+        if(contSegundos === 60){
+            /* dispatch(sumaMinuto()) */
+            setContMinutos(prev => prev + 1)
+            setContSegundos(0)
         }
-    },[segundos])
+    },[contSegundos])
 
     useEffect(()=> {
-        if(minutos === 60){
-            dispatch(sumaHora())
+        if(contMinutos === 60){
+            /* dispatch(sumaHora()) */
+            setContHoras(prev => prev + 1)
+            setContMinutos(0)
         }
-    },[minutos])
+    },[contMinutos])
         
 
     return (  
         <div className='contenedorReloj'>
-            <p className='reloj'>{horas === 0 ? "" : "0"+horas + " :"}  {minutos < 10 ? "0"+minutos : minutos } : {segundos < 10 ? "0"+segundos : segundos}</p>
+            <p className='reloj'>{contHoras === 0 ? "" : "0"+contHoras + " :"}  {contMinutos < 10 ? "0"+contMinutos : contMinutos } : {contSegundos < 10 ? "0"+contSegundos : contSegundos}</p>
         </div>
     );
 }

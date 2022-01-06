@@ -61,19 +61,19 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
                     primeraVolteada.className = descubierta
                     segundaVolteada.className = descubierta
                 }
+                dispatch(sumaContInt())
                 setPodesJugar(true)
             }, tiempoEntreTurnos)
-            dispatch(sumaContInt())
             setPrimeraVolteada(undefined)
             setSegundaVolteada(undefined)
             setCantVolteadas(0)
         }
     }, [cantVolteadas])
-
-
+    
+    
     useEffect(() =>{
         if(cantCoincidencias === dife.cantParejas){
-            dispatch(setGano(true))
+            /* dispatch(setGano(true)) */
             dispatch(pararReloj())
         }
     }, [cantCoincidencias])

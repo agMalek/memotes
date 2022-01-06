@@ -78,7 +78,7 @@ export const memotestSlice = createSlice({
         setWidthContenedor: (state, action) =>{
             state.condiciones.widthContenedor = action.payload
         },
-        sumaSegundo: state => {
+        /* sumaSegundo: state => {
             state.infoPartida.reloj.segundos += 1
         },
         sumaMinuto: state => {
@@ -88,6 +88,9 @@ export const memotestSlice = createSlice({
         sumaHora: state => {
             state.infoPartida.reloj.minutos = 0
             state.infoPartida.reloj.horas += 1
+        }, */
+        setReloj: (state, action) => {
+            state.infoPartida.reloj = action.payload 
         },
         sumaContInt: state => {
             state.infoPartida.contIntentos += 1
@@ -117,9 +120,10 @@ export const {
     setDificultad, 
     setTema, 
     setWidthContenedor, 
-    sumaSegundo, 
+    /* sumaSegundo, 
     sumaMinuto, 
-    sumaHora, 
+    sumaHora, */
+    setReloj,
     sumaContInt,
     reiniciarInfoPartida, 
     iniciarReloj, 
