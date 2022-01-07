@@ -68,10 +68,13 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
 
 
 
-    /* ----------- HACE LA COMPARACION ENTRA LAS FICHAS VOLTEADAS */
-    useEffect(() => {
+     /* ----------- HACE LA COMPARACION ENTRA LAS FICHAS VOLTEADAS */
+     useEffect(() => {
+        let time;
         if(cantVolteadas === 2){
-            setTimeout( () => {
+            console.log("entra al if")
+            time = analizarVolteadas()
+            /* time = setTimeout(() => {
                 let img1 = primeraVolteada.querySelector('img')
                 let img2 = segundaVolteada.querySelector('img')
                 if(img1.alt !== img2.alt){
@@ -80,6 +83,7 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
                     cambioDeTurno()
                     primeraVolteada.className = bordeBlanco
                     segundaVolteada.className = bordeBlanco
+                    console.log("Paso por error")
                 }else{
                     setCantCoincidencias(cantCoincidencias+1)
                     img1.className = descubierta
@@ -88,21 +92,56 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
                         ...jugadores[indiceJugador],
                         cantAciertos: jugadores[indiceJugador].cantAciertos +1
                     }))
+                    console.log("Paso por acierto")
+
                 }
                 setPodesJugar(true)
-            }, tiempoEntreTurnos)
-            dispatch(sumaContInt())
+                setPrimeraVolteada(undefined)
+                setSegundaVolteada(undefined)
+                setCantVolteadas(0)
+                dispatch(sumaContInt())
+            }, tiempoEntreTurnos) */
+            return () => clearTimeout(time)
+        }
+    }, [cantVolteadas])
+
+    const analizarVolteadas = () => {
+        let time = setTimeout(() => {
+            let img1 = primeraVolteada.querySelector('img')
+            let img2 = segundaVolteada.querySelector('img')
+            if(img1.alt !== img2.alt){
+                img1.className = transparente
+                img2.className = transparente
+                cambioDeTurno()
+                primeraVolteada.className = bordeBlanco
+                segundaVolteada.className = bordeBlanco
+                console.log("Paso por error")
+            }else{
+                setCantCoincidencias(cantCoincidencias+1)
+                img1.className = descubierta
+                img2.className = descubierta
+                dispatch(setMultijugador({
+                    ...jugadores[indiceJugador],
+                    cantAciertos: jugadores[indiceJugador].cantAciertos +1
+                }))
+                console.log("Paso por acierto")
+
+            }
+            setPodesJugar(true)
             setPrimeraVolteada(undefined)
             setSegundaVolteada(undefined)
             setCantVolteadas(0)
-        }
-    }, [cantVolteadas])
+            dispatch(sumaContInt())
+        }, tiempoEntreTurnos)
+        return () => clearTimeout(time)
+    }
 
 
     useEffect(() =>{
         if(cantCoincidencias === dife.cantParejas){
             dispatch(setGano(true))
             dispatch(pararReloj())
+           /* return () => clearTimeout() */
         }
     }, [cantCoincidencias])
 
