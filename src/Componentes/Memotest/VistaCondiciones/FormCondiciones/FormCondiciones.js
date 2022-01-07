@@ -15,7 +15,7 @@ const FormCondiciones = ({prepararJuego}) => {
 
     const nivelA = {
         tiempo: 1000,
-        cantParejas: 8,
+        cantParejas: 5,
         ayuda : {
             tiempoEntreAyudas: 5000,
             cantAyudas: 5, 

@@ -58,7 +58,8 @@ const initialStateValues = {
                 cantAciertos: 0
             }
         ],
-        indiceActivo: 0
+        indiceActivo: 0,
+        ganador: ""
     }
 }
 
@@ -138,6 +139,9 @@ export const memotestSlice = createSlice({
         setIndiceActivo: (state, action) => {
             state.multijugador.indiceActivo = action.payload
             console.log(action.payload)
+        },
+        setGanador: (state, action) => {
+            state.multijugador.ganador = action.payload
         }
 
     }
@@ -162,7 +166,8 @@ export const {
     iniciarReloj, 
     pararReloj,
     setMultijugador,
-    setIndiceActivo
+    setIndiceActivo,
+    setGanador
 
 } = memotestSlice.actions
 
@@ -184,6 +189,7 @@ export const reloj = state => state.memotestSlice.infoPartida.reloj
 
 export const getJugadores = state => state.memotestSlice.multijugador.jugadores
 export const getIndiceActivo = state => state.memotestSlice.multijugador.indiceActivo
+export const getGanador = state => state.memotestSlice.multijugador.ganador
 
 
 export default memotestSlice.reducer

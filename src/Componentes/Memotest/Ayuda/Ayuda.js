@@ -59,11 +59,13 @@ const Ayuda = ({contenedor, setPodesJugar}) => {
                 girarFichas(arrayIndices, arrayFiltrado, transparente)  
                 setEmpezoAyuda(false)
                 setPodesJugar(true)
+                console.log("termino ayuda")
             }, duracion)
             return () => clearTimeout(time);
         }else{
             time = setTimeout(() => {
                 setPuedoPedir(true)
+                console.log("ahora otra")
             }, tiempoEntreAyudas)
             return () => clearTimeout(time);
         }

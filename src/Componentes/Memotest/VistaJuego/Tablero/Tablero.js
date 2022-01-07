@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { sumaContInt, pararReloj, getDificultad, setGano, getFichas,  getJugadores, getIndiceActivo, setMultijugador, setIndiceActivo } from "../../MemotestSlice";
+import { sumaContInt, pararReloj, getDificultad, setGano, getFichas,  getJugadores, getIndiceActivo, setMultijugador, setIndiceActivo, setGanador } from "../../MemotestSlice";
 
 import Ficha from "./Ficha/Ficha";
 
@@ -71,9 +71,9 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
     /* ----------- HACE LA COMPARACION ENTRA LAS FICHAS VOLTEADAS */
     useEffect(() => {
         if(cantVolteadas === 2){
-            let img1 = primeraVolteada.querySelector('img')
-            let img2 = segundaVolteada.querySelector('img')
             setTimeout( () => {
+                let img1 = primeraVolteada.querySelector('img')
+                let img2 = segundaVolteada.querySelector('img')
                 if(img1.alt !== img2.alt){
                     img1.className = transparente
                     img2.className = transparente
@@ -105,6 +105,8 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
             dispatch(pararReloj())
         }
     }, [cantCoincidencias])
+
+    
 
 
     return ( 
