@@ -23,7 +23,10 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
     const descubierta =  "descubierta"
     const tiempoEntreTurnos = 500
 
+    let bordeColor = `ficha borde-${jugadores[indiceJugador].color}`
+    let bordeBlanco = `ficha borde-white`
     
+
     const [cantVolteadas, setCantVolteadas] = useState(0)
     const [cantCoincidencias, setCantCoincidencias] = useState(0)
     const [primeraVolteada, setPrimeraVolteada] = useState()
@@ -37,14 +40,14 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
             let img = event.target.querySelector('img')
             if(img !== null && img.className !== opaca && img.className !== descubierta){
                 if(primeraVolteada === undefined){
-                    setPrimeraVolteada(img)
+                    setPrimeraVolteada(event.target)
                     setCantVolteadas(cantVolteadas+1)
                 }else{
-                    setSegundaVolteada(img)
+                    setSegundaVolteada(event.target)
                     setCantVolteadas(cantVolteadas+1)
                     setPodesJugar(false)
                 }
-                //event.target.className += " animacionGiro"
+                event.target.className = bordeColor
                 img.className = opaca
             }
         }
@@ -68,15 +71,19 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
     /* ----------- HACE LA COMPARACION ENTRA LAS FICHAS VOLTEADAS */
     useEffect(() => {
         if(cantVolteadas === 2){
+            let img1 = primeraVolteada.querySelector('img')
+            let img2 = segundaVolteada.querySelector('img')
             setTimeout( () => {
-                if(primeraVolteada.alt !== segundaVolteada.alt){
-                    primeraVolteada.className = transparente
-                    segundaVolteada.className = transparente
+                if(img1.alt !== img2.alt){
+                    img1.className = transparente
+                    img2.className = transparente
                     cambioDeTurno()
+                    primeraVolteada.className = bordeBlanco
+                    segundaVolteada.className = bordeBlanco
                 }else{
                     setCantCoincidencias(cantCoincidencias+1)
-                    primeraVolteada.className = descubierta
-                    segundaVolteada.className = descubierta
+                    img1.className = descubierta
+                    img2.className = descubierta
                     dispatch(setMultijugador({
                         ...jugadores[indiceJugador],
                         cantAciertos: jugadores[indiceJugador].cantAciertos +1

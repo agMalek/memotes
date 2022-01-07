@@ -1,15 +1,11 @@
 
 import './Ficha.css'
-import { useSelector } from 'react-redux';
-import { getJugadores, getIndiceActivo } from '../../../MemotestSlice';
 
-const Ficha = ({ficha, opacidad, darVuelta}) => {
+const Ficha = ({ficha, opacidad, darVuelta, borde}) => {
 
-    const jugadores = useSelector(getJugadores)
-    const indice = useSelector(getIndiceActivo)
 
     return ( 
-        <div className='ficha' onClick={(SyntheticEvent) => darVuelta(SyntheticEvent)} >
+        <div className='ficha borde-white' onClick={(SyntheticEvent) => darVuelta(SyntheticEvent)} >
             <img className={opacidad} id="imgFicha" src={ficha.src} alt={ficha.alt} />
         </div>
     );
