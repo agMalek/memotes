@@ -37,16 +37,6 @@ const Ayuda = ({contenedor, setPodesJugar}) => {
         ))
     }
 
-
-    /* useEffect(() => {
-        setTimeout( ()=> {
-            setPuedoPedir(true)
-        }, 10000)
-    }, []) */
-
-
-
-
     const dameIndicesRandom = (rango, cant) =>{
         let array = []
         let numRandom
@@ -80,10 +70,6 @@ const Ayuda = ({contenedor, setPodesJugar}) => {
     }, [empezoAyuda])
 
 
-    const ocultar = () => {
-        
-    }
-
     const dameImgTapadas = () => {       
         let filtrado = []
         let imgs = contenedor.querySelectorAll("img")
@@ -96,7 +82,13 @@ const Ayuda = ({contenedor, setPodesJugar}) => {
     }
         
     return (  
-        <button className='btn btn-success' disabled={!puedoPedir || contAyudas < 1 } onClick={() => ayudar()}>{ contAyudas > 0 ? `Ayuda. Te quedan ${contAyudas}` : `No te quedan ayudas`}</button>
+        <button 
+            className='btn btn-info w-100' 
+            disabled={!puedoPedir || contAyudas < 1 } 
+            onClick={() => ayudar()}
+        >
+            { contAyudas === 0 ? `No te quedan ayudas` : !puedoPedir ? "Enseguida otra ayuda" : `Pedí ayuda. Te quedan ${contAyudas}` }
+        </button>
     );
 }
  

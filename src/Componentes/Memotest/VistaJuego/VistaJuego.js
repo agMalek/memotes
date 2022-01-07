@@ -12,6 +12,7 @@ import BotonesBasicos from '../BotonesBasicos/BotonesBasicos';
 import Reloj from '../Reloj/Reloj';
 import Ayuda from '../Ayuda/Ayuda';
 import ContadorIntentos from '../ContadorIntentos/ContadorIntentos';
+import VistaMultijugador from './VistaMultijador/VistaMultijugador';
 
 
 const VistaJuego = ({prepararJuego}) => {
@@ -63,13 +64,21 @@ const VistaJuego = ({prepararJuego}) => {
                 podesJugar={podesJugar}
                 setPodesJugar={setPodesJugar}
             />
-            <div className='d-flex flex-column justify-content-evenly'>
-                <div className='d-flex flex-column'>               
-                    <Reloj />
-                    <Ayuda contenedor={contenedor} setPodesJugar={setPodesJugar}/>
-                    <ContadorIntentos/>
+            {
+                false ? 
+                <div className='d-flex flex-column justify-content-evenly'>
+                    <div className='d-flex flex-column'>               
+                        <Reloj />
+                        <Ayuda contenedor={contenedor} setPodesJugar={setPodesJugar}/>
+                        <ContadorIntentos/>
+                    </div>
                 </div>
-            </div>
+                : 
+                <VistaMultijugador />
+
+
+            }
+            
         </div>
     );
 }

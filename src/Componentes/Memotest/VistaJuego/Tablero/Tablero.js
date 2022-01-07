@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { sumaContInt, pararReloj, getDificultad, setGano, getFichas } from "../../MemotestSlice";
+import { sumaContInt, pararReloj, getDificultad, setGano, getFichas,  getJugadores, getIndiceActivo, setMultijugador, setIndiceActivo } from "../../MemotestSlice";
 
 import Ficha from "./Ficha/Ficha";
 
@@ -14,6 +14,9 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
 
     const dife = useSelector(getDificultad)
     const fichas = useSelector(getFichas)
+    const jugadores = useSelector(getJugadores)
+    const indiceJugador = useSelector(getIndiceActivo)
+
 
     const opaca = "opaca"
     const transparente = "transparente"
@@ -48,6 +51,19 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
     }
     
 
+    const cambioDeTurno = () => {
+        dispatch(setMultijugador({
+            ...jugadores[indiceJugador],
+            esMiTurno: false
+        }))
+        dispatch(setIndiceActivo(indiceJugador+1 === jugadores.length ? 0 : indiceJugador+1))
+        dispatch(setMultijugador({
+            ...jugadores[indiceJugador+1 === jugadores.length ? 0 : indiceJugador+1],
+            esMiTurno: true
+        }))
+    }
+
+
 
     /* ----------- HACE LA COMPARACION ENTRA LAS FICHAS VOLTEADAS */
     useEffect(() => {
@@ -55,11 +71,16 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
             setTimeout( () => {
                 if(primeraVolteada.alt !== segundaVolteada.alt){
                     primeraVolteada.className = transparente
-                    segundaVolteada.className = transparente                
+                    segundaVolteada.className = transparente
+                    cambioDeTurno()
                 }else{
                     setCantCoincidencias(cantCoincidencias+1)
                     primeraVolteada.className = descubierta
                     segundaVolteada.className = descubierta
+                    dispatch(setMultijugador({
+                        ...jugadores[indiceJugador],
+                        cantAciertos: jugadores[indiceJugador].cantAciertos +1
+                    }))
                 }
                 setPodesJugar(true)
             }, tiempoEntreTurnos)

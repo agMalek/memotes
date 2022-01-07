@@ -30,6 +30,35 @@ const initialStateValues = {
             horas: 0
         },
         contIntentos: 0
+    },
+    multijugador: {
+        jugadores: [
+            {
+                nombre: 1,
+                color: "red",
+                esMiTurno: true,
+                cantAciertos: 0
+            },
+            {
+                nombre: 2,
+                color: "blue",
+                esMiTurno: false,
+                cantAciertos: 0
+            },
+            {
+                nombre: 3,
+                color: "green",
+                esMiTurno: false,
+                cantAciertos: 0
+            },
+            {
+                nombre: 4,
+                color: "yellow",
+                esMiTurno: false,
+                cantAciertos: 0
+            }
+        ],
+        indiceActivo: 0
     }
 }
 
@@ -101,6 +130,14 @@ export const memotestSlice = createSlice({
         },
         pararReloj: state => {
             state.infoPartida.reloj.iniciarCronometro = false
+        },
+        setMultijugador: (state, action) => {
+            state.multijugador.jugadores[state.multijugador.indiceActivo] = action.payload
+            console.log(action.payload)
+        },
+        setIndiceActivo: (state, action) => {
+            state.multijugador.indiceActivo = action.payload
+            console.log(action.payload)
         }
 
     }
@@ -123,7 +160,9 @@ export const {
     sumaContInt,
     reiniciarInfoPartida, 
     iniciarReloj, 
-    pararReloj 
+    pararReloj,
+    setMultijugador,
+    setIndiceActivo
 
 } = memotestSlice.actions
 
@@ -142,5 +181,9 @@ export const getWidthContenedor = state => state.memotestSlice.condiciones.width
 
 export const contIntentos = state => state.memotestSlice.infoPartida.contIntentos
 export const reloj = state => state.memotestSlice.infoPartida.reloj
+
+export const getJugadores = state => state.memotestSlice.multijugador.jugadores
+export const getIndiceActivo = state => state.memotestSlice.multijugador.indiceActivo
+
 
 export default memotestSlice.reducer
