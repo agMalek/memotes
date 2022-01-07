@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import './Ayuda.css'
+
 import { useSelector } from 'react-redux';
 import { getDificultad } from '../MemotestSlice';
+
+import './Ayuda.css'
 
 const Ayuda = ({contenedor, setPodesJugar}) => {
 
@@ -37,16 +39,6 @@ const Ayuda = ({contenedor, setPodesJugar}) => {
         ))
     }
 
-
-    /* useEffect(() => {
-        setTimeout( ()=> {
-            setPuedoPedir(true)
-        }, 10000)
-    }, []) */
-
-
-
-
     const dameIndicesRandom = (rango, cant) =>{
         let array = []
         let numRandom
@@ -80,10 +72,6 @@ const Ayuda = ({contenedor, setPodesJugar}) => {
     }, [empezoAyuda])
 
 
-    const ocultar = () => {
-        
-    }
-
     const dameImgTapadas = () => {       
         let filtrado = []
         let imgs = contenedor.querySelectorAll("img")
@@ -95,8 +83,26 @@ const Ayuda = ({contenedor, setPodesJugar}) => {
         return filtrado
     }
         
+
+    let botonAyuda = "botonAyuda"
     return (  
-        <button className='btn btn-success' disabled={!puedoPedir || contAyudas < 1 } onClick={() => ayudar()}>{ contAyudas > 0 ? `Ayuda. Te quedan ${contAyudas}` : `No te quedan ayudas`}</button>
+        <button 
+            className='btn'
+            disabled={!puedoPedir || contAyudas < 1 } 
+            onClick={() => ayudar()}
+            style={{
+                background: "rgb(13,110,253)", 
+                borderRadius: "50%",
+                border: "3px solid aqua",
+                height: "150px", 
+                width: "150px", 
+                margin: "10px auto",
+                animationName: "loading",
+                animationDuration: `${tiempoEntreAyudas/1000}s`,
+            }}
+        >
+            {  contAyudas === 0 ? `No te quedan ayudas` : !puedoPedir ? "Enseguida podras pedir" : /* contAyudas > 0 ? */ `Ayuda. Te quedan ${contAyudas}`}
+        </button>
     );
 }
  

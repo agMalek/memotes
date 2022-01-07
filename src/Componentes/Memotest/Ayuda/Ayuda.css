@@ -1,0 +1,65 @@
+#botonAyuda{
+    margin: 10px auto;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    font-size: 20px;
+    padding: 10px;
+    background: rgb(13,110,253);
+    border: 3px solid aqua;
+    color: #eee;
+    /* transition: background 5s linear, opacity 0.5s ease 5s; */
+    animation-name: loading;
+    
+    
+
+    
+}
+
+/* .botonAyuda:active::after{
+    background-color: #aaa;
+    color: rgb(13,110,253) ;
+} */
+
+/* 
+.botonAyuda {
+    composes: button;
+    position: relative;
+    margin-left: 8px;
+    height: 200px;
+    border-radius: 50%;
+  } */
+
+.botonAyuda:hover {
+    /* content: ""; */
+  /*  animation-name: loading;
+   animation-duration: 2s;
+   animation-fill-mode: forwards; */
+   /*  display: block; */
+   /*  position: absolute; */
+   /*  width: 100%;
+    height: 200px; */
+   /*  left: 0;
+    top: 0;
+    opacity: 0; */
+}
+/*   
+.botonAyuda:active:after {
+    height: 0%;
+    opacity: 1;
+    transition: 0s;
+}
+ */
+
+ 
+@keyframes loading {
+    from { background: rgba(63, 135, 243, 0.1);}
+    to { background: rgb(13,110,253);}
+}
+
+
+@keyframes bloquear {
+    from { background: rgb(13,110,253);}
+    to { background: rgb(117, 142, 181);}
+}
+
