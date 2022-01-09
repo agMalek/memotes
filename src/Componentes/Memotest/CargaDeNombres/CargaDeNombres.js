@@ -7,6 +7,7 @@ import './CargaDeNombres.css'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { getJugadores, setValuesJugadores } from '../MemotestSlice';
+import Modal from './Modal/Modal';
 
 const CargaDeNombres = () => {
 
@@ -15,7 +16,9 @@ const CargaDeNombres = () => {
     /* const jugadores = useSelector(getJugadores) */
 
 
-    const indices = [0,1,2,3]   
+    const indices = [0,1,2,3]  
+    const [openModal, setOpenModal] = useState(false);
+
     const [cantJugadores, setCantJugadores] = useState(2)
     const [jugadores, setJugadores] = useState({
         jugador1 : {
@@ -72,7 +75,7 @@ const CargaDeNombres = () => {
             dispatch(setValuesJugadores(jugadores))
             console.log("pasassa")
         }else{
-            alert("Debes completar los valores de los jugadores habilitados")
+            setOpenModal(true)
         }
     }
     
@@ -98,6 +101,7 @@ const CargaDeNombres = () => {
 
     return (  
         <div>
+            <Modal setOpenModal={setOpenModal} openModal={openModal}/>
             <Titulo/>
             <div className='d-flex flex-wrap justify-content-evenly'>
                 {
