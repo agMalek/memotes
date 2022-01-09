@@ -1,0 +1,73 @@
+.contenedorFormNombre{
+    width: 40vw;
+    height: 200px;
+    padding:20px;
+    margin: 20px;
+    background-color: rgba(0, 0, 0, .3);
+    border: 10px double aqua  ;
+    border-radius: 20px;
+}
+
+
+.nombre{
+    /* background-color:#000; */
+    /* width: 80%;
+    overflow-x: auto;
+    overflow-y: none; */
+}
+
+
+.textoCompleto{
+    color: greenyellow;
+    font-size: 25px;
+   /*  margin-top: -15px; */
+    margin-left: 75%;
+    /* transform: rotate(20deg); */
+}
+
+.itemBarraColor{
+    border-radius: 50%;
+    border: 2px solid white;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+}
+
+.itemBarraColor-red{
+    background-color: red;
+}
+
+.itemBarraColor-blue{
+    background-color: blue;
+}
+
+.itemBarraColor-green{
+    background-color: green;
+}
+
+.itemBarraColor-yellow{
+    background-color: yellow;
+}
+
+.itemBarraColor-orange{
+    background-color: orange;
+}
+
+.itemBarraColor-pink{
+    background-color: pink;
+}
+
+.itemBarraColor-purple{
+    background-color: purple;
+}
+
+.itemBarraColor-lightblue{
+    background-color: lightblue;
+}
+
+.itemBarraColor-black{
+    background-color: black;
+}
+.itemBarraColor-greenyellow{
+    background-color: greenyellow;
+}

@@ -6,7 +6,8 @@ const initialStateValues = {
         juegoEmpezado: false,
         fichas: [],
         gano: false,
-        cargando: true
+        cargando: true,
+        modoJuego: ""
     },
     condiciones: {
         dificultad: {
@@ -32,33 +33,9 @@ const initialStateValues = {
         contIntentos: 0
     },
     multijugador: {
-        jugadores: [
-            {
-                nombre: "Martín",
-                color: "red",
-                esMiTurno: true,
-                cantAciertos: 0
-            },
-            {
-                nombre: "Ramiro",
-                color: "blue",
-                esMiTurno: false,
-                cantAciertos: 0
-            },
-            {
-                nombre: "Santiago",
-                color: "green",
-                esMiTurno: false,
-                cantAciertos: 0
-            },
-            {
-                nombre: "Alberto",
-                color: "yellow",
-                esMiTurno: false,
-                cantAciertos: 0
-            }
-        ],
-        indiceActivo: 0
+        jugadores: [],
+        indiceActivo: 0,
+        yaCargo: false
     }
 }
 
@@ -83,6 +60,9 @@ export const memotestSlice = createSlice({
         },
         setCargando: (state, action) => {
             state.infoGeneral.cargando = action.payload
+        },
+        setModoJuego: (state, action) => {
+            state.infoGeneral.modoJuego = action.payload
         },
         reiniciarCondiciones: state => {
             state.condiciones.dificultad = initialStateValues.condiciones.dificultad
@@ -151,6 +131,15 @@ export const memotestSlice = createSlice({
             })
             state.multijugador.jugadores[0].esMiTurno = true
             state.multijugador.indiceActivo = 0
+        },
+        setValuesJugadores: (state, action) => {
+            let i = 0
+            let jugadores = action.payload
+            for (const key in jugadores) {
+                state.multijugador.jugadores[i] = jugadores[key]
+                i++
+            }
+            state.multijugador.yaCargo = true
         }
 
     }
@@ -163,6 +152,7 @@ export const {
     setFichas, 
     setGano, 
     setCargando,
+    setModoJuego,
     reiniciarCondiciones, 
     setDificultad, 
     setTema, 
@@ -177,7 +167,8 @@ export const {
     setMultijugador,
     setIndiceActivo,
     ponerBorde,
-    reiniciarAciertosJugadores
+    reiniciarAciertosJugadores,
+    setValuesJugadores
 
 } = memotestSlice.actions
 
@@ -189,6 +180,7 @@ export const getJuegoEmpezado = state => state.memotestSlice.infoGeneral.juegoEm
 export const getFichas = state => state.memotestSlice.infoGeneral.fichas
 export const getGano = state => state.memotestSlice.infoGeneral.gano
 export const getCargando = state => state.memotestSlice.infoGeneral.cargando
+export const getModoJuego = state => state.memotestSlice.infoGeneral.modoJuego
 
 export const getDificultad = state => state.memotestSlice.condiciones.dificultad
 export const getTema = state => state.memotestSlice.condiciones.tema
@@ -199,7 +191,7 @@ export const reloj = state => state.memotestSlice.infoPartida.reloj
 
 export const getJugadores = state => state.memotestSlice.multijugador.jugadores
 export const getIndiceActivo = state => state.memotestSlice.multijugador.indiceActivo
-export const getGanador = state => state.memotestSlice.multijugador.ganador
+export const getYaCargo = state => state.memotestSlice.multijugador.yaCargo
 
 
 export default memotestSlice.reducer

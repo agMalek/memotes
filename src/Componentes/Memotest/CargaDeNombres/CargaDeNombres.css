@@ -1,0 +1,6 @@
+.contenedorBotonAvanzar{
+    display: flex;
+}
+.contenedorBotonAvanzar button{
+    margin: 10px auto;
+}

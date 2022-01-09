@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { getDificultad, getTema, getGano, getFichas, setFichas, getJuegoEmpezado, getCargando, setCargando, getQuieroJugar } from './MemotestSlice'
+import { getDificultad, getTema, getGano, getFichas, setFichas, getJuegoEmpezado, getCargando, setCargando, getQuieroJugar, getModoJuego, getYaCargo } from './MemotestSlice'
 
 import {Banderas, Animales, Comidas} from '../../utils/fichas'
 
@@ -13,6 +13,8 @@ import Ganaste from './Ganaste/Ganaste'
 import Error from './Error/Error'
 
 import './Memotest.css'
+import ModoJuego from './ModoJuego/ModoJuego'
+import CargaDeNombres from './CargaDeNombres/CargaDeNombres'
 
 const Memotes = () => {
 
@@ -25,6 +27,8 @@ const Memotes = () => {
     const cargando = useSelector(getCargando)
     const gano = useSelector(getGano)
     const quieroJugar = useSelector(getQuieroJugar)
+    const modoJuego = useSelector(getModoJuego)
+    const yaCargo = useSelector(getYaCargo)
 
 
     /* const [inicioJuego, setInicioJuego] = useState(false) */
@@ -119,6 +123,13 @@ const Memotes = () => {
                         /* setInicioJuego={setInicioJuego} */
                     />
             
+                : modoJuego === "" ?
+                    <ModoJuego/>
+                
+                : modoJuego === "multi" && !yaCargo? 
+
+                    <CargaDeNombres/>
+                
                 : !juegoEmpezado ?
             
                     <VistaCondiciones
