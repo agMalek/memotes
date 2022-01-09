@@ -3,8 +3,8 @@
 
 
 .contenedorGanaste{
-    width: 500px;
-    height: 320px;
+    max-width: 600px;
+    max-height: 500px;
     padding: 40px;
     margin: auto;
     background-color: rgba(0, 0, 0, .3);

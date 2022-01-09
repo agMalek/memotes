@@ -34,32 +34,31 @@ const initialStateValues = {
     multijugador: {
         jugadores: [
             {
-                nombre: 1,
+                nombre: "Martín",
                 color: "red",
                 esMiTurno: true,
                 cantAciertos: 0
             },
             {
-                nombre: 2,
+                nombre: "Ramiro",
                 color: "blue",
                 esMiTurno: false,
                 cantAciertos: 0
             },
             {
-                nombre: 3,
+                nombre: "Santiago",
                 color: "green",
                 esMiTurno: false,
                 cantAciertos: 0
             },
             {
-                nombre: 4,
+                nombre: "Alberto",
                 color: "yellow",
                 esMiTurno: false,
                 cantAciertos: 0
             }
         ],
-        indiceActivo: 0,
-        ganador: ""
+        indiceActivo: 0
     }
 }
 
@@ -140,8 +139,18 @@ export const memotestSlice = createSlice({
             state.multijugador.indiceActivo = action.payload
             console.log(action.payload)
         },
-        setGanador: (state, action) => {
-            state.multijugador.ganador = action.payload
+        ponerBorde: (state) => {
+            state.multijugador.jugadores.map((jug)=> (
+                jug.esMiTurno = true
+            ))
+        },
+        reiniciarAciertosJugadores: (state) => {
+            state.multijugador.jugadores.map(jug => {
+                jug.cantAciertos = 0
+                jug.esMiTurno = false
+            })
+            state.multijugador.jugadores[0].esMiTurno = true
+            state.multijugador.indiceActivo = 0
         }
 
     }
@@ -167,7 +176,8 @@ export const {
     pararReloj,
     setMultijugador,
     setIndiceActivo,
-    setGanador
+    ponerBorde,
+    reiniciarAciertosJugadores
 
 } = memotestSlice.actions
 

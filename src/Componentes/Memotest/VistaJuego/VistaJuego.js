@@ -74,7 +74,10 @@ const VistaJuego = ({prepararJuego}) => {
                     </div>
                 </div>
                 : 
-                <VistaMultijugador />
+                <div className='d-flex flex-column'>
+                    <VistaMultijugador />
+                </div>
+
 
 
             }

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { sumaContInt, pararReloj, getDificultad, setGano, getFichas,  getJugadores, getIndiceActivo, setMultijugador, setIndiceActivo, setGanador } from "../../MemotestSlice";
+import { sumaContInt, pararReloj, getDificultad, setGano, getFichas,  getJugadores, getIndiceActivo, setMultijugador, setIndiceActivo, setGanador, ponerBorde } from "../../MemotestSlice";
 
 import Ficha from "./Ficha/Ficha";
 
