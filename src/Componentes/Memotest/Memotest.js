@@ -31,9 +31,6 @@ const Memotes = () => {
     const yaCargo = useSelector(getYaCargo)
 
 
-    /* const [inicioJuego, setInicioJuego] = useState(false) */
-
-    
 
     /* -------------- PREPARA EL JUEGO TENEINDO EN CUANTA LAS VARISNTES DE DIFICULTAD Y TEMA ------------- */
     /* se ejecuta en el useEffect caundo el tema sea elejido, al darle boton de inicio en el form de cond. y al darle a reiniciar sea en ganaste o en partida */

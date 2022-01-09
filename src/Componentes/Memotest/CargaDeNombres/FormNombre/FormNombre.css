@@ -10,10 +10,9 @@
 
 
 .nombre{
-    /* background-color:#000; */
-    /* width: 80%;
+   /*  background-color:#000; */
     overflow-x: auto;
-    overflow-y: none; */
+    overflow-y: hidden;
 }
 
 

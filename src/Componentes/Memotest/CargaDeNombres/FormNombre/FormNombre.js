@@ -16,11 +16,18 @@ const FormNombre = ({setNombre, setColor, jugadores, i, setCantJugadores, limpia
         <div className='contenedorFormNombre' style={{opacity: activo ? "1" : ".5"}}>
             <div className='d-flex'>
                 {i >= 2 ? <Switch onClick={() => onSwitch()} /> : ""}
-                <h3 className='text-center text-white mb-3 nombre'>
+                <h3 className='text-center text-white mb-3 nombre' style={{width: i >= 2 ? "80%" :"100%" }} >
                     {jugadores[`jugador${i+1}`].nombre === "" ? `Jugador ${i+1}` : jugadores[`jugador${i+1}`].nombre}
                 </h3>
             </div>
-            <input className='w-100 mb-3' name={`jugador${i+1}`} type="text" value={jugadores[`jugador${i+1}`].nombre} onChange={(e) => setNombre(e)}/>
+            <input 
+                className='w-100 mb-3' 
+                name={`jugador${i+1}`} 
+                type="text" 
+                value={jugadores[`jugador${i+1}`].nombre} 
+                onChange={(e) => setNombre(e)}
+                readOnly={!activo}
+            />
             <div className='d-flex'>
                 <div className='itemBarraColor itemBarraColor-red' onClick={() => setColor("red", i)}></div>
                 <div className='itemBarraColor itemBarraColor-orange' onClick={() => setColor("orange", i)}></div>

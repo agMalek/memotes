@@ -15,9 +15,7 @@ const CargaDeNombres = () => {
     /* const jugadores = useSelector(getJugadores) */
 
 
-    const indices = [0,1,2,3]
-    const [cargado, setCargado] = useState(false)
-    /* const [activo, setActivo] = useState(false)  */
+    const indices = [0,1,2,3]   
     const [cantJugadores, setCantJugadores] = useState(2)
     const [jugadores, setJugadores] = useState({
         jugador1 : {
@@ -76,7 +74,6 @@ const CargaDeNombres = () => {
         }else{
             alert("Debes completar los valores de los jugadores habilitados")
         }
-
     }
     
     
