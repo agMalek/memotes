@@ -53,8 +53,8 @@
     background-color: red;
 }
 
-.itemBarraColor-blue{
-    background-color: blue;
+.itemBarraColor-fuchsia{
+    background-color: fuchsia;
 }
 
 .itemBarraColor-green{
@@ -69,21 +69,21 @@
     background-color: orange;
 }
 
-.itemBarraColor-pink{
-    background-color: pink;
+.itemBarraColor-deeppink{
+    background-color: deeppink;
 }
 
-.itemBarraColor-purple{
-    background-color: purple;
+.itemBarraColor-blue{
+    background-color: blue;
 }
 
-.itemBarraColor-lightblue{
-    background-color: lightblue;
+.itemBarraColor-deepskyblue{
+    background-color: deepskyblue;
 }
 
+.itemBarraColor-lime{
+    background-color: lime;
+}
 .itemBarraColor-black{
     background-color: black;
-}
-.itemBarraColor-greenyellow{
-    background-color: greenyellow;
 }

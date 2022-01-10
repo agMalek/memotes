@@ -6,7 +6,7 @@ import Titulo from '../Titulo/Titulo'
 import './CargaDeNombres.css'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { getJugadores, setValuesJugadores } from '../MemotestSlice';
+import { getJugadores, setValuesJugadores, setCantidadJugadores } from '../MemotestSlice';
 import Modal from './Modal/Modal';
 
 const CargaDeNombres = () => {
@@ -73,6 +73,7 @@ const CargaDeNombres = () => {
         console.log(res)
         if(res){
             dispatch(setValuesJugadores(jugadores))
+            dispatch(setCantidadJugadores(cantJugadores))
             console.log("pasassa")
         }else{
             setOpenModal(true)

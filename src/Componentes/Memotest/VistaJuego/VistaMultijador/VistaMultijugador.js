@@ -15,9 +15,11 @@ const VistaMultijugador = () => {
     return (  
         <>
             {jugadores.map((jug, index) => (
+                jug.nombre !== undefined ?
                 <div key={index}>
                     <Jugador {...jug}/>
                 </div>
+                : undefined
             ))}
         </>
     );

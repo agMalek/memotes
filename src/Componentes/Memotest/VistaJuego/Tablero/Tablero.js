@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { sumaContInt, pararReloj, getDificultad, setGano, getFichas,  getJugadores, getIndiceActivo, setMultijugador, setIndiceActivo, setGanador, ponerBorde } from "../../MemotestSlice";
+import { sumaContInt, pararReloj, getDificultad, setGano, getFichas,  getJugadores, getIndiceActivo, setMultijugador, setIndiceActivo, getCantJugadores } from "../../MemotestSlice";
 
 import Ficha from "./Ficha/Ficha";
 
@@ -16,6 +16,7 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
     const fichas = useSelector(getFichas)
     const jugadores = useSelector(getJugadores)
     const indiceJugador = useSelector(getIndiceActivo)
+    const cantJugadores = useSelector(getCantJugadores)
 
 
     const opaca = "opaca"
@@ -59,9 +60,9 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
             ...jugadores[indiceJugador],
             esMiTurno: false
         }))
-        dispatch(setIndiceActivo(indiceJugador+1 === jugadores.length ? 0 : indiceJugador+1))
+        dispatch(setIndiceActivo(indiceJugador+1 === cantJugadores ? 0 : indiceJugador+1))
         dispatch(setMultijugador({
-            ...jugadores[indiceJugador+1 === jugadores.length ? 0 : indiceJugador+1],
+            ...jugadores[indiceJugador+1 === cantJugadores ? 0 : indiceJugador+1],
             esMiTurno: true
         }))
     }

@@ -35,7 +35,8 @@ const initialStateValues = {
     multijugador: {
         jugadores: [],
         indiceActivo: 0,
-        yaCargo: false
+        yaCargo: false,
+        cantidadJugadores: 0
     }
 }
 
@@ -136,10 +137,13 @@ export const memotestSlice = createSlice({
             let i = 0
             let jugadores = action.payload
             for (const key in jugadores) {
-                state.multijugador.jugadores[i] = jugadores[key]
+                state.multijugador.jugadores[i] = jugadores[key].nombre !== "" ? jugadores[key] : {} 
                 i++
             }
             state.multijugador.yaCargo = true
+        },
+        setCantidadJugadores: (state, action) => {
+            state.multijugador.cantidadJugadores = action.payload
         }
 
     }
@@ -168,7 +172,8 @@ export const {
     setIndiceActivo,
     ponerBorde,
     reiniciarAciertosJugadores,
-    setValuesJugadores
+    setValuesJugadores,
+    setCantidadJugadores
 
 } = memotestSlice.actions
 
@@ -192,6 +197,7 @@ export const reloj = state => state.memotestSlice.infoPartida.reloj
 export const getJugadores = state => state.memotestSlice.multijugador.jugadores
 export const getIndiceActivo = state => state.memotestSlice.multijugador.indiceActivo
 export const getYaCargo = state => state.memotestSlice.multijugador.yaCargo
+export const getCantJugadores = state => state.memotestSlice.multijugador.cantidadJugadores
 
 
 export default memotestSlice.reducer

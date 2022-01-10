@@ -14,22 +14,37 @@
     height: 100%;    
 }
 
+
 .borde-white{
     border: 4px solid white;
 }
-
 .borde-red{
     border: 4px solid red;
 }
-
-.borde-blue{
-    border: 4px solid blue;
+.borde-orange{
+    border: 4px solid orange;
 }
-
+.borde-yellow{
+    border: 4px solid yellow;
+}
+.borde-black{
+    border: 4px solid black;
+}
 .borde-green{
     border: 4px solid green;
 }
-
-.borde-yellow{
-    border: 4px solid yellow;
+.borde-fuchsia{
+    border: 4px solid fuchsia;
+}
+.borde-deepskyblue{
+    border: 4px solid deepskyblue;
+}
+.borde-deeppink{
+    border: 4px solid deeppink;
+}
+.borde-blue{
+    border: 4px solid blue;
+}
+.borde-lime{
+    border: 4px solid lime;
 }

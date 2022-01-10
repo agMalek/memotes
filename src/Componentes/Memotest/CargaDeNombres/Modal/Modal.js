@@ -10,7 +10,6 @@ import { forwardRef } from 'react';
 import './Modal.css'
 
 
-
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide ref={ref} {...props} />;
 });

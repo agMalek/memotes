@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 const FormNombre = ({setNombre, setColor, jugadores, i, setCantJugadores, limpiarValores}) => {
 
     const [activo, setActivo] = useState(i >=2 ? false : true)
-    const colores = ["red", "orange", "yellow", "greenyellow", "green", "blue", "lightblue", "pink", "purple", "black"]
+    const colores = ["red", "orange", "yellow", "lime", "green", "blue", "deepskyblue", "fuchsia", "deeppink", "black"]
 
     const validarColor = (color) =>{
         let rta = true

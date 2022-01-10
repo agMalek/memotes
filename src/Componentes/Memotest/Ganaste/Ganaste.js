@@ -69,7 +69,7 @@ const Ganaste = ({prepararJuego}) => {
                             <h3 className='mb-3 text-white text-center'>El ganador es {jugadores[ganadores[0]].nombre}</h3>
                         :   <h3 className='mb-3 text-white text-center'>Hubo empate</h3>
                     }
-                    <div className='d-flex flex-wrap'>
+                    <div className='d-flex flex-wrap justify-content-center'>
                         <VistaMultijugador />
                     </div>
                 
