@@ -55,17 +55,19 @@ const FormNombre = ({setNombre, setColor, jugadores, i, setCantJugadores, limpia
             <input
                 className='w-100 mb-3 inputNombre' 
                 name={`jugador${i+1}`} 
-                type="text" 
+                type="text"     
                 value={jugadores[`jugador${i+1}`].nombre} 
                 onChange={(e) => setNombre(e)}
                 readOnly={!activo}
                 placeholder='Ingrese el nombre'
+                autoComplete='off'
             />
             <p className='text-white text-center my-1'>Elija un color que lo represente</p>
             <div className='d-flex justify-content-evenly'>
                 {
-                    colores.map(col => (
+                    colores.map((col, index) => (
                         <div 
+                            key={index}
                             className={`itemBarraColor itemBarraColor-${col}`} 
                             style={{opacity: jugadores[`jugador${i+1}`].color === col || validarColor(col) ? '1' : "0.3"}} 
                             onClick={activo && validarColor(col) ? () => onColor(col, i) : () => console.log("Bloqueado")}
