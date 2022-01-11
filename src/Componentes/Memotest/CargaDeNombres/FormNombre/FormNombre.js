@@ -39,7 +39,7 @@ const FormNombre = ({setNombre, setColor, jugadores, i, setCantJugadores, limpia
     },[colores]) */
 
     const onSwitch = () => {
-        activo === true ? setCantJugadores(prev => prev -1) : setCantJugadores(prev => prev +1)
+        activo ? setCantJugadores(prev => prev -1) : setCantJugadores(prev => prev +1)
         setActivo(!activo)
         limpiarValores(`jugador${i+1}`)
     }

@@ -6,7 +6,7 @@ import { setWidthContenedor, setDificultad, setTema, getTema, empezarJuego } fro
 
 import './FormCondiciones.css'
 
-const FormCondiciones = ({prepararJuego}) => {
+const FormCondiciones = ({prepararJuego/* , setOpenSpinner, openSpinner */}) => {
 
     const dispatch = useDispatch()
 
@@ -117,9 +117,16 @@ const FormCondiciones = ({prepararJuego}) => {
         if(tema !== ""){
             prepararJuego()
             dispatch(empezarJuego())
+            /* setOpenSpinner(true) */
         }
     }, [tema])
     
+    /* useEffect(() => {
+        if(openSpinner){
+            setTimeout(() => {
+            }, 1500);
+        }
+    },[openSpinner]) */
 
     return ( 
         <form className='contenedorCondiciones' onSubmit={(SyntheticEvent) => iniciarJuego(SyntheticEvent)}>

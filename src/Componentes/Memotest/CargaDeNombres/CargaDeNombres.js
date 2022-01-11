@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { getJugadores, setValuesJugadores, setCantidadJugadores } from '../MemotestSlice';
 import Modal from './Modal/Modal';
-import SpinnerMui from './SpinnerMui/SpinnerMui'
+import SpinnerMui from '../SpinnerMui/SpinnerMui'
 
 const CargaDeNombres = () => {
 
@@ -81,11 +81,12 @@ const CargaDeNombres = () => {
     
     useEffect(() => {
         if(openSpinner){
-            setTimeout(() => {
+            let time = setTimeout(() => {
                 dispatch(setValuesJugadores(jugadores))
                 dispatch(setCantidadJugadores(cantJugadores))
                 console.log("pasassa")
             }, 1500);
+            return () => clearTimeout(time)
         }
     },[openSpinner])
     

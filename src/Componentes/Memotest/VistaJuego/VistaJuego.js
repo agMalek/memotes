@@ -13,7 +13,7 @@ import Reloj from '../Reloj/Reloj';
 import Ayuda from '../Ayuda/Ayuda';
 import ContadorIntentos from '../ContadorIntentos/ContadorIntentos';
 import VistaMultijugador from './VistaMultijador/VistaMultijugador';
-
+import BackDrop from './BackDrop/BackDrop'
 
 const VistaJuego = ({prepararJuego}) => {
 
@@ -25,21 +25,33 @@ const VistaJuego = ({prepararJuego}) => {
     const opaca = "opaca"
     const transparente = "transparente"
 
+    const [openBackDrop, setOpenBackDrop] = useState(true)
     const [botonInhabilitado, setBotonInhabilitado] = useState(true)
-    const [opacidad, setOpacidad] = useState(opaca) 
-    const [podesJugar, setPodesJugar] = useState(false)
+    const [opacidad, setOpacidad] = useState(transparente) 
+    const [podesJugar, setPodesJugar] = useState(false) 
     const [contenedor, setContenedor] = useState()
 
     /* ------------- OCULTA LAS IMAGENES Y HABILITA LOS BOTONES -----------*/
     useEffect(() =>{
         setContenedor(window.document.querySelector(".contenedorFichas"))
-        setTimeout( () => {
-            setOpacidad(transparente)
-            setPodesJugar(true)
-            setBotonInhabilitado(false)
-            dispatch(iniciarReloj())
-        }, dife.tiempo)
-    }, [])
+        if(opacidad === opaca){
+            setTimeout( () => {
+                setOpacidad(transparente)
+                setPodesJugar(true)
+                setBotonInhabilitado(false)
+                dispatch(iniciarReloj())
+            }, dife.tiempo)
+        }
+    }, [opacidad])
+
+
+    useEffect(() => {
+        if(!openBackDrop){
+            setTimeout(() => {
+                setOpacidad(opaca)
+            }, 1000);
+        }
+    },[openBackDrop])
 
 
     /* PARA DEFINIR EL ANCHO DEL TABLERO, SEGUN LAS CANT DE FICHAS */
@@ -50,8 +62,15 @@ const VistaJuego = ({prepararJuego}) => {
     }, [contenedor])
 
 
+    useEffect(() => {
+        setTimeout(() => {
+            setOpenBackDrop(false)
+        }, 6000);
+    },[])
+
     return ( 
         <div className='d-flex justify-content-evenly'>
+            <BackDrop openBackDrop={openBackDrop}  />
             <div className='d-flex flex-column justify-content-center align-items-center'>
                 <Titulo/>
                 <BotonesBasicos 
