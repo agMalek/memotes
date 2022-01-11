@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { getJugadores, setValuesJugadores, setCantidadJugadores } from '../MemotestSlice';
 import Modal from './Modal/Modal';
+import SpinnerMui from './SpinnerMui/SpinnerMui'
 
 const CargaDeNombres = () => {
 
@@ -17,6 +18,7 @@ const CargaDeNombres = () => {
 
 
     const indices = [0,1,2,3]  
+    const [openSpinner, setOpenSpinner] = useState(false);
     const [openModal, setOpenModal] = useState(false);
 
     const [cantJugadores, setCantJugadores] = useState(2)
@@ -69,17 +71,23 @@ const CargaDeNombres = () => {
     },[jugadores])
 
     const iniciar = () => {
-        const res = verificar()
-        console.log(res)
-        if(res){
-            dispatch(setValuesJugadores(jugadores))
-            dispatch(setCantidadJugadores(cantJugadores))
-            console.log("pasassa")
+        if(verificar()){
+            setOpenSpinner(true)
         }else{
             setOpenModal(true)
         }
     }
     
+    
+    useEffect(() => {
+        if(openSpinner){
+            setTimeout(() => {
+                dispatch(setValuesJugadores(jugadores))
+                dispatch(setCantidadJugadores(cantJugadores))
+                console.log("pasassa")
+            }, 1500);
+        }
+    },[openSpinner])
     
     const verificar = () => {
         let cont = 0
@@ -102,6 +110,7 @@ const CargaDeNombres = () => {
 
     return (  
         <div>
+            <SpinnerMui openSpinner={openSpinner}/>
             <Modal setOpenModal={setOpenModal} openModal={openModal}/>
             <Titulo/>
             <div className='d-flex flex-wrap justify-content-evenly'>
