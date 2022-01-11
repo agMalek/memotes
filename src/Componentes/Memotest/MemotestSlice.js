@@ -6,7 +6,7 @@ const initialStateValues = {
         juegoEmpezado: false,
         fichas: [],
         gano: false,
-        cargando: true,
+        cargando: false,
         modoJuego: ""
     },
     condiciones: {

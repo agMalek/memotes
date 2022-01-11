@@ -6,7 +6,7 @@ import Titulo from '../Titulo/Titulo'
 import './CargaDeNombres.css'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { getJugadores, setValuesJugadores, setCantidadJugadores } from '../MemotestSlice';
+import { getJugadores, setValuesJugadores, setCantidadJugadores, setCargando } from '../MemotestSlice';
 import Modal from './Modal/Modal';
 import SpinnerMui from '../SpinnerMui/SpinnerMui'
 
@@ -78,6 +78,10 @@ const CargaDeNombres = () => {
         }
     }
     
+
+    useEffect(() => {
+        dispatch(setCargando(false))
+    },[])
     
     useEffect(() => {
         if(openSpinner){

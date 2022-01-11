@@ -133,10 +133,10 @@ const Memotes = () => {
                         prepararJuego={prepararJuego}
                     />
     
-                : cargando ? 
+               /*  : cargando ? 
         
                     <Spinner />
-
+ */
                 : fichas.length !== 0 
                 ? !gano
 
