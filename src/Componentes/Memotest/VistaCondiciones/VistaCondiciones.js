@@ -20,7 +20,7 @@ const VistaCondiciones = ({prepararJuego}) => {
     useEffect(() => {
         setTimeout(() => {
             dispatch(setCargando(false))
-        }, 700);
+        }, 650);
     },[])
 
     return (
