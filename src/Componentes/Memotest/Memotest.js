@@ -106,6 +106,7 @@ const Memotes = () => {
         if(fichas.length > 0){
             setTimeout(() => {
                 dispatch(setCargando(false))
+                console.log("chichichichci")
             }, 1000)
         }
     }, [fichas])
@@ -132,15 +133,14 @@ const Memotes = () => {
                     <VistaCondiciones
                         prepararJuego={prepararJuego}
                     />
-    
-               /*  : cargando ? 
-        
-                    <Spinner />
- */
-                : fichas.length !== 0 
-                ? !gano
 
-                    ?   <VistaJuego 
+                : fichas.length !== 0 ? 
+                
+                    !gano ?   
+                        
+                        cargando ? <Spinner />
+                        
+                        : <VistaJuego 
                             prepararJuego={prepararJuego}
                         />
 

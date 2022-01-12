@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { iniciarReloj, getDificultad, getWidthContenedor, getModoJuego } from '../MemotestSlice';
+import { iniciarReloj, getDificultad, getWidthContenedor, getModoJuego, getCargando, setCargando } from '../MemotestSlice';
 
 import Tablero from './Tablero/Tablero';
 
@@ -14,6 +14,7 @@ import Ayuda from '../Ayuda/Ayuda';
 import ContadorIntentos from '../ContadorIntentos/ContadorIntentos';
 import VistaMultijugador from './VistaMultijador/VistaMultijugador';
 import BackDrop from './BackDrop/BackDrop'
+import Spinner from '../Spinner/Spinner';
 
 const VistaJuego = ({prepararJuego}) => {
 
@@ -22,6 +23,7 @@ const VistaJuego = ({prepararJuego}) => {
     const dife = useSelector(getDificultad)
     const widthContenedor = useSelector(getWidthContenedor)
     const modoJuego = useSelector(getModoJuego)
+    /* const cargando = useSelector(getCargando) */
 
     const opaca = "opaca"
     const transparente = "transparente"
@@ -69,40 +71,49 @@ const VistaJuego = ({prepararJuego}) => {
         }, 6000);
     },[])
 
-    return ( 
-        <div className='d-flex justify-content-evenly'>
-            <BackDrop openBackDrop={openBackDrop}  />
-            <div className='d-flex flex-column justify-content-center align-items-center'>
-                <Titulo/>
-                <BotonesBasicos 
-                    botonInhabilitado={botonInhabilitado}
-                    prepararJuego={prepararJuego}
-                />
-            </div>
-            <Tablero 
-                opacidad={opacidad}
-                podesJugar={podesJugar}
-                setPodesJugar={setPodesJugar}
-            />
+
+   /*  useEffect(()=> {
+        setTimeout(() => {
+            dispatch(setCargando(false))
+        }, 1200);
+    },[]) */
+
+    return (
+        <>
             {
-                modoJuego === 'solo' ? 
-                <div className='d-flex flex-column justify-content-evenly'>
-                    <div className='d-flex flex-column'>               
-                        <Reloj />
-                        <Ayuda contenedor={contenedor} setPodesJugar={setPodesJugar}/>
-                        <ContadorIntentos/>
+               /*  cargando ? <Spinner/> : */
+                <div className='d-flex justify-content-evenly'>
+                    <BackDrop openBackDrop={openBackDrop}  />
+                    <div className='d-flex flex-column justify-content-center align-items-center'>
+                        <Titulo/>
+                        <BotonesBasicos 
+                            botonInhabilitado={botonInhabilitado}
+                            prepararJuego={prepararJuego}
+                            />
                     </div>
+                    <Tablero 
+                        opacidad={opacidad}
+                        podesJugar={podesJugar}
+                        setPodesJugar={setPodesJugar}
+                        />
+                    {
+                        modoJuego === 'solo' ? 
+                        <div className='d-flex flex-column justify-content-evenly'>
+                            <div className='d-flex flex-column'>               
+                                <Reloj />
+                                <Ayuda contenedor={contenedor} setPodesJugar={setPodesJugar}/>
+                                <ContadorIntentos/>
+                            </div>
+                        </div>
+                        : 
+                        <div className='d-flex flex-column'>
+                            <VistaMultijugador />
+                        </div>
+                    }
+                    
                 </div>
-                : 
-                <div className='d-flex flex-column'>
-                    <VistaMultijugador />
-                </div>
-
-
-
             }
-            
-        </div>
+        </>
     );
 }
  
