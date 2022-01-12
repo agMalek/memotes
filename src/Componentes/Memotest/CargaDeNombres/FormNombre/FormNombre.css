@@ -32,6 +32,11 @@
     overflow-y: hidden;
 }
 
+.icono{
+    font-size: 32px;
+    color: white;
+}
+
 
 .textoCompleto{
     color: greenyellow;

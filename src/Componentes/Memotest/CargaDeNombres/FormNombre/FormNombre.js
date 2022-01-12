@@ -1,6 +1,12 @@
 import './FormNombre.css'
 import Switch from '@mui/material/Switch';
 import { useEffect, useState } from 'react';
+import { BsRecord2 } from "react-icons/bs";
+import { BsEmojiWink } from "react-icons/bs";
+import { BsEmojiSunglasses } from "react-icons/bs";
+import { BsBullseye } from "react-icons/bs";
+import { BsFillRecord2Fill } from "react-icons/bs";
+import { BsFillPlusCircleFill } from "react-icons/bs";
 
 const FormNombre = ({setNombre, setColor, jugadores, i, setCantJugadores, limpiarValores}) => {
 
@@ -72,7 +78,7 @@ const FormNombre = ({setNombre, setColor, jugadores, i, setCantJugadores, limpia
                             style={{opacity: jugadores[`jugador${i+1}`].color === col || validarColor(col) ? '1' : "0.3"}} 
                             onClick={activo && validarColor(col) ? () => onColor(col, i) : () => console.log("Bloqueado")}
                         >
-                            {jugadores[`jugador${i+1}`].color === col ? "OK" : ""}
+                            {jugadores[`jugador${i+1}`].color === col ? <BsRecord2 className='icono'/> : ""}
                         </div>
                     ))
                 }
