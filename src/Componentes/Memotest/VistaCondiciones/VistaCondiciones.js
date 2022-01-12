@@ -7,7 +7,7 @@ import Spinner from '../Spinner/Spinner'
 
 import './VistaCondiciones.css'
 import { useSelector } from "react-redux";
-import { getCargando, setCargando } from "../MemotestSlice";
+import { getCargando, setCargando, setModoJuego } from "../MemotestSlice";
 import { useDispatch } from "react-redux";
 import Modal from "../Modal/Modal";
 
@@ -28,7 +28,7 @@ const VistaCondiciones = ({prepararJuego}) => {
             dispatch(setCargando(false))
         }, 650);
     },[])
-
+    
     return (
         <> 
             {
@@ -43,6 +43,7 @@ const VistaCondiciones = ({prepararJuego}) => {
                         openSpinner={openSpinner}
                         setOpenModal={setOpenModal}
                     />
+                    
                 </div>
             }
         </>  

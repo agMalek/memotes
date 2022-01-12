@@ -207,9 +207,9 @@ export default memotestSlice.reducer
 /* 
 
 alert x modal en form   ------------------------------------HECHO
-icon o div en circulo color seleccionado -----------------
+icon o div en circulo color seleccionado -----------------hecho
 
-en carga e nombre boton volver
+en carga e nombre boton volver -----------HECHO
 y en ganaste boton volver a carga de nombre y estilo en ganaste
 
 estilo en modo juego
@@ -223,6 +223,10 @@ backdrop:
 singular y plural en p de jugador
 
 revisar segundos que tarda de trasn a opaca cuando sale backdrop
+
+revisar segundos del spinner basico
+
+agregar spinner en entrada a corga nombre
 
 borrar comentarios y console.logs
 

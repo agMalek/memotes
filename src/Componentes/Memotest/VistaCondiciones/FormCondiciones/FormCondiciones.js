@@ -2,7 +2,7 @@
 import {useEffect, useState} from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { setWidthContenedor, setDificultad, setTema, getTema, empezarJuego } from '../../MemotestSlice'
+import { setWidthContenedor, setDificultad, setTema, getTema, empezarJuego, setModoJuego, setCargando } from '../../MemotestSlice'
 
 import './FormCondiciones.css'
 
@@ -112,6 +112,11 @@ const FormCondiciones = ({prepararJuego, setOpenSpinner, openSpinner, setOpenMod
     }
 
 
+    const volver = () => {
+        dispatch(setModoJuego(""))
+        dispatch(setCargando(true))
+    }
+
     /* --------- CUANDO DE CLICK EN EL BOTON INICIAR DEL FORM DE CONDICIONES -------- */
     useEffect(() => {
         if(tema !== ""){
@@ -127,6 +132,9 @@ const FormCondiciones = ({prepararJuego, setOpenSpinner, openSpinner, setOpenMod
             }, 1500);
         }
     },[openSpinner])
+
+
+
 
     return ( 
         <form className='contenedorCondiciones' onSubmit={(SyntheticEvent) => iniciarJuego(SyntheticEvent)}>
@@ -152,8 +160,9 @@ const FormCondiciones = ({prepararJuego, setOpenSpinner, openSpinner, setOpenMod
                     <option value="Comidas">Comidas</option>
                 </select>
             </div>
-            <div>
-                <button className='btn btn-outline-primary my-4 w-100'>Iniciar</button>
+            <div className='d-flex'>
+                <button className='btn btn-primary my-4 mx-2 w-100'>Iniciar</button>
+                <button className='btn btn-primary my-4 mx-2 w-100' onClick={() => volver()}>Volver</button>
             </div>
         </form>
     );

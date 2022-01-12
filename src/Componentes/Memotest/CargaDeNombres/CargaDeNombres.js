@@ -6,7 +6,7 @@ import Titulo from '../Titulo/Titulo'
 import './CargaDeNombres.css'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { getJugadores, setValuesJugadores, setCantidadJugadores, setCargando } from '../MemotestSlice';
+import { getJugadores, setValuesJugadores, setCantidadJugadores, setCargando, setModoJuego } from '../MemotestSlice';
 import Modal from '../Modal/Modal';
 import SpinnerMui from '../SpinnerMui/SpinnerMui'
 
@@ -114,7 +114,10 @@ const CargaDeNombres = () => {
         console.log(cantJugadores)
     }, [cantJugadores]) */
 
-
+    const volver = () => {
+        dispatch(setModoJuego(""))
+        dispatch(setCargando(true))
+    }
 
     return (  
         <div>
@@ -137,7 +140,8 @@ const CargaDeNombres = () => {
                 }
             </div>
             <div className='contenedorBotonAvanzar'>
-                <button className='btn btn-primary w-25' /* disabled={!cargado} */ onClick={() => iniciar()}>Avanzar</button>
+                <button className='btn btn-primary w-25 mx-3 my-2' /* disabled={!cargado} */ onClick={() => volver()}>Volver</button>
+                <button className='btn btn-primary w-25 mx-3 my-2' /* disabled={!cargado} */ onClick={() => iniciar()}>Avanzar</button>
             </div>
         </div>
     );
