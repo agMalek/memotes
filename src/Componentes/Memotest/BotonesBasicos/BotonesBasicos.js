@@ -1,7 +1,7 @@
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { reiniciarCondiciones, setFichas, terminarJuego, setCargando, setGano, reiniciarInfoPartida, setQuieroJugar, reiniciarAciertosJugadores} from '../MemotestSlice'
+import { reiniciarCondiciones, setFichas, terminarJuego, setCargando, setGano, reiniciarInfoPartida, setQuieroJugar, reiniciarAciertosJugadores, getModoJuego} from '../MemotestSlice'
 
 
 import './BotonesBasicos.css'
@@ -9,6 +9,8 @@ import './BotonesBasicos.css'
 const BotonesBasicos = ({botonInhabilitado, prepararJuego}) => {
     
     const dispatch = useDispatch()
+
+    const modoJuego = useSelector(getModoJuego)
 
     /* ------- LIMPIA VALORES Y PREPARA UN NUEVO JUEGO CON LAS MISMAS CONDICIONES DE DIFICULTAD Y TEMA ---------- */
     /* en VistaDeJuego y en Ganaste */
@@ -32,7 +34,9 @@ const BotonesBasicos = ({botonInhabilitado, prepararJuego}) => {
         dispatch(setCargando(true))
         dispatch(reiniciarInfoPartida())
         dispatch(setGano(false))
-        dispatch(reiniciarAciertosJugadores())
+        if(modoJuego === 'multi') {
+            dispatch(reiniciarAciertosJugadores())
+        }
     }
     
 

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import BotonesBasicos from '../BotonesBasicos/BotonesBasicos';
 import ContadorIntentos from '../ContadorIntentos/ContadorIntentos';
 import VistaMultijugador from '../VistaJuego/VistaMultijador/VistaMultijugador'
-import { getGanador, getJugadores, ponerBorde } from '../MemotestSlice';
+import { getGanador, getJugadores, getModoJuego, ponerBorde } from '../MemotestSlice';
 import Reloj from '../Reloj/Reloj';
 import './Ganaste.css'
 
@@ -14,7 +14,7 @@ const Ganaste = ({prepararJuego}) => {
 
     const dispatch = useDispatch()
 
-    /* const ganador = useSelector(getGanador) */
+    const modoJuego = useSelector(getModoJuego)
     const jugadores = useSelector(getJugadores)
 
     const [ganadores, setGanadores] = useState([])
@@ -55,7 +55,7 @@ const Ganaste = ({prepararJuego}) => {
     return (  
         <div className="contenedorGanaste">
             {
-                false ?
+                modoJuego === 'solo' ?
                 <>
                     <h3 className='tituloGanaste'>Ganaste!!!</h3>
                     <div className="d-flex justify-content-around">

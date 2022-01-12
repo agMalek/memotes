@@ -24,9 +24,18 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
     const descubierta =  "descubierta"
     const tiempoEntreTurnos = 500
 
-    let bordeColor = `ficha borde-${jugadores[indiceJugador].color}`
     let bordeBlanco = `ficha borde-white`
+    let bordeColor;/*  =  jugadores.length > 0 ? `ficha borde-${jugadores[indiceJugador].color}` : bordeBlanco */
     
+    /* useEffect(() => {
+        console.log(jugadores.length)
+        if(jugadores.length > 0){
+            bordeColor = `ficha borde-${jugadores[indiceJugador].color}`
+        }else{
+            bordeColor = bordeBlanco
+        }
+        console.log(bordeColor)
+    },[]) */
 
     const [cantVolteadas, setCantVolteadas] = useState(0)
     const [cantCoincidencias, setCantCoincidencias] = useState(0)
@@ -48,7 +57,7 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
                     setCantVolteadas(cantVolteadas+1)
                     setPodesJugar(false)
                 }
-                event.target.className = bordeColor
+                event.target.className = bordeColor !== undefined ? bordeColor : bordeBlanco 
                 img.className = opaca
             }
         }

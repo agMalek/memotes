@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { iniciarReloj, getDificultad, getWidthContenedor } from '../MemotestSlice';
+import { iniciarReloj, getDificultad, getWidthContenedor, getModoJuego } from '../MemotestSlice';
 
 import Tablero from './Tablero/Tablero';
 
@@ -21,6 +21,7 @@ const VistaJuego = ({prepararJuego}) => {
 
     const dife = useSelector(getDificultad)
     const widthContenedor = useSelector(getWidthContenedor)
+    const modoJuego = useSelector(getModoJuego)
 
     const opaca = "opaca"
     const transparente = "transparente"
@@ -84,7 +85,7 @@ const VistaJuego = ({prepararJuego}) => {
                 setPodesJugar={setPodesJugar}
             />
             {
-                false ? 
+                modoJuego === 'solo' ? 
                 <div className='d-flex flex-column justify-content-evenly'>
                     <div className='d-flex flex-column'>               
                         <Reloj />
