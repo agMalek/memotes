@@ -75,9 +75,10 @@ const Ganaste = ({prepararJuego}) => {
                 
                 </>
             }
-             <div className='contenedorBotonesGanaste w-100 my-4'>
+             <div className='d-flex flex-wrap justify-content-evenly contenedorBotonesGanaste w-100 my-4'>
                 <BotonesBasicos
                     prepararJuego={prepararJuego}
+                    width={"40%"}
                 />
             </div>
         </div>

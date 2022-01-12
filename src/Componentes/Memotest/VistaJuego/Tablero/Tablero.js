@@ -94,10 +94,12 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
                     setCantCoincidencias(cantCoincidencias+1)
                     img1.className = descubierta
                     img2.className = descubierta
-                    dispatch(setMultijugador({
-                        ...jugadores[indiceJugador],
-                        cantAciertos: jugadores[indiceJugador].cantAciertos +1
-                    }))
+                    if(jugadores.length > 0){
+                        dispatch(setMultijugador({
+                            ...jugadores[indiceJugador],
+                            cantAciertos: jugadores[indiceJugador].cantAciertos +1
+                        }))
+                    }
                 }
                 setPodesJugar(true)
             }, tiempoEntreTurnos)

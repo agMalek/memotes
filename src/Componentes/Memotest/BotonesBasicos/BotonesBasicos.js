@@ -1,12 +1,12 @@
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { reiniciarCondiciones, setFichas, terminarJuego, setCargando, setGano, reiniciarInfoPartida, setQuieroJugar, reiniciarAciertosJugadores, getModoJuego} from '../MemotestSlice'
+import { reiniciarCondiciones, setFichas, terminarJuego, setCargando, setGano, reiniciarInfoPartida, setQuieroJugar, reiniciarAciertosJugadores, getModoJuego, setModoJuego, setCantidadJugadores} from '../MemotestSlice'
 
 
 import './BotonesBasicos.css'
 
-const BotonesBasicos = ({botonInhabilitado, prepararJuego}) => {
+const BotonesBasicos = ({botonInhabilitado, prepararJuego, width}) => {
     
     const dispatch = useDispatch()
 
@@ -39,6 +39,10 @@ const BotonesBasicos = ({botonInhabilitado, prepararJuego}) => {
         }
     }
     
+    const jugarConOtroNombre = () => {
+        nuevoJuego()
+        dispatch(setCantidadJugadores(0))
+    }
 
     const volverAHome = () => {
         nuevoJuego()
@@ -46,10 +50,15 @@ const BotonesBasicos = ({botonInhabilitado, prepararJuego}) => {
     }
 
     return (
-        <>
-            <button className='btn btn-primary mb-4 mx-3 w-100' disabled={botonInhabilitado} onClick={() => reiniciar()}>Reiniciar</button>
-            <button className='btn btn-primary mb-4 mx-3 w-100' disabled={botonInhabilitado} onClick={() => nuevoJuego()} >Nuevo Juego</button>
-            <button className='btn btn-primary mb-4 mx-3 w-100' disabled={botonInhabilitado} onClick={() => volverAHome()} >Volver al Home</button>
+        <> 
+            <button className='btn btn-primary mb-4 mx-3 botonBasico' style={{width: width}} disabled={botonInhabilitado} onClick={() => reiniciar()}>Reiniciar</button>
+            <button className='btn btn-primary mb-4 mx-3 botonBasico' style={{width: width}} disabled={botonInhabilitado} onClick={() => nuevoJuego()} >Nuevo Juego</button>
+            {
+                modoJuego === 'multi' ?
+                <button className='btn btn-primary mb-4 mx-3 botonBasico' style={{width: width}} disabled={botonInhabilitado} onClick={() => jugarConOtroNombre()} >Jugar con otro nombres</button>
+                : ""
+            }
+            <button className='btn btn-primary mb-4 mx-3 botonBasico' style={{width: width}} disabled={botonInhabilitado} onClick={() => volverAHome()} >Volver al Home</button>
         </>  
     );
 }

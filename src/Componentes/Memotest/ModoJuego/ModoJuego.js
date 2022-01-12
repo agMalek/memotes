@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCargando, setCargando, setModoJuego } from '../MemotestSlice';
 import Spinner from '../Spinner/Spinner';
+import Titulo from '../Titulo/Titulo';
 import './ModoJuego.css'
 
 const ModoJuego = () => {
@@ -24,9 +25,12 @@ const ModoJuego = () => {
     return (  
         <>  {
                 cargando ? <Spinner/> :
-                <div>
-                    <button className='btn btn-outline-primary' onClick={() => seleccionModalidad("solo")}>Jugar solo</button>
-                    <button className='btn btn-outline-primary' onClick={() => seleccionModalidad("multi")}>Multijugador</button>
+                <div className='d-flex flex-column w-100'>
+                    <Titulo/>
+                    <div className='d-flex mt-4 justify-content-center w-100'>
+                        <button className='btn btn-outline-primary w-25 mx-5 ' style={{fontSize: "30px"}} onClick={() => seleccionModalidad("solo")}>Jugar solo</button>
+                        <button className='btn btn-outline-primary w-25 mx-5 ' style={{fontSize: "30px"}} onClick={() => seleccionModalidad("multi")}>Multijugador</button>
+                    </div>
                 </div>
             }
         </>

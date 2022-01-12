@@ -89,7 +89,8 @@ const VistaJuego = ({prepararJuego}) => {
                         <BotonesBasicos 
                             botonInhabilitado={botonInhabilitado}
                             prepararJuego={prepararJuego}
-                            />
+                            width={"80%"}
+                        />
                     </div>
                     <Tablero 
                         opacidad={opacidad}

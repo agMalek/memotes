@@ -35,7 +35,6 @@ const initialStateValues = {
     multijugador: {
         jugadores: [],
         indiceActivo: 0,
-        yaCargo: false,
         cantidadJugadores: 0
     }
 }
@@ -196,7 +195,6 @@ export const reloj = state => state.memotestSlice.infoPartida.reloj
 
 export const getJugadores = state => state.memotestSlice.multijugador.jugadores
 export const getIndiceActivo = state => state.memotestSlice.multijugador.indiceActivo
-export const getYaCargo = state => state.memotestSlice.multijugador.yaCargo
 export const getCantJugadores = state => state.memotestSlice.multijugador.cantidadJugadores
 
 
@@ -210,7 +208,10 @@ alert x modal en form   ------------------------------------HECHO
 icon o div en circulo color seleccionado -----------------hecho
 
 en carga e nombre boton volver -----------HECHO
-y en ganaste boton volver a carga de nombre y estilo en ganaste
+y en ganaste boton volver a carga de nombre y estilo en ganaste -----------
+el jugar con otros nombres no deberia limpiar los nombre y colores anteriores
+volver al home no vaica nombres ni modojeugo
+chequear bordes cuando es multi
 
 estilo en modo juego
 
@@ -219,6 +220,8 @@ backdrop:
     hacer dinamico el numero de segundos
     preguntar sungular y plural
 .
+
+
 
 singular y plural en p de jugador
 
