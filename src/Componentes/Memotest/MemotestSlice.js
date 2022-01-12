@@ -201,3 +201,48 @@ export const getCantJugadores = state => state.memotestSlice.multijugador.cantid
 
 
 export default memotestSlice.reducer
+
+
+
+/* 
+
+alert x modal en form   ------------------------------------HECHO
+icon o div en circulo color seleccionado -----------------
+
+en carga e nombre boton volver
+y en ganaste boton volver a carga de nombre y estilo en ganaste
+
+estilo en modo juego
+
+backdrop:
+    mejorar diseño
+    hacer dinamico el numero de segundos
+    preguntar sungular y plural
+.
+
+singular y plural en p de jugador
+
+revisar segundos que tarda de trasn a opaca cuando sale backdrop
+
+borrar comentarios y console.logs
+
+
+despesu -----------
+
+ ---warning settime
+ ---mirar los warning amarillos
+
+.
+
+
+pensientes:
+    giro de fichas
+    diseño boton ayuda
+    animacion cuando y quien gana
+.
+
+
+
+
+
+*/

@@ -15,7 +15,7 @@ const Transition = forwardRef(function Transition(props, ref) {
 });
 
 
-export default function Modal({openModal, setOpenModal}) {
+export default function Modal({openModal, setOpenModal, title, text, textButton}) {
 
   const handleClose = () => {
     setOpenModal(false);
@@ -31,15 +31,14 @@ export default function Modal({openModal, setOpenModal}) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-title">Carga incompleta.</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            {`Debes completar todos los jugadores que estan habilitados.
-            Recordá escribir el nombre y seleccionar un color.`}
+            {text}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>OK</Button>
+          <Button onClick={handleClose}>{textButton}</Button>
         </DialogActions>
       </Dialog>
     </div>

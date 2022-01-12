@@ -6,7 +6,7 @@ import { setWidthContenedor, setDificultad, setTema, getTema, empezarJuego } fro
 
 import './FormCondiciones.css'
 
-const FormCondiciones = ({prepararJuego, setOpenSpinner, openSpinner}) => {
+const FormCondiciones = ({prepararJuego, setOpenSpinner, openSpinner, setOpenModal}) => {
 
     const dispatch = useDispatch()
 
@@ -104,7 +104,7 @@ const FormCondiciones = ({prepararJuego, setOpenSpinner, openSpinner}) => {
     const iniciarJuego = (e) =>{
         e.preventDefault()
         if(nivel === ""){
-            alert("Debes seleccionar un nivel de dificultad")
+            setOpenModal(true)
         }else{
             armadoDificultad()
             dispatch(setTema(tematica))

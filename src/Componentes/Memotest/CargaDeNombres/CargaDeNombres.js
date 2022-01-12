@@ -7,7 +7,7 @@ import './CargaDeNombres.css'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { getJugadores, setValuesJugadores, setCantidadJugadores, setCargando } from '../MemotestSlice';
-import Modal from './Modal/Modal';
+import Modal from '../Modal/Modal';
 import SpinnerMui from '../SpinnerMui/SpinnerMui'
 
 const CargaDeNombres = () => {
@@ -15,7 +15,10 @@ const CargaDeNombres = () => {
     const dispatch = useDispatch()
 
     /* const jugadores = useSelector(getJugadores) */
-
+    const tituloModal = "Carga incompleta.";
+    const textoModal = `Debes completar todos los jugadores que estan habilitados.
+    Recordá escribir el nombre y seleccionar un color.`;
+    const textoBotonModal = "OK";
 
     const indices = [0,1,2,3]  
     const [openSpinner, setOpenSpinner] = useState(false);
@@ -116,7 +119,7 @@ const CargaDeNombres = () => {
     return (  
         <div>
             <SpinnerMui openSpinner={openSpinner}/>
-            <Modal setOpenModal={setOpenModal} openModal={openModal}/>
+            <Modal setOpenModal={setOpenModal} openModal={openModal} title={tituloModal} text={textoModal} textButton={textoBotonModal}/>
             <Titulo/>
             <div className='d-flex flex-wrap justify-content-evenly'>
                 {
