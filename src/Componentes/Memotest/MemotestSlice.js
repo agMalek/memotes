@@ -33,11 +33,39 @@ const initialStateValues = {
         contIntentos: 0
     },
     multijugador: {
-        jugadores: [],
+        jugadores: [
+            {
+                nombre: "" ,
+                color: "",
+                esMiTurno: true,
+                cantAciertos: 0
+            },
+            {
+                nombre: "",
+                color: "",
+                esMiTurno: false,
+                cantAciertos: 0
+            },
+            {
+                nombre: "",
+                color: "",
+                esMiTurno: false,
+                cantAciertos: 0
+            },
+            {
+                nombre: "",
+                color: "",
+                esMiTurno: false,
+                cantAciertos: 0
+            }
+        ],
         indiceActivo: 0,
-        cantidadJugadores: 0
+        cantidadJugadores: 2,
+        mostrarForms: true
     }
 }
+
+
 
 export const memotestSlice = createSlice({
     name: "memotestSlice",
@@ -136,12 +164,15 @@ export const memotestSlice = createSlice({
             let i = 0
             let jugadores = action.payload
             for (const key in jugadores) {
-                state.multijugador.jugadores[i] = jugadores[key].nombre !== "" ? jugadores[key] : {} 
+                state.multijugador.jugadores[i] = jugadores[key]
                 i++
             }
         },
         setCantidadJugadores: (state, action) => {
             state.multijugador.cantidadJugadores = action.payload
+        },
+        setMostrarForms: (state, action) => {
+            state.multijugador.mostrarForms = action.payload
         }
 
     }
@@ -171,7 +202,8 @@ export const {
     ponerBorde,
     reiniciarAciertosJugadores,
     setValuesJugadores,
-    setCantidadJugadores
+    setCantidadJugadores,
+    setMostrarForms
 
 } = memotestSlice.actions
 
@@ -195,6 +227,7 @@ export const reloj = state => state.memotestSlice.infoPartida.reloj
 export const getJugadores = state => state.memotestSlice.multijugador.jugadores
 export const getIndiceActivo = state => state.memotestSlice.multijugador.indiceActivo
 export const getCantJugadores = state => state.memotestSlice.multijugador.cantidadJugadores
+export const getMostrarForms = state => state.memotestSlice.multijugador.mostrarForms
 
 
 export default memotestSlice.reducer

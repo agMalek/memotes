@@ -118,7 +118,6 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
         }
     }, [cantCoincidencias])
 
-    
 
 
     return ( 

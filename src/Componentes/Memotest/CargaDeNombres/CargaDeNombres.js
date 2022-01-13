@@ -6,7 +6,7 @@ import Titulo from '../Titulo/Titulo'
 import './CargaDeNombres.css'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { getJugadores, setValuesJugadores, setCantidadJugadores, setCargando, setModoJuego } from '../MemotestSlice';
+import { getJugadores, setValuesJugadores, setCantidadJugadores, setCargando, setModoJuego, getCantJugadores, setMostrarForms } from '../MemotestSlice';
 import Modal from '../Modal/Modal';
 import SpinnerMui from '../SpinnerMui/SpinnerMui'
 
@@ -15,6 +15,8 @@ const CargaDeNombres = () => {
     const dispatch = useDispatch()
 
     const jugadoresState = useSelector(getJugadores)
+    const cantidadJugadores = useSelector(getCantJugadores)
+
     const tituloModal = "Carga incompleta.";
     const textoModal = `Debes completar todos los jugadores que estan habilitados.
     Recordá escribir el nombre y seleccionar un color.`;
@@ -24,34 +26,41 @@ const CargaDeNombres = () => {
     const [openSpinner, setOpenSpinner] = useState(false);
     const [openModal, setOpenModal] = useState(false);
 
-    const [cantJugadores, setCantJugadores] = useState(2)
-    const [jugadores, setJugadores] = useState({
+    const [cantJugadores, setCantJugadores] = useState(cantidadJugadores)
+    /* const [jugadores, setJugadores] = useState({
         jugador1 : {
-            nombre: "" ,
-            color: "",
+            nombre: cantidadJugadores > 0 ? jugadoresState[0].nombre : "" ,
+            color: cantidadJugadores > 0 ? jugadoresState[0].color : "",
             esMiTurno: true,
             cantAciertos: 0
         },
         jugador2 : {
-            nombre: "",
-            color: "",
+            nombre: cantidadJugadores > 0 ? jugadoresState[1].nombre : "",
+            color: cantidadJugadores > 0 ? jugadoresState[1].color : "",
             esMiTurno: false,
             cantAciertos: 0
         },
         jugador3 : {
-            nombre: "",
-            color: "",
+            nombre: cantidadJugadores > 2 ? jugadoresState[2].nombre : "",
+            color: cantidadJugadores > 2 ? jugadoresState[2].color : "",
             esMiTurno: false,
             cantAciertos: 0
         },
         jugador4 : {
-            nombre: "",
-            color: "",
+            nombre: cantidadJugadores > 3 ? jugadoresState[3].nombre : "",
+            color: cantidadJugadores > 3 ? jugadoresState[3].color : "",
             esMiTurno: false,
             cantAciertos: 0
         }
-    })
+    }) */
    
+    const [jugadores, setJugadores] = useState({
+        jugador1 : jugadoresState[0],
+        jugador2 : jugadoresState[1],
+        jugador3 : jugadoresState[2],
+        jugador4 : jugadoresState[3],
+    }) 
+    
     
     const limpiarValores = (name) => {
         setJugadores({...jugadores, [name]: {...jugadores[name], ["nombre"]: "", ["color"]: ""}})
@@ -91,6 +100,7 @@ const CargaDeNombres = () => {
             let time = setTimeout(() => {
                 dispatch(setValuesJugadores(jugadores))
                 dispatch(setCantidadJugadores(cantJugadores))
+                dispatch(setMostrarForms(false))
                 console.log("pasassa")
             }, 1500);
             return () => clearTimeout(time)
@@ -134,6 +144,7 @@ const CargaDeNombres = () => {
                             setNombre={setNombre}  
                             setColor={setColor}
                             setCantJugadores={setCantJugadores}
+                            cantidadJugadores={cantidadJugadores}
                             limpiarValores={limpiarValores}
                         />
                     ))

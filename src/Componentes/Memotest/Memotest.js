@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { getDificultad, getTema, getGano, getFichas, setFichas, getJuegoEmpezado, getCargando, setCargando, getQuieroJugar, getModoJuego, getYaCargo, getCantJugadores } from './MemotestSlice'
+import { getDificultad, getTema, getGano, getFichas, setFichas, getJuegoEmpezado, getCargando, setCargando, getQuieroJugar, getModoJuego, getYaCargo, getCantJugadores, getMostrarForms } from './MemotestSlice'
 
 import {Banderas, Animales, Comidas} from '../../utils/fichas'
 
@@ -28,8 +28,7 @@ const Memotes = () => {
     const gano = useSelector(getGano)
     const quieroJugar = useSelector(getQuieroJugar)
     const modoJuego = useSelector(getModoJuego)
-    const cantidadJugadores = useSelector(getCantJugadores)
-
+    const mostrarForms = useSelector(getMostrarForms)
 
     /* -------------- PREPARA EL JUEGO TENEINDO EN CUANTA LAS VARISNTES DE DIFICULTAD Y TEMA ------------- */
     /* se ejecuta en el useEffect caundo el tema sea elejido, al darle boton de inicio en el form de cond. y al darle a reiniciar sea en ganaste o en partida */
@@ -123,7 +122,7 @@ const Memotes = () => {
                 : modoJuego === "" ?
                     <ModoJuego/>
                 
-                : modoJuego === "multi" && cantidadJugadores === 0 ? 
+                : modoJuego === "multi" && mostrarForms ? 
 
                     <CargaDeNombres/>
                 

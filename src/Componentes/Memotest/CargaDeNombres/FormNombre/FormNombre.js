@@ -8,9 +8,9 @@ import { BsBullseye } from "react-icons/bs";
 import { BsFillRecord2Fill } from "react-icons/bs";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 
-const FormNombre = ({setNombre, setColor, jugadores, i, setCantJugadores, limpiarValores}) => {
+const FormNombre = ({setNombre, setColor, jugadores, i, setCantJugadores, cantidadJugadores, limpiarValores}) => {
 
-    const [activo, setActivo] = useState(i >=2 ? false : true)
+    const [activo, setActivo] = useState(i <2 ? true : (i === 2 && cantidadJugadores > 2) ? true : (i === 3 && cantidadJugadores === 4) ? true: false)
     const colores = ["red", "orange", "yellow", "lime", "green", "blue", "deepskyblue", "fuchsia", "deeppink", "black"]
 
     const validarColor = (color) =>{
@@ -53,7 +53,7 @@ const FormNombre = ({setNombre, setColor, jugadores, i, setCantJugadores, limpia
     return ( 
         <div className='contenedorFormNombre' style={{opacity: activo ? "1" : ".5"}}>
             <div className='d-flex'>
-                {i >= 2 ? <Switch onClick={() => onSwitch()} /> : "" }
+                {i >= 2 ? <Switch defaultChecked={(i === 2 && cantidadJugadores > 2) ? true : (i === 3 && cantidadJugadores === 4) ? true: false} onClick={() => onSwitch()} /> : "" }
                 <h3 className='text-center mb-3 nombre' style={{width: i >= 2 ? "80%" :"100%", color: `${jugadores[`jugador${i+1}`].color}` === "" ? "white" : `${jugadores[`jugador${i+1}`].color}`}} >
                     {jugadores[`jugador${i+1}`].nombre === "" ? `Jugador ${i+1}` : jugadores[`jugador${i+1}`].nombre}
                 </h3>
