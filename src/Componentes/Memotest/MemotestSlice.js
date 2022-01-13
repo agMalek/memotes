@@ -139,7 +139,6 @@ export const memotestSlice = createSlice({
                 state.multijugador.jugadores[i] = jugadores[key].nombre !== "" ? jugadores[key] : {} 
                 i++
             }
-            state.multijugador.yaCargo = true
         },
         setCantidadJugadores: (state, action) => {
             state.multijugador.cantidadJugadores = action.payload

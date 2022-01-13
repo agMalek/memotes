@@ -14,7 +14,7 @@ const CargaDeNombres = () => {
 
     const dispatch = useDispatch()
 
-    /* const jugadores = useSelector(getJugadores) */
+    const jugadoresState = useSelector(getJugadores)
     const tituloModal = "Carga incompleta.";
     const textoModal = `Debes completar todos los jugadores que estan habilitados.
     Recordá escribir el nombre y seleccionar un color.`;
@@ -27,7 +27,7 @@ const CargaDeNombres = () => {
     const [cantJugadores, setCantJugadores] = useState(2)
     const [jugadores, setJugadores] = useState({
         jugador1 : {
-            nombre: "",
+            nombre: "" ,
             color: "",
             esMiTurno: true,
             cantAciertos: 0
