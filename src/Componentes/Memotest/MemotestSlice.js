@@ -274,7 +274,7 @@ recalcular el tiempo de a pirmera pista ya que empieza a contar desde el backdro
 
 agregar spinner en entrada a corga nombre y a ganste spinner mui ---- hecho
 
-hacer terniero de funcion volver en vistacondi, si es multi vuevlo a carganombre
+hacer terniero de funcion volver en vistacondi, si es multi vuevlo a carganombre ---hecho
 
 agregar iconos en los botones}
 mejorar tipografía

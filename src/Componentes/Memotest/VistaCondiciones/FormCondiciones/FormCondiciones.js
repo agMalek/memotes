@@ -2,7 +2,7 @@
 import {useEffect, useState} from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { setWidthContenedor, setDificultad, setTema, getTema, empezarJuego, setModoJuego, setCargando } from '../../MemotestSlice'
+import { setWidthContenedor, getModoJuego, setDificultad, setMostrarForms, setTema, getTema, empezarJuego, setModoJuego, setCargando } from '../../MemotestSlice'
 
 import './FormCondiciones.css'
 
@@ -11,7 +11,7 @@ const FormCondiciones = ({prepararJuego, setOpenSpinner, openSpinner, setOpenMod
     const dispatch = useDispatch()
 
     const tema = useSelector(getTema)
-  
+    const modoJuego = useSelector(getModoJuego)
 
     const nivelA = {
         tiempo: 1000,
@@ -113,7 +113,12 @@ const FormCondiciones = ({prepararJuego, setOpenSpinner, openSpinner, setOpenMod
 
 
     const volver = () => {
-        dispatch(setModoJuego(""))
+        if(modoJuego === "multi"){
+            console.log()
+            dispatch(setMostrarForms(true))
+        }else{
+            dispatch(setModoJuego(""))
+        }
         dispatch(setCargando(true))
     }
 
