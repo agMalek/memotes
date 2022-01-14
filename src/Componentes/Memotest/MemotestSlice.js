@@ -249,23 +249,25 @@ el jugar con otros nombres no deberia limpiar los nombre y colores anteriores --
 volver al home no vaica nombres ni modojeugo -----------hecho
 chequear bordes cuando es multi ---------hecho
 
-estilo en modo juego
+estilo en modo juego ---------- hecho
 
 backdrop:
-    mejorar diseño
-    hacer dinamico el numero de segundos
-    preguntar sungular y plural
+    hacer dinamico el numero de segundos ------hecho
+    preguntar sungular y plural ----hecho
+    mejorar diseño 
 .
 
 
 
-singular y plural en p de jugador
+singular y plural en p de jugador ----- hecho
+
+revisar segundos del spinner basico ----hecho
 
 revisar segundos que tarda de trasn a opaca cuando sale backdrop
 
-revisar segundos del spinner basico
+agregar spinner en entrada a corga nombre y a ganste spinner mui ---- hecho
 
-agregar spinner en entrada a corga nombre
+hacer terniero de funcion volver en vistacondi, si es multi vuevlo a carganombre
 
 agregar iconos en los botones}
 mejorar tipografía
@@ -277,8 +279,23 @@ despesu -----------
 
  ---warning settime
  ---mirar los warning amarillos
-
+ ---firebase: 
+    --- carga de los temas alla, y manejo de traerlo
+    --- abm
+    --- login
+    --- gurda recors
+    --- mustra recors en infopartida
+    --- muestra historal en ganaste
+    --- vista de perfil de jugador (historial mas completo)
+    --- personalizar tematica
+---mejorar la selecccion de tema
+---volver a carga nombre sin limpiar tema(porque despues el tema es un mundo)
+--- vista previa de fichas al elegir tema
+--- ver resutado de tablero en ganaste
 .
+
+
+
 
 
 pensientes:
@@ -288,7 +305,8 @@ pensientes:
 .
 
 
-
+opciones de ideas: 
+    hacer que el ganase sea un backdrop dentro de vista juego
 
 
 */

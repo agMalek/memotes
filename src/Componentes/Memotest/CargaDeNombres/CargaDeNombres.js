@@ -4,16 +4,17 @@ import FormNombre from './FormNombre/FormNombre';
 import Titulo from '../Titulo/Titulo'
 
 import './CargaDeNombres.css'
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { getJugadores, setValuesJugadores, setCantidadJugadores, setCargando, setModoJuego, getCantJugadores, setMostrarForms } from '../MemotestSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import { getJugadores, setValuesJugadores, setCantidadJugadores, setCargando, setModoJuego, getCantJugadores, setMostrarForms, getCargando } from '../MemotestSlice';
 import Modal from '../Modal/Modal';
 import SpinnerMui from '../SpinnerMui/SpinnerMui'
+import Spinner from '../Spinner/Spinner'
 
 const CargaDeNombres = () => {
 
     const dispatch = useDispatch()
 
+    const cargando = useSelector(getCargando)
     const jugadoresState = useSelector(getJugadores)
     const cantidadJugadores = useSelector(getCantJugadores)
 
@@ -92,7 +93,9 @@ const CargaDeNombres = () => {
     
 
     useEffect(() => {
-        dispatch(setCargando(false))
+        setTimeout(() => {
+            dispatch(setCargando(false))
+        }, 500);
     },[])
     
     useEffect(() => {
@@ -129,32 +132,36 @@ const CargaDeNombres = () => {
         dispatch(setCargando(true))
     }
 
-    return (  
-        <div>
-            <SpinnerMui openSpinner={openSpinner}/>
-            <Modal setOpenModal={setOpenModal} openModal={openModal} title={tituloModal} text={textoModal} textButton={textoBotonModal}/>
-            <Titulo/>
-            <div className='d-flex flex-wrap justify-content-evenly'>
-                {
-                    indices.map(i => (
-                        <FormNombre 
-                            key={i} 
-                            i={i}
-                            jugadores={jugadores} 
-                            setNombre={setNombre}  
-                            setColor={setColor}
-                            setCantJugadores={setCantJugadores}
-                            cantidadJugadores={cantidadJugadores}
-                            limpiarValores={limpiarValores}
-                        />
-                    ))
-                }
-            </div>
-            <div className='contenedorBotonAvanzar'>
-                <button className='btn btn-primary w-25 mx-3 my-2' /* disabled={!cargado} */ onClick={() => volver()}>Volver</button>
-                <button className='btn btn-primary w-25 mx-3 my-2' /* disabled={!cargado} */ onClick={() => iniciar()}>Avanzar</button>
-            </div>
-        </div>
+    return (
+        <>
+            {    cargando ? <Spinner/> :
+                <div>
+                    <SpinnerMui openSpinner={openSpinner}/>
+                    <Modal setOpenModal={setOpenModal} openModal={openModal} title={tituloModal} text={textoModal} textButton={textoBotonModal}/>
+                    <Titulo/>
+                    <div className='d-flex flex-wrap justify-content-evenly'>
+                        {
+                            indices.map(i => (
+                                <FormNombre 
+                                    key={i} 
+                                    i={i}
+                                    jugadores={jugadores} 
+                                    setNombre={setNombre}  
+                                    setColor={setColor}
+                                    setCantJugadores={setCantJugadores}
+                                    cantidadJugadores={cantidadJugadores}
+                                    limpiarValores={limpiarValores}
+                                />
+                            ))
+                        }
+                    </div>
+                    <div className='contenedorBotonAvanzar'>
+                        <button className='btn btn-primary w-25 mx-3 my-2' /* disabled={!cargado} */ onClick={() => volver()}>Volver</button>
+                        <button className='btn btn-primary w-25 mx-3 my-2' /* disabled={!cargado} */ onClick={() => iniciar()}>Avanzar</button>
+                    </div>
+                </div>
+            }
+        </>   
     );
 }
  

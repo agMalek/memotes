@@ -8,7 +8,7 @@ import Ficha from "./Ficha/Ficha";
 import './Tablero.css'
 
 
-const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
+const Tablero = ({opacidad, podesJugar, setPodesJugar, setOpenSpinner, openSpinner}) => {
 
     const dispatch = useDispatch()
 
@@ -114,12 +114,19 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
 
     useEffect(() =>{
         if(cantCoincidencias === dife.cantParejas){
-            dispatch(setGano(true))
-            dispatch(pararReloj())
+            setOpenSpinner(true)
         }
     }, [cantCoincidencias])
 
-
+    useEffect(() => {
+        if(openSpinner){
+            let time = setTimeout(() => {
+                dispatch(setGano(true))
+                dispatch(pararReloj())
+            }, 1500);
+            return () => clearTimeout(time)
+        }
+    },[openSpinner])
 
     return ( 
         <div className="contenedorFichas" >

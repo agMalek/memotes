@@ -14,7 +14,7 @@ const ModoJuego = () => {
     useEffect(() => {
         setTimeout(() => {
             dispatch(setCargando(false))
-        }, 700);
+        }, 500);
     },[])
 
     const seleccionModalidad = (modo) => {

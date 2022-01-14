@@ -105,7 +105,7 @@ const Memotes = () => {
             setTimeout(() => {
                 dispatch(setCargando(false))
                 console.log("chichichichci")
-            }, 1000)
+            }, 750)
         }
     }, [fichas])
 
