@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
 import './Ayuda.css'
 import { useSelector } from 'react-redux';
-import { getDificultad } from '../MemotestSlice';
+import { getDificultad, getEmpezoJuego } from '../MemotestSlice';
 
 const Ayuda = ({contenedor, setPodesJugar}) => {
 
     const {ayuda: {tiempoEntreAyudas, cantAyudas, porcentaje, duracion}} = useSelector(getDificultad)
+    const empezoJuego = useSelector(getEmpezoJuego)
 
     const transparente = "transparente"
     const opaca = "opaca"
+
 
     const [empezoAyuda, setEmpezoAyuda] = useState(false)
     const [puedoPedir, setPuedoPedir] = useState(false)
@@ -53,6 +55,7 @@ const Ayuda = ({contenedor, setPodesJugar}) => {
 
     useEffect(() => {
         let time;
+        console.log(empezoJuego)
         console.log(tiempoEntreAyudas, cantAyudas, porcentaje)
         if(empezoAyuda === true){
             time = setTimeout(()=> {
@@ -62,14 +65,14 @@ const Ayuda = ({contenedor, setPodesJugar}) => {
                 console.log("termino ayuda")
             }, duracion)
             return () => clearTimeout(time);
-        }else{
+        }else if(empezoJuego){
             time = setTimeout(() => {
                 setPuedoPedir(true)
                 console.log("ahora otra")
             }, tiempoEntreAyudas)
             return () => clearTimeout(time);
         }
-    }, [empezoAyuda])
+    }, [empezoAyuda, empezoJuego])
 
 
     const dameImgTapadas = () => {       
@@ -89,7 +92,7 @@ const Ayuda = ({contenedor, setPodesJugar}) => {
             disabled={!puedoPedir || contAyudas < 1 } 
             onClick={() => ayudar()}
         >
-            { contAyudas === 0 ? `No te quedan ayudas` : !puedoPedir ? "Enseguida otra ayuda" : `Pedí ayuda. Te quedan ${contAyudas}` }
+            { contAyudas === 0 ? `No te quedan ayudas` : !puedoPedir ? "Preparando ayuda" : `Pedí ayuda. Te quedan ${contAyudas}` }
         </button>
     );
 }

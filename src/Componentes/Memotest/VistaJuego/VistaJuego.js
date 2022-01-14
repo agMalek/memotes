@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { iniciarReloj, getDificultad, getWidthContenedor, getModoJuego, getCargando, setCargando } from '../MemotestSlice';
+import { iniciarReloj, getDificultad, getWidthContenedor, getModoJuego, getCargando, setCargando, setEmpezoJuego } from '../MemotestSlice';
 
 import Tablero from './Tablero/Tablero';
 
@@ -44,6 +44,7 @@ const VistaJuego = ({prepararJuego}) => {
                 setPodesJugar(true)
                 setBotonInhabilitado(false)
                 dispatch(iniciarReloj())
+                dispatch(setEmpezoJuego(true))
             }, dife.tiempo)
         }
     }, [opacidad])
@@ -51,9 +52,7 @@ const VistaJuego = ({prepararJuego}) => {
 
     useEffect(() => {
         if(!openBackDrop){
-            setTimeout(() => {
-                setOpacidad(opaca)
-            }, 1000);
+            setOpacidad(opaca)
         }
     },[openBackDrop])
 

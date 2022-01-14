@@ -7,7 +7,8 @@ const initialStateValues = {
         fichas: [],
         gano: false,
         cargando: false,
-        modoJuego: ""
+        modoJuego: "",
+        empezoElJuego: false
     },
     condiciones: {
         dificultad: {
@@ -91,6 +92,9 @@ export const memotestSlice = createSlice({
         },
         setModoJuego: (state, action) => {
             state.infoGeneral.modoJuego = action.payload
+        },
+        setEmpezoJuego: (state, action) =>{ 
+            state.infoGeneral.empezoElJuego = action.payload
         },
         reiniciarCondiciones: state => {
             state.condiciones.dificultad = initialStateValues.condiciones.dificultad
@@ -207,7 +211,8 @@ export const {
     setValuesJugadores,
     setCantidadJugadores,
     setMostrarForms,
-    reiniciarNombresJugadores
+    reiniciarNombresJugadores,
+    setEmpezoJuego
 
 } = memotestSlice.actions
 
@@ -220,6 +225,7 @@ export const getFichas = state => state.memotestSlice.infoGeneral.fichas
 export const getGano = state => state.memotestSlice.infoGeneral.gano
 export const getCargando = state => state.memotestSlice.infoGeneral.cargando
 export const getModoJuego = state => state.memotestSlice.infoGeneral.modoJuego
+export const getEmpezoJuego = state => state.memotestSlice.infoGeneral.empezoElJuego
 
 export const getDificultad = state => state.memotestSlice.condiciones.dificultad
 export const getTema = state => state.memotestSlice.condiciones.tema
@@ -263,7 +269,8 @@ singular y plural en p de jugador ----- hecho
 
 revisar segundos del spinner basico ----hecho
 
-revisar segundos que tarda de trasn a opaca cuando sale backdrop
+revisar segundos que tarda de trasn a opaca cuando sale backdrop ------hecho
+recalcular el tiempo de a pirmera pista ya que empieza a contar desde el backdrop------- hecho
 
 agregar spinner en entrada a corga nombre y a ganste spinner mui ---- hecho
 
