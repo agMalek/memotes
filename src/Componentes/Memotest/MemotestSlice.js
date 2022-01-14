@@ -173,6 +173,9 @@ export const memotestSlice = createSlice({
         },
         setMostrarForms: (state, action) => {
             state.multijugador.mostrarForms = action.payload
+        },
+        reiniciarNombresJugadores: state => {
+            state.multijugador.jugadores = initialStateValues.multijugador.jugadores
         }
 
     }
@@ -203,7 +206,8 @@ export const {
     reiniciarAciertosJugadores,
     setValuesJugadores,
     setCantidadJugadores,
-    setMostrarForms
+    setMostrarForms,
+    reiniciarNombresJugadores
 
 } = memotestSlice.actions
 
@@ -240,10 +244,10 @@ alert x modal en form   ------------------------------------HECHO
 icon o div en circulo color seleccionado -----------------hecho
 
 en carga e nombre boton volver -----------HECHO
-y en ganaste boton volver a carga de nombre y estilo en ganaste -----------
-el jugar con otros nombres no deberia limpiar los nombre y colores anteriores
-volver al home no vaica nombres ni modojeugo
-chequear bordes cuando es multi
+y en ganaste boton volver a carga de nombre y estilo en ganaste -----------hecho
+el jugar con otros nombres no deberia limpiar los nombre y colores anteriores ------------hecho
+volver al home no vaica nombres ni modojeugo -----------hecho
+chequear bordes cuando es multi ---------hecho
 
 estilo en modo juego
 
@@ -262,6 +266,9 @@ revisar segundos que tarda de trasn a opaca cuando sale backdrop
 revisar segundos del spinner basico
 
 agregar spinner en entrada a corga nombre
+
+agregar iconos en los botones}
+mejorar tipografía
 
 borrar comentarios y console.logs
 

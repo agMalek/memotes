@@ -1,7 +1,7 @@
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { reiniciarCondiciones, setFichas, terminarJuego, setCargando, setGano, reiniciarInfoPartida, setQuieroJugar, reiniciarAciertosJugadores, getModoJuego, setModoJuego, setCantidadJugadores, setMostrarForms} from '../MemotestSlice'
+import { reiniciarCondiciones, setFichas, terminarJuego, setCargando, setGano, reiniciarInfoPartida, setQuieroJugar, reiniciarAciertosJugadores, getModoJuego, setModoJuego, setCantidadJugadores, setMostrarForms, reiniciarNombresJugadores} from '../MemotestSlice'
 
 
 import './BotonesBasicos.css'
@@ -47,6 +47,9 @@ const BotonesBasicos = ({botonInhabilitado, prepararJuego, width}) => {
     const volverAHome = () => {
         nuevoJuego()
         dispatch(setQuieroJugar(false))
+        dispatch(setModoJuego(""))
+        dispatch(setMostrarForms(true))
+        dispatch(reiniciarNombresJugadores())
     }
 
     return (

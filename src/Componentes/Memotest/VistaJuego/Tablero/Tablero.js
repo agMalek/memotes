@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
-import { sumaContInt, pararReloj, getDificultad, setGano, getFichas,  getJugadores, getIndiceActivo, setMultijugador, setIndiceActivo, getCantJugadores } from "../../MemotestSlice";
+import { sumaContInt, pararReloj, getDificultad, setGano, getFichas,  getJugadores, getIndiceActivo, setMultijugador, setIndiceActivo, getCantJugadores, getModoJuego } from "../../MemotestSlice";
 
 import Ficha from "./Ficha/Ficha";
 
@@ -17,6 +17,7 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
     const jugadores = useSelector(getJugadores)
     const indiceJugador = useSelector(getIndiceActivo)
     const cantJugadores = useSelector(getCantJugadores)
+    const modoJuego = useSelector(getModoJuego)
 
 
     const opaca = "opaca"
@@ -25,14 +26,13 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
     const tiempoEntreTurnos = 500
 
     let bordeBlanco = `ficha borde-white`
-    let bordeColor;/*  =  jugadores.length > 0 ? `ficha borde-${jugadores[indiceJugador].color}` : bordeBlanco */
+    let bordeColor =  modoJuego === "multi" ? `ficha borde-${jugadores[indiceJugador].color}` : bordeBlanco
     
     /* useEffect(() => {
+        console.log(bordeColor)
         console.log(jugadores.length)
         if(jugadores.length > 0){
             bordeColor = `ficha borde-${jugadores[indiceJugador].color}`
-        }else{
-            bordeColor = bordeBlanco
         }
         console.log(bordeColor)
     },[]) */
@@ -57,7 +57,8 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar}) => {
                     setCantVolteadas(cantVolteadas+1)
                     setPodesJugar(false)
                 }
-                event.target.className = bordeColor !== undefined ? bordeColor : bordeBlanco 
+                event.target.className = bordeColor
+                console.log(bordeColor)
                 img.className = opaca
             }
         }
