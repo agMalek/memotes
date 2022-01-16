@@ -1,7 +1,7 @@
-import {useState, useEffect} from 'react'
+import {useEffect} from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { getDificultad, getTema, getGano, getFichas, setFichas, getJuegoEmpezado, getCargando, setCargando, getQuieroJugar, getModoJuego, getYaCargo, getCantJugadores, getMostrarForms } from './MemotestSlice'
+import { getDificultad, getTema, getGano, getFichas, setFichas, getJuegoEmpezado, getCargando, setCargando, getQuieroJugar, getModoJuego, getMostrarForms } from './MemotestSlice'
 
 import {Banderas, Animales, Comidas} from '../../utils/fichas'
 
@@ -63,7 +63,7 @@ const Memotes = () => {
     /* ---------  DUPLICA EL ARRAY, PARA QUE SEA EN PAREJAS ---------- */
     /* en prepararJuego */
     const armarParejas = (array) =>{
-        array.map(ficha => {
+        array.forEach(ficha => {
             array.push({...ficha})
         })
         return array
@@ -104,7 +104,6 @@ const Memotes = () => {
         if(fichas.length > 0){
             setTimeout(() => {
                 dispatch(setCargando(false))
-                console.log("chichichichci")
             }, 750)
         }
     }, [fichas])

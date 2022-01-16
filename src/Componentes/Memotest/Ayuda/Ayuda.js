@@ -23,7 +23,6 @@ const Ayuda = ({contenedor, setPodesJugar}) => {
     const ayudar = () => {
         let filtrado = dameImgTapadas()
         let indices = dameIndicesRandom(filtrado.length, Math.floor(filtrado.length*porcentaje))
-        console.log(Math.floor(filtrado.length*porcentaje))
         setArrayFiltrado(filtrado)
         setArrayIndices(indices)
         girarFichas(indices, filtrado, opaca)
@@ -47,7 +46,6 @@ const Ayuda = ({contenedor, setPodesJugar}) => {
             if(!array.some(num => num === numRandom)){
                 array.push(numRandom)
             }
-            console.log("intentando")
         }
         return array
     }
@@ -55,20 +53,16 @@ const Ayuda = ({contenedor, setPodesJugar}) => {
 
     useEffect(() => {
         let time;
-        console.log(empezoJuego)
-        console.log(tiempoEntreAyudas, cantAyudas, porcentaje)
         if(empezoAyuda === true){
             time = setTimeout(()=> {
                 girarFichas(arrayIndices, arrayFiltrado, transparente)  
                 setEmpezoAyuda(false)
                 setPodesJugar(true)
-                console.log("termino ayuda")
             }, duracion)
             return () => clearTimeout(time);
         }else if(empezoJuego){
             time = setTimeout(() => {
                 setPuedoPedir(true)
-                console.log("ahora otra")
             }, tiempoEntreAyudas)
             return () => clearTimeout(time);
         }

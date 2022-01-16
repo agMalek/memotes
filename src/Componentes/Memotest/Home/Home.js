@@ -1,9 +1,10 @@
-import Titulo from "../Titulo/Titulo";
 
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCargando, setCargando, setQuieroJugar } from "../MemotestSlice";
+
 import Spinner from "../Spinner/Spinner";
-import { useEffect } from "react";
+import Titulo from "../Titulo/Titulo";
 
 const Home = () => {
 

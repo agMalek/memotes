@@ -1,12 +1,7 @@
 import './FormNombre.css'
 import Switch from '@mui/material/Switch';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { BsRecord2 } from "react-icons/bs";
-import { BsEmojiWink } from "react-icons/bs";
-import { BsEmojiSunglasses } from "react-icons/bs";
-import { BsBullseye } from "react-icons/bs";
-import { BsFillRecord2Fill } from "react-icons/bs";
-import { BsFillPlusCircleFill } from "react-icons/bs";
 
 const FormNombre = ({setNombre, setColor, jugadores, i, setCantJugadores, cantidadJugadores, limpiarValores}) => {
 
@@ -26,23 +21,8 @@ const FormNombre = ({setNombre, setColor, jugadores, i, setCantJugadores, cantid
 
     const onColor = (color, i) => {
         setColor(color, i)
-        /* setColores({
-            red: false,
-            orange: false,
-            yellow: false,
-            greenyellow: false,
-            green: false,
-            blue: false,
-            lightblue: false,
-            pink: false,
-            purple: false,
-            black: false
-        , [color]: true}) */
     }
 
-    /* useEffect(() =>{
-        console.log(colores)
-    },[colores]) */
 
     const onSwitch = () => {
         activo ? setCantJugadores(prev => prev -1) : setCantJugadores(prev => prev +1)

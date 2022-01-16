@@ -1,12 +1,13 @@
 
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector} from 'react-redux';
+import { getJugadores, getModoJuego, ponerBorde } from '../MemotestSlice';
+
 import BotonesBasicos from '../BotonesBasicos/BotonesBasicos';
 import ContadorIntentos from '../ContadorIntentos/ContadorIntentos';
 import VistaMultijugador from '../VistaJuego/VistaMultijador/VistaMultijugador'
-import { getGanador, getJugadores, getModoJuego, ponerBorde } from '../MemotestSlice';
 import Reloj from '../Reloj/Reloj';
+
 import './Ganaste.css'
 
 const Ganaste = ({prepararJuego}) => {
@@ -22,29 +23,16 @@ const Ganaste = ({prepararJuego}) => {
     const calcularGanador = () => {
         let indiceGanador = [];
         let maximo = jugadores[0].cantAciertos
-        jugadores.map((jug, index) => {
+        jugadores.forEach((jug, index) => {
             if(jug.cantAciertos > maximo){
                 maximo = jug.cantAciertos
-              /*   console.log(maximo) */
                 indiceGanador = [index]
-              /*   console.log(indiceGanador)
-                console.log("ganador unico") */
             } else if(jug.cantAciertos === maximo){
                 indiceGanador.push(index)
-                /* console.log(indiceGanador)
-                console.log("paso por empate") */
             }
         })
-
         setGanadores(indiceGanador)
-        /* console.log(indiceGanador) */
     }
-
-    useEffect(() => {
-        /* dispatch(setGanador(calcularGanador())) */
-        /* console.log(ganadores)
-        console.log(jugadores) */
-    }, [ganadores])
     
     useEffect(() => {
         calcularGanador()

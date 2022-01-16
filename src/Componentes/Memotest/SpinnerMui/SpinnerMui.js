@@ -1,7 +1,8 @@
-import './SpinnerMui.css'
-
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+
+import './SpinnerMui.css'
+
 
 export default function SimpleBackdrop({openSpinner}) {
 

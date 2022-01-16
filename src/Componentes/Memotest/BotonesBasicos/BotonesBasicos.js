@@ -1,7 +1,7 @@
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import { reiniciarCondiciones, setFichas, terminarJuego, setCargando, setGano, reiniciarInfoPartida, setQuieroJugar, reiniciarAciertosJugadores, getModoJuego, setModoJuego, setCantidadJugadores, setMostrarForms, reiniciarNombresJugadores, setEmpezoJuego} from '../MemotestSlice'
+import { reiniciarCondiciones, setFichas, terminarJuego, setCargando, setGano, reiniciarInfoPartida, setQuieroJugar, reiniciarAciertosJugadores, getModoJuego, setModoJuego, setMostrarForms, reiniciarNombresJugadores, setEmpezoJuego} from '../MemotestSlice'
 
 
 import './BotonesBasicos.css'

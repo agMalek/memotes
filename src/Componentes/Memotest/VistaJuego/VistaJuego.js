@@ -1,12 +1,9 @@
 
 import { useEffect, useState } from 'react';
-
 import { useSelector, useDispatch } from 'react-redux';
-import { iniciarReloj, getDificultad, getWidthContenedor, getModoJuego, getCargando, setCargando, setEmpezoJuego } from '../MemotestSlice';
+import { iniciarReloj, getDificultad, getWidthContenedor, getModoJuego, setEmpezoJuego } from '../MemotestSlice';
 
 import Tablero from './Tablero/Tablero';
-
-import './VistaJuego.css'
 import Titulo from '../Titulo/Titulo';
 import BotonesBasicos from '../BotonesBasicos/BotonesBasicos';
 import Reloj from '../Reloj/Reloj';
@@ -16,6 +13,8 @@ import VistaMultijugador from './VistaMultijador/VistaMultijugador';
 import BackDrop from './BackDrop/BackDrop'
 import SpinnerMui from '../SpinnerMui/SpinnerMui';
 
+import './VistaJuego.css'
+
 const VistaJuego = ({prepararJuego}) => {
 
     const dispatch = useDispatch()
@@ -23,7 +22,6 @@ const VistaJuego = ({prepararJuego}) => {
     const dife = useSelector(getDificultad)
     const widthContenedor = useSelector(getWidthContenedor)
     const modoJuego = useSelector(getModoJuego)
-    /* const cargando = useSelector(getCargando) */
 
     const opaca = "opaca"
     const transparente = "transparente"
@@ -72,11 +70,6 @@ const VistaJuego = ({prepararJuego}) => {
     },[])
 
 
-   /*  useEffect(()=> {
-        setTimeout(() => {
-            dispatch(setCargando(false))
-        }, 1200);
-    },[]) */
 
     return (
         <>

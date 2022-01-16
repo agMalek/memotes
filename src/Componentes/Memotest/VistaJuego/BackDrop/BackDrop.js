@@ -1,10 +1,9 @@
-import './BackDrop.css'
 
-
-import Backdrop from '@mui/material/Backdrop';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {getDificultad, getModoJuego} from '../../MemotestSlice'
+import Backdrop from '@mui/material/Backdrop';
+import './BackDrop.css'
 
 export default function SimpleBackdrop({openBackDrop}) {
 
@@ -17,11 +16,8 @@ export default function SimpleBackdrop({openBackDrop}) {
     if(openBackDrop){
       let time = setTimeout(() => {
         setCont(prev => prev -1)
-        console.log("momomomo")  
       }, 1000);
       return () => clearTimeout(time)
-    }else{
-      console.log("lalalalal")  
     }
   },[cont])
 

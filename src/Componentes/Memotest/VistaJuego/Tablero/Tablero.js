@@ -27,15 +27,6 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar, setOpenSpinner, openSpinn
 
     let bordeBlanco = `ficha borde-white`
     let bordeColor =  modoJuego === "multi" ? `ficha borde-${jugadores[indiceJugador].color}` : bordeBlanco
-    
-    /* useEffect(() => {
-        console.log(bordeColor)
-        console.log(jugadores.length)
-        if(jugadores.length > 0){
-            bordeColor = `ficha borde-${jugadores[indiceJugador].color}`
-        }
-        console.log(bordeColor)
-    },[]) */
 
     const [cantVolteadas, setCantVolteadas] = useState(0)
     const [cantCoincidencias, setCantCoincidencias] = useState(0)
@@ -58,7 +49,6 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar, setOpenSpinner, openSpinn
                     setPodesJugar(false)
                 }
                 event.target.className = bordeColor
-                console.log(bordeColor)
                 img.className = opaca
             }
         }
@@ -115,6 +105,7 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar, setOpenSpinner, openSpinn
     useEffect(() =>{
         if(cantCoincidencias === dife.cantParejas){
             setOpenSpinner(true)
+            dispatch(pararReloj())
         }
     }, [cantCoincidencias])
 
@@ -122,7 +113,6 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar, setOpenSpinner, openSpinn
         if(openSpinner){
             let time = setTimeout(() => {
                 dispatch(setGano(true))
-                dispatch(pararReloj())
             }, 1500);
             return () => clearTimeout(time)
         }

@@ -145,11 +145,9 @@ export const memotestSlice = createSlice({
         },
         setMultijugador: (state, action) => {
             state.multijugador.jugadores[state.multijugador.indiceActivo] = action.payload
-            console.log(action.payload)
         },
         setIndiceActivo: (state, action) => {
             state.multijugador.indiceActivo = action.payload
-            console.log(action.payload)
         },
         ponerBorde: (state) => {
             state.multijugador.jugadores.map((jug)=> (
@@ -157,7 +155,7 @@ export const memotestSlice = createSlice({
             ))
         },
         reiniciarAciertosJugadores: (state) => {
-            state.multijugador.jugadores.map(jug => {
+            state.multijugador.jugadores.forEach(jug => {
                 jug.cantAciertos = 0
                 jug.esMiTurno = false
             })
@@ -301,7 +299,7 @@ despesu -----------
 --- ver resutado de tablero en ganaste
 .
 
-
+A component is changing the default checked state of an uncontrolled SwitchBase after being initialized. To suppress this warning opt to use a controlled SwitchBase. 
 
 
 

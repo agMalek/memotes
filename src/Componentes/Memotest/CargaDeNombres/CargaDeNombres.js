@@ -28,32 +28,6 @@ const CargaDeNombres = () => {
     const [openModal, setOpenModal] = useState(false);
 
     const [cantJugadores, setCantJugadores] = useState(cantidadJugadores)
-    /* const [jugadores, setJugadores] = useState({
-        jugador1 : {
-            nombre: cantidadJugadores > 0 ? jugadoresState[0].nombre : "" ,
-            color: cantidadJugadores > 0 ? jugadoresState[0].color : "",
-            esMiTurno: true,
-            cantAciertos: 0
-        },
-        jugador2 : {
-            nombre: cantidadJugadores > 0 ? jugadoresState[1].nombre : "",
-            color: cantidadJugadores > 0 ? jugadoresState[1].color : "",
-            esMiTurno: false,
-            cantAciertos: 0
-        },
-        jugador3 : {
-            nombre: cantidadJugadores > 2 ? jugadoresState[2].nombre : "",
-            color: cantidadJugadores > 2 ? jugadoresState[2].color : "",
-            esMiTurno: false,
-            cantAciertos: 0
-        },
-        jugador4 : {
-            nombre: cantidadJugadores > 3 ? jugadoresState[3].nombre : "",
-            color: cantidadJugadores > 3 ? jugadoresState[3].color : "",
-            esMiTurno: false,
-            cantAciertos: 0
-        }
-    }) */
    
     const [jugadores, setJugadores] = useState({
         jugador1 : jugadoresState[0],
@@ -64,24 +38,19 @@ const CargaDeNombres = () => {
     
     
     const limpiarValores = (name) => {
-        setJugadores({...jugadores, [name]: {...jugadores[name], ["nombre"]: "", ["color"]: ""}})
+        setJugadores({...jugadores, [name]: {...jugadores[name], "nombre": "", "color": ""}})
     }
 
 
 
     const setNombre = (e) => {
         const {name, value} = e.target
-        setJugadores({...jugadores, [name]: { ...jugadores[name], ["nombre"]: value} })
+        setJugadores({...jugadores, [name]: { ...jugadores[name], "nombre": value} })
     }
 
     const setColor = (color, i) => {
-        setJugadores({...jugadores, [`jugador${i+1}`]: { ...jugadores[`jugador${i+1}`], ["color"]: color } })
+        setJugadores({...jugadores, [`jugador${i+1}`]: { ...jugadores[`jugador${i+1}`], "color": color } })
     }
-
-    useEffect(() =>{
-       console.log(jugadores)
-
-    },[jugadores])
 
     const iniciar = () => {
         if(verificar()){
@@ -104,7 +73,6 @@ const CargaDeNombres = () => {
                 dispatch(setValuesJugadores(jugadores))
                 dispatch(setCantidadJugadores(cantJugadores))
                 dispatch(setMostrarForms(false))
-                console.log("pasassa")
             }, 1500);
             return () => clearTimeout(time)
         }
@@ -113,19 +81,12 @@ const CargaDeNombres = () => {
     const verificar = () => {
         let cont = 0
         for(const key in jugadores) {
-            console.log(jugadores[key].nombre)
-            console.log(jugadores[key].color)
             if(jugadores[key].nombre !== "" && jugadores[key].color !== ""){
                 cont++
             }
-            console.log(cont)
         }
-        return cont === cantJugadores ? true : false
+        return cont === cantJugadores
     }
-
-    /* useEffect(()=> {
-        console.log(cantJugadores)
-    }, [cantJugadores]) */
 
     const volver = () => {
         dispatch(setModoJuego(""))
@@ -156,8 +117,8 @@ const CargaDeNombres = () => {
                         }
                     </div>
                     <div className='contenedorBotonAvanzar'>
-                        <button className='btn btn-primary w-25 mx-3 my-2' /* disabled={!cargado} */ onClick={() => volver()}>Volver</button>
-                        <button className='btn btn-primary w-25 mx-3 my-2' /* disabled={!cargado} */ onClick={() => iniciar()}>Avanzar</button>
+                        <button className='btn btn-primary w-25 mx-3 my-2' onClick={() => volver()}>Volver</button>
+                        <button className='btn btn-primary w-25 mx-3 my-2' onClick={() => iniciar()}>Avanzar</button>
                     </div>
                 </div>
             }

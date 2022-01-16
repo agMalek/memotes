@@ -10,8 +10,6 @@ const VistaMultijugador = () => {
 
     const jugadores = useSelector(getJugadores)
 
-    /* const jugadores = [{num: 1, color: "red"}, {num: 2, color: "blue"}, {num: 3, color: "green"}, {num: 4, color: "yellow"}] */
-
     return (  
         <>
             {jugadores.map((jug, index) => (
