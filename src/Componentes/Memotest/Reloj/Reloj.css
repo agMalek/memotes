@@ -4,6 +4,7 @@
 }
 
 .reloj{
+    order: 1;
     height: 53px;
     margin: 15px 0;
     text-align: center;
@@ -12,4 +13,10 @@
     font-size: 30px;
     border: 1px solid aqua;
     border-radius: 10px;
+}
+
+@media screen and (max-width: 480px){
+    .contenedorReloj{
+        margin:0 7px;
+    }
 }

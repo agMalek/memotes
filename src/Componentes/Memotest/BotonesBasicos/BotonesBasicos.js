@@ -55,7 +55,7 @@ const BotonesBasicos = ({botonInhabilitado, prepararJuego, width}) => {
     }
 
     return (
-        <> 
+        <>
             <button className='btn btn-primary mb-4 mx-3 botonBasico' style={{width: width}} disabled={botonInhabilitado} onClick={() => reiniciar()}>Reiniciar</button>
             <button className='btn btn-primary mb-4 mx-3 botonBasico' style={{width: width}} disabled={botonInhabilitado} onClick={() => nuevoJuego()} >Nuevo Juego</button>
             {
@@ -64,7 +64,7 @@ const BotonesBasicos = ({botonInhabilitado, prepararJuego, width}) => {
                 : ""
             }
             <button className='btn btn-primary mb-4 mx-3 botonBasico' style={{width: width}} disabled={botonInhabilitado} onClick={() => volverAHome()} >Volver al Home</button>
-        </>  
+        </>
     );
 }
  

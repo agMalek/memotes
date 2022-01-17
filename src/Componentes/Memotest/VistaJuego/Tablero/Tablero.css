@@ -5,4 +5,17 @@
     align-items: center;
     flex-flow: row wrap;
     /* width: 75%; */
+    
+}
+
+
+@media screen and (max-width: 480px) {
+    .contenedorFichas{
+        width:90% !important;
+        margin-left: 5%;
+        margin-right: 5%;
+        max-height: 520px;
+        overflow-y: auto;
+    }
+
 }

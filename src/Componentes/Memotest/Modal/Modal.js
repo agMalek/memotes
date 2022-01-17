@@ -22,7 +22,7 @@ export default function Modal({openModal, setOpenModal, title, text, textButton}
   };
 
   return (
-    <div>
+    <div >
       <Dialog
         open={openModal}
         TransitionComponent={Transition}

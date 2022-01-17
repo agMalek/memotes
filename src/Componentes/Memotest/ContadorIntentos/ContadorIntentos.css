@@ -1,5 +1,6 @@
 .contenedorTectoCantInt{
     width: 180px;
+    order: 3;
 }
 
 
@@ -12,4 +13,12 @@
     border-radius: 10px;
     padding: 10px;
     font-size: 20px;
+}
+
+
+@media screen  and (max-width: 480px){
+    .contenedorTectoCantInt{
+        order: 2;
+        margin: 0 7px;
+    }
 }

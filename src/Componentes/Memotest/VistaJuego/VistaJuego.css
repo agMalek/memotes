@@ -1,3 +1,26 @@
 
+.contenedorInfoPartidaEnJuego{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
 
 
+@media screen and (max-width: 480px) {
+    .contenedorVistaJuego{
+        flex-direction: column;
+    }
+
+    .contenedorBotonesVistaJuego{
+        width: 75%;
+        margin: auto;
+    }
+   
+    .contenedorInfoPartidaEnJuego{
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+
+
+}

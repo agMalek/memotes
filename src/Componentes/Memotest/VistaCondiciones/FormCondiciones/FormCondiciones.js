@@ -15,10 +15,10 @@ const FormCondiciones = ({prepararJuego, setOpenSpinner, openSpinner, setOpenMod
 
     const nivelA = {
         tiempo: 1000,
-        cantParejas: 5,
+        cantParejas: 8,
         ayuda : {
             tiempoEntreAyudas: 5000,
-            cantAyudas: 5, 
+            cantAyudas: 8, 
             porcentaje: 0.6,
             duracion: 8000
         }

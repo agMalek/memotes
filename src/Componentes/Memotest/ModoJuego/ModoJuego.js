@@ -25,11 +25,11 @@ const ModoJuego = () => {
     return (  
         <>  {
                 cargando ? <Spinner/> :
-                <div className='d-flex flex-column w-100'>
+                <div className='contenedorModoJuego'>
                     <Titulo/>
-                    <div className='d-flex mt-4 justify-content-center w-100'>
-                        <button className='btn btn-outline-primary w-25 mx-5 ' style={{fontSize: "30px"}} onClick={() => seleccionModalidad("solo")}>Jugar solo</button>
-                        <button className='btn btn-outline-primary w-25 mx-5 ' style={{fontSize: "30px"}} onClick={() => seleccionModalidad("multi")}>Multijugador</button>
+                    <div className='d-flex mt-4 justify-content-center w-100 contenedorBotonesModoJuego'>
+                        <button className='btn btn-outline-primary mx-5 botonModo' style={{fontSize: "30px"}} onClick={() => seleccionModalidad("solo")}>Jugar solo</button>
+                        <button className='btn btn-outline-primary mx-5 botonModo' style={{fontSize: "30px"}} onClick={() => seleccionModalidad("multi")}>Multijugador</button>
                     </div>
                 </div>
             }

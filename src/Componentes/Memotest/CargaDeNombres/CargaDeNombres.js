@@ -99,8 +99,10 @@ const CargaDeNombres = () => {
                 <div>
                     <SpinnerMui openSpinner={openSpinner}/>
                     <Modal setOpenModal={setOpenModal} openModal={openModal} title={tituloModal} text={textoModal} textButton={textoBotonModal}/>
-                    <Titulo/>
-                    <div className='d-flex flex-wrap justify-content-evenly'>
+                    <div className='contenedorTituloEnCargaNombre'>
+                        <Titulo/>
+                    </div>
+                    <div className='d-flex flex-wrap justify-content-evenly contenedorFormNombres'>
                         {
                             indices.map(i => (
                                 <FormNombre 

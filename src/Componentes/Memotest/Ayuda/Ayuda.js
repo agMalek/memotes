@@ -82,7 +82,7 @@ const Ayuda = ({contenedor, setPodesJugar}) => {
         
     return (  
         <button 
-            className='btn btn-info w-100' 
+            className='btn btn-info botonAyuda' 
             disabled={!puedoPedir || contAyudas < 1 } 
             onClick={() => ayudar()}
         >

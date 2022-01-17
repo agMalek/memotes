@@ -49,7 +49,7 @@ const FormNombre = ({setNombre, setColor, jugadores, i, setCantJugadores, cantid
                 autoComplete='off'
             />
             <p className='text-white text-center my-1'>Elija un color que lo represente</p>
-            <div className='d-flex justify-content-evenly'>
+            <div className='d-flex justify-content-evenly contenedorBolitasColores' >
                 {
                     colores.map((col, index) => (
                         <div 

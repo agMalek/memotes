@@ -73,40 +73,39 @@ const VistaJuego = ({prepararJuego}) => {
 
     return (
         <>
-            <SpinnerMui openSpinner={openSpinner}/>
-            <div className='d-flex justify-content-evenly'>
-                <BackDrop openBackDrop={openBackDrop}  />
-                <div className='d-flex flex-column justify-content-center align-items-center'>
-                    <Titulo/>
-                    <BotonesBasicos 
-                        botonInhabilitado={botonInhabilitado}
-                        prepararJuego={prepararJuego}
-                        width={"80%"}
+            
+                <SpinnerMui openSpinner={openSpinner}/>
+                <div className='d-flex justify-content-evenly contenedorVistaJuego'>
+                    <BackDrop openBackDrop={openBackDrop}  />
+                    <div className='d-flex flex-column justify-content-center align-items-center contenedorBotonesVistaJuego'>
+                        <Titulo/>
+                        <BotonesBasicos 
+                            botonInhabilitado={botonInhabilitado}
+                            prepararJuego={prepararJuego}
+                            width={"80%"}
+                        />
+                    </div>
+                    <Tablero 
+                        opacidad={opacidad}
+                        podesJugar={podesJugar}
+                        setPodesJugar={setPodesJugar}
+                        setOpenSpinner={setOpenSpinner}
+                        openSpinner={openSpinner}
                     />
-                </div>
-                <Tablero 
-                    opacidad={opacidad}
-                    podesJugar={podesJugar}
-                    setPodesJugar={setPodesJugar}
-                    setOpenSpinner={setOpenSpinner}
-                    openSpinner={openSpinner}
-                />
-                {
-                    modoJuego === 'solo' ? 
-                    <div className='d-flex flex-column justify-content-evenly'>
-                        <div className='d-flex flex-column'>               
+                    {
+                        modoJuego === 'solo' ? 
+                        <div className='contenedorInfoPartidaEnJuego'>     
                             <Reloj />
                             <Ayuda contenedor={contenedor} setPodesJugar={setPodesJugar}/>
                             <ContadorIntentos/>
                         </div>
-                    </div>
-                    : 
-                    <div className='d-flex flex-column'>
-                        <VistaMultijugador />
-                    </div>
-                }
-                
-            </div>
+                        : 
+                        <div className='d-flex flex-column'>
+                            <VistaMultijugador />
+                        </div>
+                    }
+                    
+                </div>
             
         </>
     );

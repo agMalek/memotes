@@ -2,3 +2,15 @@
     margin: 18px;
     font-size: 40px;
 }
+
+.contenedorHome{
+    display: flex;
+    align-items: center;
+}
+
+
+@media screen and (max-width: 480px) {
+    .contenedorHome{
+        flex-direction: column;
+    }
+}

@@ -26,3 +26,14 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+
+@media screen and (max-width: 480px){
+    .contenedorGanaste{
+        width: 90%;
+        
+    }
+    .contenedorBotonesGanaste{
+        
+    }
+}

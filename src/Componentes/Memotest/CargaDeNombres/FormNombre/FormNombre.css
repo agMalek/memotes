@@ -9,6 +9,19 @@
 }
 
 
+@media screen and (max-width: 480px) {
+    .contenedorFormNombre{
+        width: 95%;
+        height: 260px;
+    }
+    .contenedorBolitasColores{
+        width: 75%;
+        margin: auto;
+        flex-wrap: wrap;
+    }
+}
+
+
 .inputNombre{
     background-color: transparent;
     outline: none;

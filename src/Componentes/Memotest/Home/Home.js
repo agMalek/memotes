@@ -6,6 +6,8 @@ import { getCargando, setCargando, setQuieroJugar } from "../MemotestSlice";
 import Spinner from "../Spinner/Spinner";
 import Titulo from "../Titulo/Titulo";
 
+import './Home.css'
+
 const Home = () => {
 
     const dispatch = useDispatch()
@@ -27,7 +29,7 @@ const Home = () => {
         <> 
             {
                 cargando ? <Spinner/> :
-                <div className='d-flex align-items-center'>
+                <div className='contenedorHome'>
                     <div className='mx-4'>    
                         <Titulo/> 
                     </div>
