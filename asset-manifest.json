@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/memotes/static/css/main.d8c2a0c9.chunk.css",
+    "main.js": "/memotes/static/js/main.41159428.chunk.js",
+    "main.js.map": "/memotes/static/js/main.41159428.chunk.js.map",
+    "runtime-main.js": "/memotes/static/js/runtime-main.9ad5f524.js",
+    "runtime-main.js.map": "/memotes/static/js/runtime-main.9ad5f524.js.map",
+    "static/css/2.0a9ec390.chunk.css": "/memotes/static/css/2.0a9ec390.chunk.css",
+    "static/js/2.dbc45073.chunk.js": "/memotes/static/js/2.dbc45073.chunk.js",
+    "static/js/2.dbc45073.chunk.js.map": "/memotes/static/js/2.dbc45073.chunk.js.map",
+    "static/js/3.4aee9a13.chunk.js": "/memotes/static/js/3.4aee9a13.chunk.js",
+    "static/js/3.4aee9a13.chunk.js.map": "/memotes/static/js/3.4aee9a13.chunk.js.map",
+    "index.html": "/memotes/index.html",
+    "static/css/2.0a9ec390.chunk.css.map": "/memotes/static/css/2.0a9ec390.chunk.css.map",
+    "static/css/main.d8c2a0c9.chunk.css.map": "/memotes/static/css/main.d8c2a0c9.chunk.css.map",
+    "static/js/2.dbc45073.chunk.js.LICENSE.txt": "/memotes/static/js/2.dbc45073.chunk.js.LICENSE.txt",
+    "static/media/asado.d756b919.jpg": "/memotes/static/media/asado.d756b919.jpg",
+    "static/media/cebra.31a8913a.jpg": "/memotes/static/media/cebra.31a8913a.jpg",
+    "static/media/cocodrilo.e6186dba.jpg": "/memotes/static/media/cocodrilo.e6186dba.jpg",
+    "static/media/empanada.a3a4b850.jpg": "/memotes/static/media/empanada.a3a4b850.jpg",
+    "static/media/ensalada.74e882a5.jpg": "/memotes/static/media/ensalada.74e882a5.jpg",
+    "static/media/fideos.948eeecb.jpg": "/memotes/static/media/fideos.948eeecb.jpg",
+    "static/media/gallina.1a783396.jpg": "/memotes/static/media/gallina.1a783396.jpg",
+    "static/media/leon.d78283a3.jpg": "/memotes/static/media/leon.d78283a3.jpg",
+    "static/media/loro.2d9ee0a7.jpg": "/memotes/static/media/loro.2d9ee0a7.jpg",
+    "static/media/picada.27e35c97.jpg": "/memotes/static/media/picada.27e35c97.jpg",
+    "static/media/pizza.24974fd4.jpg": "/memotes/static/media/pizza.24974fd4.jpg",
+    "static/media/pollo.8e494640.jpg": "/memotes/static/media/pollo.8e494640.jpg",
+    "static/media/salmon.d3c4cd60.jpg": "/memotes/static/media/salmon.d3c4cd60.jpg",
+    "static/media/taco.77564cb3.jpg": "/memotes/static/media/taco.77564cb3.jpg",
+    "static/media/tigre.0c3c8494.jpg": "/memotes/static/media/tigre.0c3c8494.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9ad5f524.js",
+    "static/css/2.0a9ec390.chunk.css",
+    "static/js/2.dbc45073.chunk.js",
+    "static/css/main.d8c2a0c9.chunk.css",
+    "static/js/main.41159428.chunk.js"
+  ]
+}
