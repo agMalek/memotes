@@ -95,7 +95,7 @@ const VistaJuego = ({prepararJuego}) => {
                     <div className='botonesEnJuegoResponsive'>
                         <div className='row'>
                             <div className='mx-2 col-2'>
-                               <button onClick={() => abrirMenu()} className='btn btn-info'>Menu</button>
+                               <button onClick={() => abrirMenu()} className='btn btn-info'>Menú</button>
                             </div>
                             <div className='mx-2 col-9'>
                                 <Titulo/>
