@@ -5,22 +5,58 @@
     justify-content: space-evenly;
 }
 
+.contenedorVistaMultiEnJuego{
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedorBotonesVistaJuego{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.botonesEnJuegoResponsive{
+    display: none;
+}
+.contenedorVistaJuego{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+}
+
 
 @media screen and (max-width: 480px) {
     .contenedorVistaJuego{
         flex-direction: column;
+        height: 915px;
     }
 
     .contenedorBotonesVistaJuego{
-        width: 75%;
-        margin: auto;
+        display: none;
     }
-   
+    
+    .botonesEnJuegoResponsive{
+        height: 5%;
+        display: block;
+    }
+
     .contenedorInfoPartidaEnJuego{
         flex-direction: row;
         flex-wrap: wrap;
+        height: 20%;
     }
 
+    .contenedorVistaMultiEnJuego{
+        flex-direction: row;
+        /* max-width: 412px;
+        overflow-x: auto; */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    
 
 
 }

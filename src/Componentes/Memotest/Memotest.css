@@ -9,7 +9,11 @@
 }
 
 
-
+@media screen and(max-width: 480px) {
+    .contenedor{
+        overflow-x: hidden;
+    }
+}
 
 
 

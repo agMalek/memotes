@@ -31,9 +31,11 @@
 @media screen and (max-width: 480px){
     .contenedorGanaste{
         width: 90%;
-        
+        max-height: none;
+        padding: 20px;
+        padding-bottom: 0;
     }
     .contenedorBotonesGanaste{
-        
+        background-color: #fff;
     }
 }

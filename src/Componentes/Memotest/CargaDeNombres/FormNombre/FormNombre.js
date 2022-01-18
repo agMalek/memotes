@@ -33,7 +33,7 @@ const FormNombre = ({setNombre, setColor, jugadores, i, setCantJugadores, cantid
     return ( 
         <div className='contenedorFormNombre' style={{opacity: activo ? "1" : ".5"}}>
             <div className='d-flex'>
-                {i >= 2 ? <Switch defaultChecked={(i === 2 && cantidadJugadores > 2) ? true : (i === 3 && cantidadJugadores === 4) ? true: false} onClick={() => onSwitch()} /> : "" }
+                {i >= 2 ? <Switch checked={activo} /* defaultChecked={(i === 2 && cantidadJugadores > 2) ? true : (i === 3 && cantidadJugadores === 4) ? true: false} */ onClick={() => onSwitch()} /> : "" }
                 <h3 className='text-center mb-3 nombre' style={{width: i >= 2 ? "80%" :"100%", color: `${jugadores[`jugador${i+1}`].color}` === "" ? "white" : `${jugadores[`jugador${i+1}`].color}`}} >
                     {jugadores[`jugador${i+1}`].nombre === "" ? `Jugador ${i+1}` : jugadores[`jugador${i+1}`].nombre}
                 </h3>

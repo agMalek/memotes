@@ -15,7 +15,7 @@ const FormCondiciones = ({prepararJuego, setOpenSpinner, openSpinner, setOpenMod
 
     const nivelA = {
         tiempo: 1000,
-        cantParejas: 8,
+        cantParejas: 2,
         ayuda : {
             tiempoEntreAyudas: 5000,
             cantAyudas: 8, 

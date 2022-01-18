@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { iniciarReloj, getDificultad, getWidthContenedor, getModoJuego, setEmpezoJuego } from '../MemotestSlice';
+import { iniciarReloj, getDificultad, getWidthContenedor, getModoJuego, setEmpezoJuego, pararReloj } from '../MemotestSlice';
 
 import Tablero from './Tablero/Tablero';
 import Titulo from '../Titulo/Titulo';
@@ -14,6 +14,7 @@ import BackDrop from './BackDrop/BackDrop'
 import SpinnerMui from '../SpinnerMui/SpinnerMui';
 
 import './VistaJuego.css'
+import BackDropResponsive from '../BackDropResponsive/BackDropResponsive';
 
 const VistaJuego = ({prepararJuego}) => {
 
@@ -26,6 +27,7 @@ const VistaJuego = ({prepararJuego}) => {
     const opaca = "opaca"
     const transparente = "transparente"
 
+    const [openBackDropResponsive, setOpenBackDropResponsive] = useState(false);
     const [openSpinner, setOpenSpinner] = useState(false);
     const [openBackDrop, setOpenBackDrop] = useState(true)
     const [botonInhabilitado, setBotonInhabilitado] = useState(true)
@@ -70,14 +72,19 @@ const VistaJuego = ({prepararJuego}) => {
     },[])
 
 
+    const abrirMenu = () => {
+        setOpenBackDropResponsive(!openBackDropResponsive)
+        dispatch(pararReloj())
+    }
+
 
     return (
         <>
             
                 <SpinnerMui openSpinner={openSpinner}/>
-                <div className='d-flex justify-content-evenly contenedorVistaJuego'>
+                <div className='contenedorVistaJuego'>
                     <BackDrop openBackDrop={openBackDrop}  />
-                    <div className='d-flex flex-column justify-content-center align-items-center contenedorBotonesVistaJuego'>
+                    <div className='contenedorBotonesVistaJuego'>
                         <Titulo/>
                         <BotonesBasicos 
                             botonInhabilitado={botonInhabilitado}
@@ -85,7 +92,23 @@ const VistaJuego = ({prepararJuego}) => {
                             width={"80%"}
                         />
                     </div>
-                    <Tablero 
+                    <div className='botonesEnJuegoResponsive'>
+                        <div className='row'>
+                            <div className='mx-2 col-2'>
+                               <button onClick={() => abrirMenu()} className='btn btn-info'>Menu</button>
+                            </div>
+                            <div className='mx-2 col-9'>
+                                <Titulo/>
+                            </div>
+                        </div>
+                        <BackDropResponsive 
+                            botonInhabilitado={botonInhabilitado} 
+                            prepararJuego={prepararJuego}
+                            openBackDropResponsive={openBackDropResponsive}
+                            setOpenBackDropResponsive={setOpenBackDropResponsive}
+                        />
+                    </div>
+                    <Tablero
                         opacidad={opacidad}
                         podesJugar={podesJugar}
                         setPodesJugar={setPodesJugar}
@@ -100,7 +123,7 @@ const VistaJuego = ({prepararJuego}) => {
                             <ContadorIntentos/>
                         </div>
                         : 
-                        <div className='d-flex flex-column'>
+                        <div className='contenedorVistaMultiEnJuego'>
                             <VistaMultijugador />
                         </div>
                     }
