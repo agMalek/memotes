@@ -1,5 +1,9 @@
 
 
+.botonBasico{
+    margin-bottom: 30px;
+}
+
 @media screen and (max-width: 480px) {
     .botonBasico{
         width: 100% !important;

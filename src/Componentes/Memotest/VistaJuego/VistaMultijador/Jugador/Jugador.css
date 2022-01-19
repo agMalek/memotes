@@ -1,6 +1,8 @@
 .jugador{
     border-radius: 30px;
     padding: 10px;
+    margin: 25px;
+    text-align: center;
 }
 
 .textoJugador{

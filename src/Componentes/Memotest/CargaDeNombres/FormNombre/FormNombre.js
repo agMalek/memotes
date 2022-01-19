@@ -32,14 +32,14 @@ const FormNombre = ({setNombre, setColor, jugadores, i, setCantJugadores, cantid
 
     return ( 
         <div className='contenedorFormNombre' style={{opacity: activo ? "1" : ".5"}}>
-            <div className='d-flex'>
+            <div className='contenedorSwitchYTituloEnForm'>
                 {i >= 2 ? <Switch checked={activo} /* defaultChecked={(i === 2 && cantidadJugadores > 2) ? true : (i === 3 && cantidadJugadores === 4) ? true: false} */ onClick={() => onSwitch()} /> : "" }
-                <h3 className='text-center mb-3 nombre' style={{width: i >= 2 ? "80%" :"100%", color: `${jugadores[`jugador${i+1}`].color}` === "" ? "white" : `${jugadores[`jugador${i+1}`].color}`}} >
+                <h3 className='tituloNombreEnForm' style={{width: i >= 2 ? "80%" :"100%", color: `${jugadores[`jugador${i+1}`].color}` === "" ? "white" : `${jugadores[`jugador${i+1}`].color}`}} >
                     {jugadores[`jugador${i+1}`].nombre === "" ? `Jugador ${i+1}` : jugadores[`jugador${i+1}`].nombre}
                 </h3>
             </div>
             <input
-                className='w-100 mb-3 inputNombre' 
+                className='inputNombre' 
                 name={`jugador${i+1}`} 
                 type="text"     
                 value={jugadores[`jugador${i+1}`].nombre} 
@@ -48,15 +48,15 @@ const FormNombre = ({setNombre, setColor, jugadores, i, setCantJugadores, cantid
                 placeholder='Ingrese el nombre'
                 autoComplete='off'
             />
-            <p className='text-white text-center my-1'>Elija un color que lo represente</p>
-            <div className='d-flex justify-content-evenly contenedorBolitasColores' >
+            <p className='textoEnFormNombre'>Elija un color que lo represente</p>
+            <div className='contenedorBolitasColores' >
                 {
                     colores.map((col, index) => (
                         <div 
                             key={index}
                             className={`itemBarraColor itemBarraColor-${col}`} 
                             style={{opacity: jugadores[`jugador${i+1}`].color === col || validarColor(col) ? '1' : "0.3"}} 
-                            onClick={activo && validarColor(col) ? () => onColor(col, i) : () => console.log("Bloqueado")}
+                            onClick={activo && validarColor(col) ? () => onColor(col, i) : ""}
                         >
                             {jugadores[`jugador${i+1}`].color === col ? <BsRecord2 className='icono'/> : ""}
                         </div>

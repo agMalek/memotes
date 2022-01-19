@@ -4,13 +4,21 @@
     /* display: flex;
     align-items: center; */
 }
+.contenedorRadioNivel{
+    margin: 0px 25px;
+}
 
-
+.contenedorBotonesFormCondiciones{
+    display: flex;
+}
 .contenedorDificultad{
     display: flex;
     color: aqua
 }
-
+.botonFormCondiciones{
+    margin: 30px 15px;
+    width: 100%;
+}
 
 .labelDificultad{
     padding: 10px;

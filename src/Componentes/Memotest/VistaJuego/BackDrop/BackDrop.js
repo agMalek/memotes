@@ -29,7 +29,7 @@ export default function SimpleBackdrop({openBackDrop}) {
         sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
         open={openBackDrop}
       >
-        <div className='d-flex flex-column align-items-center'>
+        <div className='contenedorBackDrop'>
             <h3 className='numeroBackDrop'>{cont > 0 ? cont : "GO!"}</h3>
             <p className='textoBackDrop'>{modoJuego === "solo" ? "Preparate! Tendras" : "Preparense! Tendran"} {tiempo/1000} segundos para recordar la ubicación de las fichas.</p>
         </div>

@@ -46,7 +46,7 @@ const Ganaste = ({prepararJuego}) => {
                 modoJuego === 'solo' ?
                 <>
                     <h3 className='tituloGanaste'>Ganaste!!!</h3>
-                    <div className="d-flex justify-content-around">
+                    <div className="contenedorInfoPartidaEnGanaste">
                         <Reloj />
                         <ContadorIntentos/>
                     </div>
@@ -54,16 +54,16 @@ const Ganaste = ({prepararJuego}) => {
                 : 
                 <>
                     {   ganadores.length === 1 ? 
-                            <h3 className='mb-3 text-white text-center'>El ganador es {jugadores[ganadores[0]].nombre}</h3>
-                        :   <h3 className='mb-3 text-white text-center'>Hubo empate</h3>
+                            <h3 className='tituloGanasteEnMulti'>El ganador es {jugadores[ganadores[0]].nombre}</h3>
+                        :   <h3 className='tituloGanasteEnMulti'>Hubo empate</h3>
                     }
-                    <div className='d-flex flex-wrap justify-content-center'>
+                    <div className='contenedorJugadoresEnGanaste'>
                         <VistaMultijugador />
                     </div>
                 
                 </>
             }
-             <div className='d-flex flex-wrap justify-content-evenly contenedorBotonesGanaste w-100 my-4'>
+             <div className='contenedorBotonesGanaste '>
                 <BotonesBasicos
                     prepararJuego={prepararJuego}
                     width={"40%"}

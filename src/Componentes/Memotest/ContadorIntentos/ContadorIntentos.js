@@ -8,7 +8,7 @@ const ContadorIntentos = () => {
     const cont = useSelector(contIntentos)
 
     return (  
-        <div className='contenedorTectoCantInt'>
+        <div className='contenedorTextoCantInt'>
             <p className='textoCantInt'>{cont} intentos</p>
         </div>
     );

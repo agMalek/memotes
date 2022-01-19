@@ -102,7 +102,7 @@ const CargaDeNombres = () => {
                     <div className='contenedorTituloEnCargaNombre'>
                         <Titulo/>
                     </div>
-                    <div className='d-flex flex-wrap justify-content-evenly contenedorFormNombres'>
+                    <div className='contenedorFormNombres'>
                         {
                             indices.map(i => (
                                 <FormNombre 
@@ -119,8 +119,8 @@ const CargaDeNombres = () => {
                         }
                     </div>
                     <div className='contenedorBotonAvanzar'>
-                        <button className='btn btn-primary w-25 mx-3 my-2' onClick={() => volver()}>Volver</button>
-                        <button className='btn btn-primary w-25 mx-3 my-2' onClick={() => iniciar()}>Avanzar</button>
+                        <button className='btn btn-primary botonesEnCargaNobre' onClick={() => volver()}>Volver</button>
+                        <button className='btn btn-primary botonesEnCargaNobre' onClick={() => iniciar()}>Avanzar</button>
                     </div>
                 </div>
             }

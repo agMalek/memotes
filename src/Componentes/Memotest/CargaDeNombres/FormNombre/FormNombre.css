@@ -9,6 +9,12 @@
 }
 
 
+.contenedorBolitasColores{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
 @media screen and (max-width: 480px) {
     .contenedorFormNombre{
         width: 95%;
@@ -20,7 +26,15 @@
         flex-wrap: wrap;
     }
 }
+.contenedorSwitchYTituloEnForm{
+    display: flex;
+}
 
+.textoEnFormNombre{
+    color: white;
+    text-align: center;
+    margin: 10px 0px;
+}
 
 .inputNombre{
     background-color: transparent;
@@ -28,6 +42,8 @@
     border: none;
     border-bottom: 1px solid aqua;
     color: aqua;
+    width: 100%;
+    margin-bottom: 25px;
 }
 
 .inputNombre:focus{
@@ -38,11 +54,13 @@
     color: aqua;
 }
 
-.nombre{
+.tituloNombreEnForm{
    /*  background-color:#000; */
    font-size: 25px;
     overflow-x: auto;
     overflow-y: hidden;
+    text-align: center;
+    margin-bottom: 25px;
 }
 
 .icono{

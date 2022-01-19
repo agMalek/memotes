@@ -1,12 +1,21 @@
 .botonModo{
     font-size: 30px;
     min-width: 250px;
+    margin: 0px 40px;
 }
 
 
 .contenedorModoJuego{
     display: flex;
     flex-direction: column;
+    width: 100%;
+}
+
+
+.contenedorBotonesModoJuego{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
     width: 100%;
 }
 
