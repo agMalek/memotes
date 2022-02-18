@@ -55,6 +55,14 @@
         padding-bottom: 0;
     }
     .contenedorBotonesGanaste{
-        background-color: #fff;
+        margin: 0; 
+        margin-top: 10px;
     }
+    .tituloGanasteEnMulti{
+        margin-bottom: 10px;
+    }
+    .contenedorJugadoresEnGanaste{
+        flex-direction: column;
+    }
+    
 }

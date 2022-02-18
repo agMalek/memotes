@@ -34,7 +34,7 @@ const CargaDeNombres = () => {
         jugador2 : jugadoresState[1],
         jugador3 : jugadoresState[2],
         jugador4 : jugadoresState[3],
-    }) 
+    })
     
     
     const limpiarValores = (name) => {
@@ -96,7 +96,7 @@ const CargaDeNombres = () => {
     return (
         <>
             {    cargando ? <Spinner/> :
-                <div>
+                <div className="h-100">
                     <SpinnerMui openSpinner={openSpinner}/>
                     <Modal setOpenModal={setOpenModal} openModal={openModal} title={tituloModal} text={textoModal} textButton={textoBotonModal}/>
                     <div className='contenedorTituloEnCargaNombre'>

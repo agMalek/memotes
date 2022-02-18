@@ -18,6 +18,7 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar, setOpenSpinner, openSpinn
     const indiceJugador = useSelector(getIndiceActivo)
     const cantJugadores = useSelector(getCantJugadores)
     const modoJuego = useSelector(getModoJuego)
+    const dificultad = useSelector(getDificultad)
 
 
     const opaca = "opaca"
@@ -25,6 +26,7 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar, setOpenSpinner, openSpinn
     const descubierta =  "descubierta"
     const tiempoEntreTurnos = 500
 
+    let tamanioFicha = `tamanioFicha${dificultad.level}`
     let bordeBlanco = `ficha borde-white`
     let bordeColor =  modoJuego === "multi" ? `ficha borde-${jugadores[indiceJugador].color}` : bordeBlanco
 
@@ -48,7 +50,7 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar, setOpenSpinner, openSpinn
                     setCantVolteadas(cantVolteadas+1)
                     setPodesJugar(false)
                 }
-                event.target.className = bordeColor
+                event.target.className = `${bordeColor} ${tamanioFicha}`
                 img.className = opaca
             }
         }
@@ -79,8 +81,8 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar, setOpenSpinner, openSpinn
                     img1.className = transparente
                     img2.className = transparente
                     cambioDeTurno()
-                    primeraVolteada.className = bordeBlanco
-                    segundaVolteada.className = bordeBlanco
+                    primeraVolteada.className = `${bordeBlanco} ${tamanioFicha}`
+                    segundaVolteada.className = `${bordeBlanco} ${tamanioFicha}`
                 }else{
                     setCantCoincidencias(cantCoincidencias+1)
                     img1.className = descubierta
@@ -119,7 +121,7 @@ const Tablero = ({opacidad, podesJugar, setPodesJugar, setOpenSpinner, openSpinn
     },[openSpinner])
 
     return ( 
-        <div className="contenedorFichas" >
+        <div className="contenedorFichas">
             {fichas.map((ficha, index) => (
                 <div key={index}>                    
                     <Ficha

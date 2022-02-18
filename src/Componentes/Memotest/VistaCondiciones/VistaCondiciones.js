@@ -33,7 +33,7 @@ const VistaCondiciones = ({prepararJuego}) => {
         <> 
             {
                 cargando ? <Spinner /> :
-                <div>
+                <div className="contenedorFormCondiciones">
                     <SpinnerMui openSpinner={openSpinner}/>
                     <Modal setOpenModal={setOpenModal} openModal={openModal} title={tituloModal} text={textoModal} textButton={textoBotonModal}/>
                     <Titulo/>

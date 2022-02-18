@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { iniciarReloj, getDificultad, getWidthContenedor, getModoJuego, setEmpezoJuego, pararReloj } from '../MemotestSlice';
+import { iniciarReloj, getDificultad, getWidthContenedor, getModoJuego, setEmpezoJuego, pararReloj, getCantJugadores } from '../MemotestSlice';
 
 import Tablero from './Tablero/Tablero';
 import Titulo from '../Titulo/Titulo';
@@ -23,6 +23,7 @@ const VistaJuego = ({prepararJuego}) => {
     const dife = useSelector(getDificultad)
     const widthContenedor = useSelector(getWidthContenedor)
     const modoJuego = useSelector(getModoJuego)
+    const cantJug = useSelector(getCantJugadores)
 
     const opaca = "opaca"
     const transparente = "transparente"
@@ -68,7 +69,7 @@ const VistaJuego = ({prepararJuego}) => {
     useEffect(() => {
         setTimeout(() => {
             setOpenBackDrop(false)
-        }, 6000);
+        }, 4000);
     },[])
 
 
@@ -83,7 +84,7 @@ const VistaJuego = ({prepararJuego}) => {
             
                 <SpinnerMui openSpinner={openSpinner}/>
                 <div className='contenedorVistaJuego'>
-                    <BackDrop openBackDrop={openBackDrop}  />
+                   { <BackDrop openBackDrop={openBackDrop}  />}
                     <div className='contenedorBotonesVistaJuego'>
                         <Titulo/>
                         <BotonesBasicos 
@@ -93,14 +94,14 @@ const VistaJuego = ({prepararJuego}) => {
                         />
                     </div>
                     <div className='botonesEnJuegoResponsive'>
-                        <div className='row'>
-                            <div className='mx-2 col-2'>
-                               <button onClick={() => abrirMenu()} className='btn btn-info'>Menu</button>
+                        {/* <div className='d-flex justify-content-between'> */}
+                            {/* <div className='mx-2'>
                             </div>
-                            <div className='mx-2 col-9'>
-                                <Titulo/>
-                            </div>
-                        </div>
+                            <div className=''>
+                            </div> */}
+                            <button onClick={() => abrirMenu()} className='btn btn-info botonMenu'>Menu</button>
+                            <Titulo/>
+                        {/* </div> */}
                         <BackDropResponsive 
                             botonInhabilitado={botonInhabilitado} 
                             prepararJuego={prepararJuego}
@@ -108,13 +109,15 @@ const VistaJuego = ({prepararJuego}) => {
                             setOpenBackDropResponsive={setOpenBackDropResponsive}
                         />
                     </div>
-                    <Tablero
-                        opacidad={opacidad}
-                        podesJugar={podesJugar}
-                        setPodesJugar={setPodesJugar}
-                        setOpenSpinner={setOpenSpinner}
-                        openSpinner={openSpinner}
-                    />
+                    <div className="contenedorTablero" >
+                        <Tablero
+                            opacidad={opacidad}
+                            podesJugar={podesJugar}
+                            setPodesJugar={setPodesJugar}
+                            setOpenSpinner={setOpenSpinner}
+                            openSpinner={openSpinner}
+                        />
+                    </div>
                     {
                         modoJuego === 'solo' ? 
                         <div className='contenedorInfoPartidaEnJuego'>     
@@ -123,7 +126,7 @@ const VistaJuego = ({prepararJuego}) => {
                             <ContadorIntentos/>
                         </div>
                         : 
-                        <div className='contenedorVistaMultiEnJuego'>
+                        <div className={`contenedorVistaMultiEnJuego ${cantJug == 2 ? "sonDosJugadores" : ""}`}>
                             <VistaMultijugador />
                         </div>
                     }

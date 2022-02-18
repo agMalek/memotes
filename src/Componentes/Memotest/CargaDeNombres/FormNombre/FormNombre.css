@@ -1,40 +1,35 @@
+
+
 .contenedorFormNombre{
-    width: 40vw;
-    height: 220px;
-    padding:20px;
-    margin: 10px;
+    width: 40%;
+    height: 225px;
+    padding: 1%;
+    margin: .8%;
     background-color: rgba(0, 0, 0, .3);
     border: 10px double aqua  ;
     border-radius: 20px;
-}
-
+}    
 
 .contenedorBolitasColores{
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
-}
+}    
 
 
-@media screen and (max-width: 480px) {
-    .contenedorFormNombre{
-        width: 95%;
-        height: 260px;
-    }
-    .contenedorBolitasColores{
-        width: 75%;
-        margin: auto;
-        flex-wrap: wrap;
-    }
-}
 .contenedorSwitchYTituloEnForm{
     display: flex;
-}
+}    
 
-.textoEnFormNombre{
-    color: white;
+
+.tituloNombreEnForm{
+    /*  background-color:#000; */
+    font-size: 25px;
+    overflow-x: auto;
+    overflow-y: hidden;
     text-align: center;
-    margin: 10px 0px;
-}
+    margin-bottom: 3%;
+}    
 
 .inputNombre{
     background-color: transparent;
@@ -43,39 +38,28 @@
     border-bottom: 1px solid aqua;
     color: aqua;
     width: 100%;
-    margin-bottom: 25px;
-}
+    margin-bottom: 3%;
+}    
 
 .inputNombre:focus{
     background-image: linear-gradient(transparent, rgba(0,255,255,.2));
-}
+}    
 
 .inputNombre::placeholder{
     color: aqua;
-}
+}    
 
-.tituloNombreEnForm{
-   /*  background-color:#000; */
-   font-size: 25px;
-    overflow-x: auto;
-    overflow-y: hidden;
+.textoEnFormNombre{
+    color: white;
     text-align: center;
-    margin-bottom: 25px;
-}
+    margin: 2% 0px;
+}    
 
 .icono{
-    font-size: 32px;
+    font-size: 200%;
     color: white;
-}
+}    
 
-
-.textoCompleto{
-    color: greenyellow;
-    font-size: 25px;
-   /*  margin-top: -15px; */
-    margin-left: 75%;
-    /* transform: rotate(20deg); */
-}
 
 .itemBarraColor{
     border-radius: 50%;
@@ -83,6 +67,32 @@
     width: 35px;
     height: 35px;
     margin: 5px;
+}    
+
+
+
+@media screen and (max-width: 480px) {
+    .contenedorFormNombre{
+        width: 95%;
+        padding: 5%;
+        height: 270px;
+        margin-bottom: 7%;
+    }
+    .contenedorBolitasColores, .textoEnFormNombre{
+        width: 75%;
+        margin: auto;
+        flex-wrap: wrap;
+        margin-bottom: 3%;
+    }
+    .contenedorSwitchYTituloEnForm{
+        display: flex;
+        margin-bottom: 3%;
+    }
+    .inputNombre{
+        margin-bottom: 5%;
+    }
+    
+    
 }
 
 .itemBarraColor-red{

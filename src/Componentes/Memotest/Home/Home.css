@@ -1,18 +1,27 @@
-.boton{
-    margin: 18px;
-    font-size: 40px;
-}
-
 .contenedorHome{
     display: flex;
     align-items: center;
+    width: 35%;
 }
+
 .contenedorTituloEnHome{
-    margin: 0px 30px;
+    margin: 5%;
+    width: 45%;
 }
+
+.boton{
+    width: 45%;
+    margin: 5%;
+}
+
 
 @media screen and (max-width: 480px) {
     .contenedorHome{
         flex-direction: column;
+        width: 80%;
     }
+    .boton{
+        width: 75%;
+    }
+    
 }

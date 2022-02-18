@@ -19,7 +19,8 @@ const initialStateValues = {
                 cantAyudas: 0, 
                 porcentaje: 0,
                 duracion: 0
-            }
+            },
+            level: ""
         },
         tema: "",
         widthContenedor: ""
@@ -110,7 +111,8 @@ export const memotestSlice = createSlice({
                     cantAyudas: action.payload.ayuda.cantAyudas, 
                     porcentaje: action.payload.ayuda.porcentaje,
                     duracion: action.payload.ayuda.duracion
-                }
+                },
+                level: action.payload.level
             }
         },
         setTema: (state, action) => {

@@ -10,7 +10,7 @@ export default function SimpleBackdrop({openBackDrop}) {
   const {tiempo} = useSelector(getDificultad)
   const modoJuego = useSelector(getModoJuego)
 
-  const [cont, setCont] = useState(5)
+  const [cont, setCont] = useState(3)
 
   useEffect(() => {
     if(openBackDrop){
@@ -30,8 +30,9 @@ export default function SimpleBackdrop({openBackDrop}) {
         open={openBackDrop}
       >
         <div className='contenedorBackDrop'>
-            <h3 className='numeroBackDrop'>{cont > 0 ? cont : "GO!"}</h3>
-            <p className='textoBackDrop'>{modoJuego === "solo" ? "Preparate! Tendras" : "Preparense! Tendran"} {tiempo/1000} segundos para recordar la ubicación de las fichas.</p>
+            <h3 className='numeroBackDrop'>{cont > 0 ? cont : "Vamos!"}</h3>
+            <p className='textoBackDrop fs-35'>{modoJuego === "solo" ? "Preparate!" : "Preparense!"}</p>
+            <p className='textoBackDrop fs-25 '>{modoJuego === "solo" ? "Tendras" : "Tendran"} {tiempo/1000} segundos para recordar la ubicación de las fichas.</p>
         </div>
       </Backdrop>
     </div>
