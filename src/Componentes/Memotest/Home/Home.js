@@ -30,7 +30,7 @@ const Home = () => {
             {
                 cargando ? <Spinner/> :
                 <div className='contenedorHome'>
-                    <div className='mx-4'>    
+                    <div className='contenedorTituloEnHome'>    
                         <Titulo/> 
                     </div>
                     <button className='btn btn-outline-primary boton' onClick={() => jugar()}>EMPEZAR JUEGO</button>

@@ -1,0 +1,10 @@
+.contenedorSpinner{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.textoSpinner{
+    margin: 30px 0px;
+    color: white;
+}

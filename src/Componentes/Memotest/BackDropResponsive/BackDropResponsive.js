@@ -23,7 +23,7 @@ const BackDropResponsive = ({prepararJuego, botonInhabilitado, openBackDropRespo
                 open={openBackDropResponsive}
             >
                 <div className='w-50 '>                    
-                    <button onClick={() => seguirJugando()} className='btn btn-info w-100 mb-4'>Seguir jugando</button>
+                    <button onClick={() => seguirJugando()} className='btn btn-info botonSeguirJugandoRes'>Seguir jugando</button>
                     <BotonesBasicos 
                         botonInhabilitado={botonInhabilitado}
                         prepararJuego={prepararJuego}

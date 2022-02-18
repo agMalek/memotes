@@ -14,14 +14,15 @@ const FormCondiciones = ({prepararJuego, setOpenSpinner, openSpinner, setOpenMod
     const modoJuego = useSelector(getModoJuego)
 
     const nivelA = {
-        tiempo: 1000,
-        cantParejas: 2,
+        tiempo: 7500,
+        cantParejas: 8,
         ayuda : {
             tiempoEntreAyudas: 5000,
-            cantAyudas: 8, 
+            cantAyudas: 4, 
             porcentaje: 0.6,
             duracion: 8000
-        }
+        },
+        level : "Easy" 
     }
 
     const nivelB = {
@@ -29,10 +30,11 @@ const FormCondiciones = ({prepararJuego, setOpenSpinner, openSpinner, setOpenMod
         cantParejas: 12,
         ayuda : {
             tiempoEntreAyudas: 10000,
-            cantAyudas: 4, 
+            cantAyudas: 3, 
             porcentaje: 0.4,
             duracion: 5000
-        }
+        },
+        level : "Medium"
     }
 
     const nivelC = {
@@ -40,10 +42,11 @@ const FormCondiciones = ({prepararJuego, setOpenSpinner, openSpinner, setOpenMod
         cantParejas: 20,
         ayuda : {
             tiempoEntreAyudas: 20000,
-            cantAyudas: 3, 
+            cantAyudas: 2, 
             porcentaje: 0.2,
             duracion: 3000
-        }
+        },
+        level : "Hard"
     }
 
 /*     const msgNivelA = `Jugarás con ${nivelA.cantParejas*2} fichas (${nivelA.cantParejas}) parejas. \n
@@ -83,15 +86,15 @@ const FormCondiciones = ({prepararJuego, setOpenSpinner, openSpinner, setOpenMod
         switch(nivel){
             case "Easy":
                 dispatch(setDificultad(nivelA))
-                dispatch(setWidthContenedor("35%"))
+                dispatch(setWidthContenedor("50%"))
                 break;
             case "Medium":
                 dispatch(setDificultad(nivelB))
-                dispatch(setWidthContenedor("55%"))
+                dispatch(setWidthContenedor("75%"))
                 break;
             case "Hard":
                 dispatch(setDificultad(nivelC))
-                dispatch(setWidthContenedor("65%"))
+                dispatch(setWidthContenedor("100%"))
                 break;
             default:
                 break;
@@ -144,15 +147,15 @@ const FormCondiciones = ({prepararJuego, setOpenSpinner, openSpinner, setOpenMod
     return ( 
         <form className='contenedorCondiciones' onSubmit={(SyntheticEvent) => iniciarJuego(SyntheticEvent)}>
             <div className='contenedorDificultad '>
-                <div className='mx-3'>
+                <div className='contenedorRadioNivel'>
                     <label className='labelDificultad' htmlFor="Easy">Easy</label>
                     <input className='inputDificultad' type="radio" id="Easy" onChange={(SyntheticEvent)=>mostarMsgNivel(SyntheticEvent.target.id)} name='dificultad'/>
                 </div>
-                <div  className='mx-3'>
+                <div  className='contenedorRadioNivel'>
                     <label className='labelDificultad' htmlFor="Medium">Medium</label>
                     <input className='inputDificultad' type="radio" id="Medium" onChange={(SyntheticEvent)=>mostarMsgNivel(SyntheticEvent.target.id)} name='dificultad'/>
                 </div>
-                <div  className='mx-3'>
+                <div  className='contenedorRadioNivel'>
                     <label className='labelDificultad' htmlFor="Hard">Hard</label>
                     <input className='inputDificultad' type="radio" id="Hard" onChange={(SyntheticEvent)=>mostarMsgNivel(SyntheticEvent.target.id)} name='dificultad'/>
                 </div>
@@ -165,9 +168,9 @@ const FormCondiciones = ({prepararJuego, setOpenSpinner, openSpinner, setOpenMod
                     <option value="Comidas">Comidas</option>
                 </select>
             </div>
-            <div className='d-flex'>
-                <button className='btn btn-primary my-4 mx-2 w-100'>Iniciar</button>
-                <button className='btn btn-primary my-4 mx-2 w-100' onClick={() => volver()}>Volver</button>
+            <div className='contenedorBotonesFormCondiciones'>
+                <button className='btn btn-primary botonFormCondiciones'>Iniciar</button>
+                <button className='btn btn-primary botonFormCondiciones' onClick={() => volver()}>Volver</button>
             </div>
         </form>
     );

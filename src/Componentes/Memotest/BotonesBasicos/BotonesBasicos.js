@@ -56,14 +56,14 @@ const BotonesBasicos = ({botonInhabilitado, prepararJuego, width}) => {
 
     return (
         <>
-            <button className='btn btn-primary mb-4  botonBasico' style={{width: width}} disabled={botonInhabilitado} onClick={() => reiniciar()}>Reiniciar</button>
-            <button className='btn btn-primary mb-4 botonBasico' style={{width: width}} disabled={botonInhabilitado} onClick={() => nuevoJuego()} >Nuevo Juego</button>
+            <button className='btn btn-primary  botonBasico' style={{width: width}} disabled={botonInhabilitado} onClick={() => reiniciar()}>Reiniciar</button>
+            <button className='btn btn-primary botonBasico' style={{width: width}} disabled={botonInhabilitado} onClick={() => nuevoJuego()} >Nuevo Juego</button>
             {
                 modoJuego === 'multi' ?
-                <button className='btn btn-primary mb-4 botonBasico' style={{width: width}} disabled={botonInhabilitado} onClick={() => jugarConOtroNombre()} >Jugar con otro nombres</button>
+                <button className='btn btn-primary botonBasico' style={{width: width}} disabled={botonInhabilitado} onClick={() => jugarConOtroNombre()} >Jugar con otro nombres</button>
                 : ""
             }
-            <button className='btn btn-primary mb-4 botonBasico' style={{width: width}} disabled={botonInhabilitado} onClick={() => volverAHome()} >Volver al Home</button>
+            <button className='btn btn-primary botonBasico' style={{width: width}} disabled={botonInhabilitado} onClick={() => volverAHome()} >Volver al Home</button>
         </>
     );
 }

@@ -1,6 +1,23 @@
-.textoBackDrop{
+
+.contenedorBackDrop{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
 }
 
 .numeroBackDrop{
-    font-size: 80px;
+    font-size: 100px;
+    font-style: italic;
+}
+
+.textoBackDrop{
+    text-align: center;
+}
+
+.fs-35{
+    font-size: 35px;
+}
+.fs-25{
+    font-size: 25px;
 }

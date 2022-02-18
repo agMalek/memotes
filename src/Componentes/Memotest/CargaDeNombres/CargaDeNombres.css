@@ -1,11 +1,30 @@
 .contenedorBotonAvanzar{
     display: flex;
     justify-content: center;
-    
+    width: 100%;
+}
+.contenedorFormNombres{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.botonesEnCargaNobre{
+    width: 25%;
+    margin: 15px 2%;
 }
 
 
+
 @media screen and (max-width: 480px){
+    .contenedorTituloEnCargaNombre{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        height: 65px;
+        /* background-color: rgba(0, 0, 0, 0.3); */
+    }
     .contenedorFormNombres{
         padding: 10px;
         max-height: 755px;
@@ -13,9 +32,5 @@
     }
     .contenedorBotonAvanzar{
         padding: 10px;
-        background-color: rgba(0, 0, 0, 0.3);
-    }
-    .contenedorTituloEnCargaNombre{
-        padding: 20px;
     }
 }
